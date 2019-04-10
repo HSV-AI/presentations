@@ -4,6 +4,31 @@
 1. Brainstorm Ideas for Sessions
 2. Play with Google Colaboratory
 
+## Ideas from Brainstorming
+* NLP (clustering, sentiment analysis)
+* Formulas - data science & analysis - vocabulary/lingo - numpy - feature engineering
+* Feature Engineering
+* What's next after training a model
+** Applications of using models
+* From Nick - https://www.eurekalert.org/pub_releases/2019-03/suot-hii031219.php?fbclid=IwAR1a90pjf7Ww2gUtMBUoJm6k4bF27rtG2aRz7MQKpwvE0eSSoyMiNFUo7rU
+* Deployment (How the heck do we do this)
+** Combined session with CloudComputing Hexagon folks
+** Framework - how to put AI into HaftaHave
+* Matlab Octave Learning (Ben - )
+* Data Analysis of CoWorkingNight Data
+* BotOrNot for Instagram
+
+## Interesting Data Sources for Projects
+* Twitter Data
+* Instagram Data
+* Facebook API
+* Web Scraping/Crawling
+* Where to get image data
+* Graingers Parts
+* Kaggle
+* Need CoWorkingNight check-in, session schedules, weather data
+
+
 ## Notes for Google Colaboratory
 
 https://colab.research.google.com/
