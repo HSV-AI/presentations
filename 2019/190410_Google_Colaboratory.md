@@ -17,6 +17,9 @@
 * Matlab Octave Learning (Ben - Gary)
 * Data Analysis of CoWorkingNight Data
 * BotOrNot for Instagram
+### From the Mailing List:
+* Software Bots
+* Azure Notebooks for AI/ML
 
 ## Interesting Data Sources for Projects
 * Twitter Data
