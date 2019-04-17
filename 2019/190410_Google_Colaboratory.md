@@ -17,6 +17,11 @@
 * Matlab Octave Learning (Ben - Gary)
 * Data Analysis of CoWorkingNight Data
 * BotOrNot for Instagram
+* Getting Started with Python - (Phil)
+** Bring a machine - install Python on it
+** Next session - Jupyter Notebooks
+** Deploy python application with Flask
+* Getting Started with R (Jonathan)
 ### From the Mailing List:
 * Software Bots
 * Azure Notebooks for AI/ML
