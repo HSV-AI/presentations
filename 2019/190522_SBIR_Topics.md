@@ -46,6 +46,7 @@ an objective.
 OBJECTIVE: Develop model order reduction strategies for electrical power and thermal components that retain
 high accuracy with reduced computational time for real time control and health monitoring
 applications.
+
 DESCRIPTION: Design and Verification of advanced propulsion and electric power controls requires reduced order
 models (ROMs) that run in real time. Calculation of power utilization, load factors, parameter estimates, and control
 mechanisms is a challenge as accurate, predictive algorithms may take an order of magnitude more time to execute
@@ -63,6 +64,7 @@ reduce model/algorithm execution time by one or more orders of magnitude compare
 OBJECTIVE: Develop a system for integrated threat detection, classification, and situational awareness considering
 data associated with risk relative to assets, providing capability for fixed and mobile asset security leveraging all
 available information.
+
 DESCRIPTION: The USAF is tasked with securing both fixed-site facilities and mobile assets against a multiplicity
 of potential threats, including conventional weapons (rockets, artillery, mortars (RAM)), and shorter-range weapons
 (small arms, rocket-propelled grenades (RPGs)). Enemy use of vehicle-borne explosive devices and other
