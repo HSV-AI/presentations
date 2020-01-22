@@ -14,6 +14,8 @@ For next week - here's a link to [Lesson 1](https://course.fast.ai/videos/?lesso
 
 ## Steps from tutorial
 
+Don't forget to set a budget!!! [Link](https://console.aws.amazon.com/billing/home?region=us-east-1#/budgets)
+
 Install AWS CLI in a python virtual environment [Instructions](https://docs.aws.amazon.com/cli/latest/userguide/install-virtualenv.html)
 
 Created a user for the AWS CLI.
@@ -21,8 +23,6 @@ Created a user for the AWS CLI.
 Set up the CLI following these [instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration)
 
 Clone the sample repository from [Github](https://github.com/aws-samples/amazon-rekognition-reviewing-user-content)
-
-Don't forget to set a budget!!! [Link](https://console.aws.amazon.com/billing/home?region=us-east-1#/budgets)
 
 StackFormation information [here](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks)
 
