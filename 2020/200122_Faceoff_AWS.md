@@ -1,3 +1,19 @@
+# Object Recognition Face-off
+
+This week we will start a series of tutorials intended to evaluate different frameworks for object detection. Rather than just looking at the various models for implementation, we will consider the entire framework for deployment.
+
+Agenda:
+* Intro & Welcome
+* Teams for Hudson Alpha Tech Challenge
+* Fast.ai Lesson 1 announcement
+* Amazon configuration for object detection
+
+Here are the details on the [2020 Hudson Alpha Tech Challenge](https://www.eventbrite.com/e/2020-hatch-hudsonalpha-tech-challenge-tickets-84916091315?aff=ebdssbdestsearch)
+
+For next week - here's a link to [Lesson 1](https://course.fast.ai/videos/?lesson=1) of the Fast.ai Deep Learning Course.
+
+## Steps from tutorial
+
 Install AWS CLI in a python virtual environment [Instructions](https://docs.aws.amazon.com/cli/latest/userguide/install-virtualenv.html)
 
 Created a user for the AWS CLI.
