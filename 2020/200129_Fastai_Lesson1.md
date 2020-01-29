@@ -1,3 +1,10 @@
+## Agenda:
+
+* Welcome / Intro
+* Fast.AI Lesson 1
+* Next Sessions
+
+## Fast.AI Lesson 1
 
 Link to Python Notebook in [Colab](https://colab.research.google.com/github/fastai/course-v3/blob/master/nbs/dl1/lesson1-pets.ipynb)
 
