@@ -18,4 +18,4 @@ Don't forget to run this script to setup fastai:
 !curl -s https://course.fast.ai/setup/colab | bash
 ```
 
-
+Here's a post about how to work around the error that you get: [HERE](https://github.com/fastai/course-v3/issues/455)
