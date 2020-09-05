@@ -1,8 +1,8 @@
 ---
 name: Suggestion Template
 about: Create a new issue to suggest a presentation
-title: "[Suggestion]"
-labels: presentation
+title: "New Suggestion for a presentation"
+labels: suggestion
 assignees: ''
 
 ---
