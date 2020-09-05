@@ -4,6 +4,8 @@ This repository is used to manage the presentations given at Hunstville AI meetu
 
 # Quick Links
 
+[Scheduled Events (Shown as Milestones)](https://github.com/HSV-AI/presentations/milestones)
+
 [Project Kanban Page](https://github.com/HSV-AI/presentations/projects/1)
 
 [Start Planning a Presentation](https://github.com/HSV-AI/presentations/issues/new?assignees=&labels=presentation&template=presentation-template.md&title=%5BPresentation%5D)
