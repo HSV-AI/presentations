@@ -1,7 +1,7 @@
 ---
 name: Presentation Template
 about: Create a new issue to track the progress of a presentation
-title: "[Presentation]"
+title: "Name of the presentation"
 labels: presentation
 assignees: ''
 
