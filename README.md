@@ -1,7 +1,3 @@
-# Presentations
-
-This repository is used to manage the presentations given at Hunstville AI meetups. It provides a collection of Issues, Cards, and Files to plan and create the content needed for a presentation.
-
 # Quick Links
 
 [Scheduled Events (Shown as Milestones)](https://github.com/HSV-AI/presentations/milestones)
