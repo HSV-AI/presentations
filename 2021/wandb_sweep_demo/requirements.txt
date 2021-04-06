@@ -116,7 +116,7 @@ toml==0.10.2
 tornado==6.1
 tqdm==4.56.0
 traitlets==5.0.5
-urllib3==1.26.3
+urllib3==1.26.4
 wandb==0.10.15
 wasabi==0.8.1
 watchdog==0.10.4
