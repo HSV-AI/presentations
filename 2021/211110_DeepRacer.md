@@ -39,6 +39,7 @@ Types of RL:
 
 # Lessons Learned
 
+Next time, may want to generate a large sample buffer to preload training and then switch to the environment.
 Is there a pytorch tool that will tell me what parts of an image triggered a layer?
 Automate feature selection
 Don't watch graphs
