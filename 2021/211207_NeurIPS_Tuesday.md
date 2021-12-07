@@ -1,39 +1,33 @@
-![HSV-AI Logo](https://github.com/HSV-AI/hugo-website/blob/master/static/images/logo_v9.png?raw=true)
+![HSV-AI Logo](https://github.com/HSV-AI/presentations/blob/master/2021/NeurIPS_2021.jpg?raw=true)
 
-# Planning for NeurIPS 2021 Remote Meetup
+# Tuesday Remote NeurIPS Meetup
 
-We have a lot going on for NeurIPS during Dec 6-10, so let's get together and work through some of the details.
-
-Also - for the DeepRacer Challenge, we are 5th on the leaderboard (simulated) and 12th (live). We will take a minute to talk about what's going on with that.
-
-Current thoughts on NeurIPS:
-1. Working with CoWorking Night to see if we can get a 2 hour slot on Dec 8th.
-2. Looking at doing virtual events on Tuesday and Thursday evenings.
-3. In contact with a paper author from Auburn to see if they want to present their paper to us (virtually) - https://nips.cc/Conferences/2021/Schedule?showEvent=28492
-4. Already have an EventBrite event created to manage signups and such.
-5. Currently thinking about this talk for streaming during the live meetup: https://nips.cc/Conferences/2021/Schedule?showEvent=22280
 
 # Agenda
 
 - Welcome
-- Project Updates
+- NeurIPS Code of Conduct - https://neurips.cc/public/CodeOfConduct
 - NeurIPS 2021
 - Q&A
-- Future Topic Discussion
 - Schedule Next Meetup
 - Close
 
+# Late breaking
+
+Oral presentations are not available this year, so we will be talking through the Tutorials available from Monday.
+
+* The Art of Gaussian Processes: Classical and Contemporary -
+https://neurips.cc/virtual/2021/tutorial/21890
+* ML for Physics and Physics for ML - https://neurips.cc/virtual/2021/tutorial/21896
+* Beyond Fairness in Machine Learning - https://neurips.cc/virtual/2021/tutorial/21889
+* Machine Learning and Statistics for Climate Science - https://neurips.cc/virtual/2021/tutorial/21893
+* Self-Supervised Learning: Self-Prediction and Contrastive Learning - https://neurips.cc/virtual/2021/tutorial/21895
+* Message Passing In Machine Learning - https://neurips.cc/virtual/2021/tutorial/21897
+* Pay Attention to What You Need: Do Structural Priors Still Matter in the Age of Billion Parameter Models - https://neurips.cc/virtual/2021/tutorial/21891
+* Real-Time Optimization for Fast and Complex Control Systems - https://neurips.cc/virtual/2021/tutorial/21892
+* Machine Learning With Quantum Computers - https://neurips.cc/virtual/2021/tutorial/21894
+* A Journey Through the Opportunity of Low Resourced Natural Language Processing — An African Lens - https://neurips.cc/virtual/2021/tutorial/21898
+
+
 # Discussion Notes
-
-Could move Hack Night to cover the off-week.
-
-Mask preferred for the conference. Conference organizers will be masked.
-
-For Tuesday:
-https://nips.cc/Conferences/2021/Schedule?showEvent=26446
-
-
-
-Talk about website - hsv.ai
-
 
