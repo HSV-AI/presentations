@@ -43,7 +43,7 @@ Things you have to know to get Fargate up and working:
 
 # Diagram of Pieces
 
-![Image](https://github.com/HSV-AI/presentations/raw/master/2022/fargate.drawio.png)
+![Image](https://github.com/HSV-AI/presentations/raw/master/2022/fargate2.drawio.png)
 
 # Cost
 
