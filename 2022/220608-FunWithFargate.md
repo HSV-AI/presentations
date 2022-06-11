@@ -41,7 +41,26 @@ Things you have to know to get Fargate up and working:
 18. AIM Roles
 19. AIM Permissions
 
+# Diagram of Pieces
 
+![Image](https://github.com/HSV-AI/presentations/raw/master/2022/fargate.drawio.png)
+
+# Cost
+
+Several of the items above have a cost associated with them, which might not be apparent from an initial observation.
+
+- AWS ECR - 0.10 per GB-month of data storage
+- Fargate / ECS - CPU & Memory time
+- Cloudwatch
+- Data Transfer
+- Load Balancing
+  - $0.008 per used Application load balancer capacity unit-hour (or partial hour)
+  - $0.0225 per Application LoadBalancer-hour (or partial hour)
+- Lambda
+- S3
+- VPC
+  - $0.01 per GB for upto 1 PB monthly data processed by VPC Endpoints
+  - $0.01 per VPC Endpoint Hour
 
 # Discussion
 
