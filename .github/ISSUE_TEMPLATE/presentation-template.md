@@ -11,10 +11,9 @@ assignees: ''
 
 - [ ] Description Completed
 - [ ] Image Attached
-- [ ] Meetup.com Event Created - [Meetup.com Group](https://www.meetup.com/Huntsville-AI/)
+- [ ] HSV.AI Event Created - [hsv.ai](https://hsv.ai/events)
 - [ ] Facebook Event Created - [Facebook Group](https://www.facebook.com/groups/hsvai/)
-- [ ] OpenHuntsville (CoWorking Night) Event Created - [OpenHuntsville](https://www.openhuntsville.com/)
-- [ ] Email Sent to Huntsville-AI mailing list - [Google Group](mailto:hsv-ai@googlegroups.com?subject=Next%20Meetup)
+- [ ] LinkedIn Event Created - [Huntsville AI](https://www.linkedin.com/company/huntsville-ai)
 
 # Adding material to the presentations repository
 
