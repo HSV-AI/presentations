@@ -31,7 +31,7 @@ gunicorn==20.0.4
 idna==2.10
 iniconfig==1.1.1
 ipykernel==5.4.3
-ipython==7.19.0
+ipython==8.10.0
 ipython-genutils==0.2.0
 ipywidgets==7.6.3
 isodate==0.6.0
