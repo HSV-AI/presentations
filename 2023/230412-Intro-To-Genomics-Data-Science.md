@@ -36,6 +36,8 @@ Feel free to follow along using the tutorials a friend and I wrote here:
 
 [Part 2 -  Genomic Data Science Series: Visualizing High-Dimensional Microbiome Data](https://towardsdatascience.com/visualizing-high-dimensional-microbiome-data-eacf02526c3a) 
 
+*For the sake of ease & brevity, I have uploaded a preprocessed version of the data set used in this tutorial.  The .tsv file can be [obtained here](https://drive.google.com/file/d/19GYJK87j3SS9AWUnQoqxkcDjyH7LOtvd/view?usp=sharing).
+
 # Discussion
 
 # Plan for next week
