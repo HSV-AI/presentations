@@ -24,7 +24,7 @@ en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_
 entrypoints==0.3
 Flask==1.1.2
 funcy==1.15
-future==0.18.2
+future==0.18.3
 gitdb==4.0.5
 GitPython==3.1.11
 gunicorn==20.0.4
