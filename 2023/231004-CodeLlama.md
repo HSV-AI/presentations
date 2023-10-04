@@ -24,6 +24,11 @@ Current models in GGUF format on HuggingFace - [https://huggingface.co/models?se
 
 Really good writeup of the quanization methods available in GGUF - [https://towardsdatascience.com/quantize-llama-models-with-ggml-and-llama-cpp-3612dfbcc172](https://towardsdatascience.com/quantize-llama-models-with-ggml-and-llama-cpp-3612dfbcc172)
 
+If we really want to get into quantization - there's probably a follow-on meetup to cover all of it. Key paper was GPTQ here - [https://arxiv.org/pdf/2210.17323.pdf](https://arxiv.org/pdf/2210.17323.pdf)
+
+Here is the llama.cpp MR that talks through the different quantization methods: [https://github.com/ggerganov/llama.cpp/pull/1684](https://github.com/ggerganov/llama.cpp/pull/1684)
+
+
 # Important
 
 Another item that GGUF enables, but hasn't been discussed much is that the GGUF format is not constrained to llama based models like the GGML format was. There are other architectures being converted to GGUF format and able to run inference with llama.cpp.
