@@ -1,9 +1,10 @@
-HSV-AI Logo
-Welcome
+![HSV-AI Logo](https://hsv.ai/wp-content/uploads/2022/03/logo_v11_2022.png)
 
-    Vision
-    Mission
-    How to Connect - Signup
+# Welcome
+
+- Vision
+- Mission
+- How to Connect - [Signup](https://hsv.ai/subscribe)
 
 # AI Without Python
 
@@ -12,7 +13,7 @@ AI in other languges and an outlook of the overall ecosystem.
 A look into tools and understanding how AI might be used in production. 
 
     Tensorflow,
-    TriBUO
+    Tribuo
     ONNX,
     Rust Improvement
     
