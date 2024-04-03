@@ -21,3 +21,9 @@ The key here is that LLM Sherpa provides the wrapped Apache Tika library that ca
 The best way to get started is by going directly to the source: [LLM Sherpa](https://github.com/nlmatics/llmsherpa)
 
 The documentation for LLM Sherpa leads down a path using LLamaIndex and OpenAI APIs, but we will just use the direct chunking capability and stop at that point.
+
+# Breaking up with monoliths
+
+LLM Sherpa also gives us a good way to begin breaking up the monolithic applicaiton that we build for SpaceApps. Additionally, we can run ChromaDB as a container as well.
+
+![entities](https://github.com/HSV-AI/presentations/assets/6886690/b0ef0ca3-9d5c-4580-8667-23ab6c4d88e9)
