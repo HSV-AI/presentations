@@ -163,6 +163,23 @@ And get the following return:
 {'key': '20130014470', 'page': 18.0, 'chunk': 'If the Moon has water ice in sufficient quantities, it would represent a very compelling rationale for future exploration and lunar outposts could be located in the vicinity of this invaluable resource.\nWater ice, after all, could be converted to consumable water, breathable oxygen, and rocket fuel, and potentially even serve as a means for construction when combined with regolith or as shielding from solar radiation.\nDelivering mass to the moon is incredibly expensive and water is very heavy for a small volume.\nDelivering a ½ liter bottle of water to the Moon is projected to cost a minimum of $15,000 by weight.\nTherefore, having this resource available in situ to future explorers and inhabitants of the Moon is clearly worth investigating.'}
 0.28107452392578125
 ```
+
+# Local Instance
+
+Another good reason to use Weaviate is that they provide a docker container loaded with the same product that they host. You can run this locally for prototyping, or host it privately if you have constraints that keep you from using their hosted version.
+
+To run with docker:
+```bash
+ docker run -p 8080:8080 -p 50051:50051 cr.weaviate.io/semitechnologies/weaviate:1.25.5
+ ```
+
+ To connect to the local instance, you just change the connection call for the client:
+
+ ```python
+ client = weaviate.connect_to_local()
+ ```
+There are a lot of available configurations, modules that can be loaded, and options for securing the instance.
+
 # More information
 
 [Weaviate Quickstart Guide](https://weaviate.io/developers/weaviate/quickstart)
