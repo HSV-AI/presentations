@@ -25,6 +25,7 @@ We will start with a basic use case with using OpenAI GPT4o and a Weaviate hoste
   - 10 x 300 word chunk context
   - ~ 3600 total word prompt
 - 1.3 tokens per word
+- 100 queries per month (totally made up number)
 
 ## Pure Webhost / OpenAI / Weaviate
 
@@ -42,3 +43,35 @@ Web Host:
 - Digital Ocean - $5/month
 - Heroku - $7/month
 - AWS Lightsail - $5/month
+
+Total - starts at ~$40/month
+
+## Self Hosting UI, Weaviate, LLM
+
+Weaviate documentation recommends 4CPU & 16G RAM.
+
+Approach for LLM is to use llama-cpp-python with a 13b size model on a GPU with 24G RAM.
+
+Easiest approach is to get a GPU VM with enough CPU and System RAM to run the entire stack. Reduces network latency and cost of transfering data.
+
+- Lambda Lab VM 1 GPU	24GB RAM 14 CPU 46G System RAM $0.50/hr ($360/month)
+- AWS EC2 P2.xlarge - 1 GPU 12GB RAM 4 CPU 61G System RAM $0.90/hr ($657/month)
+- AWS EC2 G5.xlarge - 1 GPU 24G RAM 4 CPU 16G RAM $1.00/hr ($720/month)
+
+## Host at Your House
+
+Assuming solid power, stable internet, and you know how to configure a firewall, reverse proxy, etc:
+
+https://shop.lambdalabs.com/gpu-workstations/vector/customize
+
+![Image](https://shop.lambdalabs.com/static/images/products/vector/vector_front_600.png)
+
+## Absolute Cheapest
+
+Maybe a use case for a quick demonstration capability:
+
+- Web Host with Heroku, DigitalOcean Droplet, or Streamlit public GitHub approach
+- Weaviate Free Tier cluster (can run up to 2, expire after 14 days)
+- OpenAI API
+
+# Questions, Thoughts, Cries of Heresy?
