@@ -21,16 +21,18 @@ CPU
 Beam size = 1
 INFO:faster_whisper:Processing audio with duration 30:30.240
 
-| Model      | CPU Time (int8)  | GPU Time (fp16) |
-|------------|------------|----------|
-| tiny.en    | 0m41.472s  | 2m35.015s |
-| tiny       | 1m3.565s   | JUNK |
-| base.en    | 1m21.794s  | 1m15.815s |
-| base       | 1m42.560s  | 1m4.441s |
-| small.en   | 3m33.196s  | 2m57.525s |
-| small      | 4m23.787s  | 3m4.312s |
-| medium.en  | 11m12.849s | 7m54.802s |
-| medium     | 13m10.812s | 7m54.106s |
+| Model      | CPU Time (int8)  | GPU Time (fp16) | GPU Time (fp16_int8) |
+|------------|------------|----------|-------------|
+| tiny.en    | 0m41.472s  | 2m35.015s | NOTHING |
+| tiny       | 1m3.565s   | JUNK |  NOTHING | |
+| base.en    | 1m21.794s  | 1m15.815s | 0m41.122s |
+| base       | 1m42.560s  | 1m4.441s |  0m52.531s |
+| small.en   | 3m33.196s  | 2m57.525s | 1m31.475s |
+| small      | 4m23.787s  | 3m4.312s | 1m36.967s |
+| medium.en  | 11m12.849s | 7m54.802s | 3m11.600s |
+| medium     | 13m10.812s | 7m54.106s | 3m32.465s |
+| large-v3   | 40m44.508s | OOM | 10m56.605s |
+
 
 Blog post - https://mysoly.nl/speech-to-text-with-faster-whisper-the-high-speed-alternative-to-openai-whisper/
 
