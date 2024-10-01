@@ -32,6 +32,7 @@ INFO:faster_whisper:Processing audio with duration 30:30.240
 | medium.en  | 11m12.849s | 7m54.802s | 3m11.600s |
 | medium     | 13m10.812s | 7m54.106s | 3m32.465s |
 | large-v3   | 40m44.508s | OOM | 10m56.605s |
+| large-v3-distil | 10m33.813s | 9m22.329s | 2m38.854s |
 
 
 Blog post - https://mysoly.nl/speech-to-text-with-faster-whisper-the-high-speed-alternative-to-openai-whisper/
