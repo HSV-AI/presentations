@@ -30,6 +30,7 @@ INFO:faster_whisper:Processing audio with duration 30:30.240
 | small.en   | 3m33.196s  | 2m57.525s | 1m31.475s |
 | small      | 4m23.787s  | 3m4.312s | 1m36.967s |
 | medium.en  | 11m12.849s | 7m54.802s | 3m11.600s |
+| distil-medium.en | JUNK | JUNK | JUNK |
 | medium     | 13m10.812s | 7m54.106s | 3m32.465s |
 | large-v3   | 40m44.508s | OOM | 10m56.605s |
 | large-v3-distil | 10m33.813s | 9m22.329s | 2m38.854s |
