@@ -38,3 +38,10 @@ vLLM can be deployed across various environments, including local servers, cloud
 ![batching](./static/batching.png)
 
 ![v6_performance](./static/v6_performance.png)
+
+
+# Open Webui Docker Command 
+
+```bash
+      - docker run --network=host -p 3000:8080 -h 0.0.0.0 --gpus all --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui-demo --restart always ghcr.io/open-webui/open-webui:cuda
+```
