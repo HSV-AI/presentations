@@ -66,4 +66,6 @@ Switch over to a faster-whisper model that can run within the constraints of a L
 
 I'm pretty happy with the results so far. The spinup time with Lambda vs ECS is much faster (within a minute or two) and also provides a way to stream the text back to the website.
 
+## Cost
 
+- Don't forget to talk about the cost of all this stuff!
