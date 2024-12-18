@@ -10,14 +10,24 @@
 # 2024 In Review
 
 - 25 Meetups for Huntsville AI
+- Mailing list subscribers doubled
 - Numberous guest speakers
 - Supported HudsonAlpha Tech Challenge
 - Integral member of the AI Huntsville Task Force
-- Birth of the Troll
+- Enter the Impostor
 - Retrieval Augmented Generation Series
+- Huntsville Business Journal
+- Law and AI
 - SMD Field Trip
 - Socials
-- Sora, Pixtral, Voice to Text / Text to Voice / Voice to Voice
+- Sora, Pixtral
+- Hurricane Helene Discussion
+- Voice to Text / Text to Voice / Voice to Voice
 - Changes to SBIR Topics
+- Smart Place podcast
 
 # Agents in AI
+
+Thanks to Paul Bay for presenting!
+
+# Thoughts for 2025?
