@@ -7,6 +7,22 @@
 - Mission
 - How to Connect - [Signup](https://hsv.ai/subscribe)
 
+# NVIDIA Meetup at Torch
+
+- Trying to schedule them twice a year. Next expected in August.
+- Covered some history of chip architectures
+- World Foundation Models - models that know about physics. I don't know what makes them "Foundation" models.
+- Using Omniverse to provide synthetic data to train models used in physical robots
+- Some of the same material from their talk at the HPC Huntsville AI conference in 2023.
+- NIM Blueprints? This might be useful. Think microservices applied to AI models.
+- VAST- some other company pitching their product that does data stuff. Might be useful to somebody.
+
+# Learning Quest - Intro to AI
+
+- Over 150 people showed up. Mostly interested in the application and getting a better understanding of what AI is and what it can do. Updated presentation to cover additional years since the last time I presented this.
+
+- [https://github.com/HSV-AI/presentations/blob/master/2025/250116_Introduction_to_AI_LearningQuest.pdf?raw=true](https://github.com/HSV-AI/presentations/blob/master/2025/250116_Introduction_to_AI_LearningQuest.pdf?raw=true)
+
 # AI for Code Development
 
 ## Github Copilot
