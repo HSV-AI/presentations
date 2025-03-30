@@ -17,17 +17,39 @@ North Alabama chair reached out, and we're planning a lunch-and-learn session fo
 
 # Video Generation
 
-Started by using the free versions available for both Mochi-1 and Wan2.1. Tried Sora but OpenAI has blocked new account creation until further notice.
+Here's the basic image and prompt used for all video generation for comparison:
 
-https://www.genmo.ai/play
-
-https://wan.video/wanxiang/videoCreation
-
-Image ![Remote-NeurIPS](https://hsv.ai/wp-content/uploads/2023/01/neurips-meetup-1024x576.jpg)
-Prompt:
+![Remote-NeurIPS](https://hsv.ai/wp-content/uploads/2023/01/neurips-meetup-1024x576.jpg)
 ```
 A cozy, informal classroom filled with natural light. Around 15 diverse attendees sit on mismatched chairs, casually dressed, some taking notes or holding coffee cups. At the front, a confident speaker stands beside a whiteboard and large screen, using a laptop to run an interactive demonstration—perhaps coding live or manipulating a 3D model. The speaker engages with the audience, answering questions and reacting naturally with hand gestures and facial expressions. Occasional audience questions spark short, thoughtful exchanges. The mood is curious and collaborative, with a modern, startup-like atmosphere.
 ```
+
+## Publicly Available Tools
+
+Started by using the free versions available for both Mochi-1 and Wan2.1.
+
+### Sora
+Tried Sora but OpenAI has blocked new account creation until further notice.
+
+### Veo-2
+Also attempted Google Veo-2, but I need some kind of special access for their Vertex AI is whitelisted: "Content access: This page is available to approved users that are signed in to their browser with an allowlisted email address. To get started with Veo on Vertex AI, reach out to your Google Cloud account representative."
+
+### Mochi-1
+https://www.genmo.ai/play
+
+### Wan
+https://wan.video/wanxiang/videoCreation
+
+### Runway ML
+https://app.runwayml.com/
+
+### Kling AI
+https://app.klingai.com/
+
+### Hailuoai
+https://hailuoai.video/create
+
+## Runpod for Custom Models
 
 Moved to Runpod to try and run the Wan2.1 model myself. Used the RTX A5000 24G (cheap) along with a python 3.11 / pytorch 2.4.0 template.
 
@@ -50,10 +72,20 @@ Gave up trying the 14B model and switched to the 1.3B. Max download size is now 
 
 Model is still not using GPU.
 
-Gave up again and now trying to step up to a later RTX 4090 and CUDA version. Still couldn't get that to work by default. Was able to use a custom template for Wan1.3B to get a gradio up and running. Now trying a different template for ComfyUI.
+Gave up again and now trying to step up to a later RTX 4090 and CUDA version. Still couldn't get that to work by default. Was able to use a custom template for Wan1.3B to get a gradio up and running. 
+
+Now trying a different template for ComfyUI.
 
 ComfyUI never got going. Looks like something to check out later though.
 
 Retried using a standard pytorch 2.4 install and got further. Ran out of memory loading the model though, stepping up to an A6000. Still couldn't get there from here.
 
 Bailed back out and started working with https://www.runpod.io/console/explore/758dsjwiqz
+
+ComfyUI is a bit more complex than I would like at this point. Also for some reason, you have to wait a long time (5 minutes) for it to load.
+
+### Wan2GP
+
+Found this project, that appears to use a quantized version of Wan2.1 with gradio - https://github.com/deepbeepmeep/Wan2GP
+
+This actually worked, but the gradio piece does not show the file correctly after it is generated. Had to transfer the file out of the runpod instance to view.
