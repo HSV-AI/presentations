@@ -37,19 +37,46 @@ Also attempted Google Veo-2, but I need some kind of special access for their Ve
 ### Mochi-1
 https://www.genmo.ai/play
 
+This is a cool text to video gen application that provides a limited number of video gen per day. It doesn't have a capability of starting from an image or video. I don't think they have a paid option.
+
 ### Wan
 https://wan.video/wanxiang/videoCreation
 
+Similar to the Mochi-1 model, you can generate a small number of videos per day. The process seems to take much longer, probably because of the queue for processing. Also don't have a paid option, appear to be using this to gain user feedback.
+
 ### Runway ML
 https://app.runwayml.com/
+
+This is the first free app I came across that also has paid options. It costs 25 credits per 5 seconds of video:
+- $15/monthly - Includes 625 Credits monthly
+- $35/monthly - Includes 2250 Credits monthly
+- $95/monthly - Unlimited
+
 
 [![IMAGE ALT TEXT HERE](https://hsv.ai/wp-content/uploads/2023/01/neurips-meetup-1024x576.jpg)](https://app.runwayml.com/creation/26ff9d47-7311-4e37-b325-61843cc33b8a)
 
 ### Kling AI
 https://app.klingai.com/
 
+Cost is 35 credits per 5s video.
+
+- $6.99/month - Includes 660 credits
+- $25.99/month - Includes 3000 credits
+- $64.99/month - Includes 8000 credits
+- Can also purchase credits without a montly membership.
+
 ### Hailuoai
 https://hailuoai.video/create
+
+Cost is 30 credits per 5s video.
+
+- $9.99/month - Includes 1000 credits
+- $34.99/month - Includes 4500 credits
+- $94.99/month - Unlimited
+
+### Product thoughts
+- Each product has a slightly different approach and set of capabilities. Some allow more control of specific aspects of video generation.
+- It appears that these products are 'outrunning' their infrastructure. The last video I did with Kling AI took more than an hour.
 
 ## Runpod for Custom Models
 
