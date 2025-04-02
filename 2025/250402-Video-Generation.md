@@ -97,24 +97,48 @@ Didn't get too far before running out of space on device.
 
 Upped the container storage from 20G to 100G and started over. Total use after downloading the model was 65G.
 
+**NOTE** If you run out of space while downloading, be aware that you may have partial model files that exist in your workspace. You will need to delete these and redownload after refreshing.
+
 Gave up trying the 14B model and switched to the 1.3B. Max download size is now 17G.
 
 Model is still not using GPU.
 
 Gave up again and now trying to step up to a later RTX 4090 and CUDA version. Still couldn't get that to work by default. Was able to use a custom template for Wan1.3B to get a gradio up and running. 
 
+**Note** To get the gradio server exposed through the runpod connection, use a server_name="0.0.0.0"
+
 Now trying a different template for ComfyUI.
 
 ComfyUI never got going. Looks like something to check out later though.
 
-Retried using a standard pytorch 2.4 install and got further. Ran out of memory loading the model though, stepping up to an A6000. Still couldn't get there from here.
+Back to the Wan2.1 instructions from HuggingFace. Retried using a standard pytorch 2.4 install and got further. Ran out of memory loading the model though, stepping up to an A6000. Still couldn't get there from here.
+
+### ComfyUI
 
 Bailed back out and started working with https://www.runpod.io/console/explore/758dsjwiqz
 
-ComfyUI is a bit more complex than I would like at this point. Also for some reason, you have to wait a long time (5 minutes) for it to load.
+ComfyUI is a bit more complex than I would like at this point. Also for some reason, you have to wait a long time (5 minutes) for it to load. The workflows were almost correct, and need a little work to get them working.
+
+### Mochi-1 (Gradio)
+
+https://github.com/genmoai/mochi
+
+The README says that it should run on an H100, but I'm trying it on an A6000 for the moment. Out of memory on an A6000.
+
+Actually running this on an H100 now. Really surprised that I was able to get that high of a GPU, though it is $2.79/hour. The gradio app looks like it's working, but the default of 10s of video and 100 inference steps is taking forever. Currently over 30 minutes for setup, model downloads, and inference.
+
+Plan to check out the ComfyUI version that uses fp16 next. https://comfyanonymous.github.io/ComfyUI_examples/mochi/?ref=blog.comfy.org
+
+That actually worked really well. Need to throw out the initial template and just go with the runpod ComfyUI template - ComfyUI - Python 3.11 and Pytorch 2.4.0
+
+### Memory usage
+
+It seems like both Mochi-1 and Wan2.1 use 32bit weights by default. There are fp16 versions of Wan2.1 as well as some quantized versions that run on a much smaller scale GPU.
 
 ### Wan2GP
 
 Found this project, that appears to use a quantized version of Wan2.1 with gradio - https://github.com/deepbeepmeep/Wan2GP
 
-This actually worked, but the gradio piece does not show the file correctly after it is generated. Had to transfer the file out of the runpod instance to view.
+This actually worked, but the gradio piece does not show the file correctly after it is generated. Had to transfer the file out of the runpod instance to view. 
+
+**Note** This repository changed the license from Apache2 to a non-commercial license. 
