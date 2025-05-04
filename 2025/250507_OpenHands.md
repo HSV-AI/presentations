@@ -8,6 +8,33 @@
 
 # OpenHands Agents for Developing Code
 
+## Architecture of OpenHands CodeAgent
+
+![OpenHands CodeAgent Architecture](https://docs.all-hands.dev/assets/codeagent_architecture.png)
+
+The CodeAgent is designed as a modular microservices architecture:
+
+- **CLI Interface**: User-facing `openhands` command-line tool.
+- **Orchestrator Service**: Coordinates workflows, state management, and step execution.
+- **LLM Integrations**: Plugins for OpenAI GPT models, Hugging Face inference, and local LLMs.
+- **Tool Plugins**: Extensible modules for code analysis, test generation, and version control.
+- **Runtime Sandbox**: Isolated environment for executing generated code safely.
+- **Monitoring & Logging**: Tracks execution traces, performance metrics, and audit logs.
+
+## History and Collaborators
+
+- **2024 Q1**: Kickoff by All-Hands AI to leverage AI for code development workflows.
+- **2024 Q2**: Integrated OpenAI GPT via the Copilot API for code generation and review.
+- **2024 Q3**: Added support for Hugging Face Inference API and community-driven local LLMs.
+- **2024 Q4**: Open-sourced the framework under MIT License on GitHub with community contributions.
+- **Primary contributors and collaborators**:
+  - **All-Hands AI**: Core framework architecture and orchestration.
+  - **OpenAI**: Language model services and API integration.
+  - **Hugging Face**: Hosted and on-premise LLM support.
+  - **Microsoft/GitHub**: Version control integrations including GitHub Copilot and Codespaces.
+  - **Weights & Biases**: Experiment tracking and monitoring integrations.
+
+
 ## Overview
 
 - OpenHands provides a suite of AI agents to streamline development workflows.
