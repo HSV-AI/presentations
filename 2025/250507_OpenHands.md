@@ -21,6 +21,34 @@ The CodeAgent is designed as a modular microservices architecture:
 - **Runtime Sandbox**: Isolated environment for executing generated code safely.
 - **Monitoring & Logging**: Tracks execution traces, performance metrics, and audit logs.
 
+### Tool Plugins Details
+
+- **FileSystemTool**: Read and write files in the project workspace.
+- **PythonREPLTool**: Execute Python code in an isolated Python REPL for quick testing and validation.
+- **ShellTool**: Run shell commands (e.g., `pip install`, `git diff`) to manage dependencies and version control.
+- **GitTool**: Automate Git operations, including staging, committing, and pushing code changes.
+- **LinterTool**: Run code formatters and linters (e.g., `black`, `flake8`) to enforce style guidelines.
+- **TestRunnerTool**: Execute test suites (e.g., `pytest`) and report coverage and failures.
+- **DiffTool**: Generate diffs and patches to review changes before applying.
+
+### Example LLM Prompts
+
+The CodeAgent generates prompts to interact with the LLM based on the selected tool or agent workflow. Some examples include:
+
+- **Code Generation**:
+  ```
+  You are a senior Python engineer. Create a Flask API with SQLAlchemy models for a User and Post resource. Include CRUD endpoints, validation, and JSON-based responses.
+  ```
+- **Test Generation**:
+  ```
+  Generate pytest unit tests for the module at `path/to/module.py`. Cover standard operations and edge cases; mock external dependencies where necessary.
+  ```
+- **Code Review**:
+  ```
+  Perform a thorough code review on the following file: `path/to/module.py`. Identify bugs, security issues, performance improvements, and ensure PEP8 compliance.
+  ```
+
+
 ## History and Collaborators
 
 - **2024 Q1**: Kickoff by All-Hands AI to leverage AI for code development workflows.
