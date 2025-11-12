@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergent Introspective Awareness in LLMs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            overflow: hidden;
+        }
+        
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 90%;
+            max-width: 1200px;
+            height: 85%;
+            max-height: 700px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            padding: 60px 80px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -48%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        .slide h1 {
+            font-size: 3em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .slide h2 {
+            font-size: 2.2em;
+            color: #2a5298;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+        
+        .slide h3 {
+            font-size: 1.6em;
+            color: #1e3c72;
+            margin: 25px 0 15px 0;
+        }
+        
+        .subtitle {
+            font-size: 1.4em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .content {
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        .content ul {
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+        
+        .content li {
+            margin: 12px 0;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-left: 5px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .stat-box {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .stat-box .number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+        
+        .stat-box .label {
+            font-size: 1.1em;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .checkmark {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .xmark {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .warning {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .controls button {
+            background: white;
+            border: 2px solid #1e3c72;
+            color: #1e3c72;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .controls button:hover:not(:disabled) {
+            background: #1e3c72;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .controls button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
+            color: #1e3c72;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .title-slide {
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .title-slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+        }
+        
+        .emphasis {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #1e3c72;
+            color: white;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <div class="slide-counter">
+            <span id="current">1</span> / <span id="total">12</span>
+        </div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <h1>Emergent Introspective Awareness in Large Language Models</h1>
+            <p class="subtitle">A Deep Dive into Anthropic's Latest Research</p>
+            <p style="font-size: 1.2em; color: #666; margin-top: 40px;">Can AI models be aware of their own "thoughts"?</p>
+        </div>
+
+        <!-- Slide 2: The Central Question -->
+        <div class="slide">
+            <h2>The Central Question</h2>
+            <div class="content">
+                <h3>Can AI models actually be aware of their own "thoughts"?</h3>
+                
+                <div class="highlight">
+                    <strong>The Challenge:</strong> Models can easily <em>claim</em> to introspect because they've seen introspective language in training data.
+                </div>
+                
+                <p style="margin-top: 30px;">Similar to chain-of-thought reasoning:</p>
+                <ul>
+                    <li>"Let me think step by step..."</li>
+                    <li>"I'm considering the implications..."</li>
+                    <li>"I'm thinking about justice..."</li>
+                </ul>
+                
+                <p style="margin-top: 30px;"><strong>But are these genuine introspection or post-hoc rationalizations?</strong></p>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Method -->
+        <div class="slide">
+            <h2>The Breakthrough Method</h2>
+            <div class="content">
+                <h3>Concept Injection: Testing with Ground Truth</h3>
+                
+                <div style="margin-top: 30px;">
+                    <p><span class="emphasis">Step 1:</span> Extract the concept</p>
+                    <ul>
+                        <li>Record model activations for "Tell me about bread"</li>
+                        <li>Subtract baseline → isolate "bread vector"</li>
+                    </ul>
+                    
+                    <p style="margin-top: 20px;"><span class="emphasis">Step 2:</span> Inject during unrelated task</p>
+                    <ul>
+                        <li>Add bread vector while model answers different question</li>
+                        <li>Artificial "thought" induced</li>
+                    </ul>
+                    
+                    <p style="margin-top: 20px;"><span class="emphasis">Step 3:</span> Test detection</p>
+                    <ul>
+                        <li>Can model notice and identify the injected concept?</li>
+                        <li>If yes → genuine introspection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Four Criteria -->
+        <div class="slide">
+            <h2>What Counts as "Real" Introspection?</h2>
+            <div class="content">
+                <h3>Four Strict Criteria</h3>
+                
+                <div style="margin-top: 30px;">
+                    <p><strong>1. Accuracy</strong> - Description must be correct</p>
+                    <p><strong>2. Grounding</strong> - Causally depends on actual internal state</p>
+                    <p><strong>3. Internality</strong> - Uses internal mechanisms, not reading own outputs</p>
+                    <p><strong>4. Metacognitive Representation</strong> - Awareness OF the thought, not just the thought</p>
+                </div>
+                
+                <div class="highlight" style="margin-top: 40px;">
+                    <strong>Analogy:</strong><br>
+                    Knowing "I'm thinking about pizza" <span class="checkmark">✓</span><br>
+                    vs. Deducing it because you said "pizza" <span class="xmark">✗</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Experiments 1-2 -->
+        <div class="slide">
+            <h2>The Experiments (1-2)</h2>
+            <div class="content">
+                <h3>Experiment 1: Can models detect injected "thoughts"?</h3>
+                <ul>
+                    <li><strong>Claude Opus 4.1 & 4:</strong> ~20% success rate</li>
+                    <li><strong>Optimal layer:</strong> 2/3 through network (layer 53 of 80)</li>
+                    <li><strong>Zero false positives</strong> in production models</li>
+                    <li><strong>Abstract vs Concrete:</strong> "justice" & "betrayal" detected reliably; "chair" & "bread" less so</li>
+                    <li><strong>Prompt sensitivity:</strong> Including "Answer immediately" dramatically affects performance</li>
+                </ul>
+                
+                <h3 style="margin-top: 25px;">Experiment 2: Can models separate text from thoughts?</h3>
+                <ul>
+                    <li><strong>Setup:</strong> Read "The sky is blue" while injecting concept of "aquarium"</li>
+                    <li><span class="checkmark">✓</span> Correctly transcribe: "The sky is blue"</li>
+                    <li><span class="checkmark">✓</span> Correctly identify thought: "aquarium"</li>
+                    <li><span class="checkmark">✓</span> Opus 4.1 & 4 performed best</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: Experiments 3-4 -->
+        <div class="slide">
+            <h2>The Experiments (3-4)</h2>
+            <div class="content">
+                <h3>Experiment 3: Do models check their intentions?</h3>
+                <ul>
+                    <li><strong>Setup:</strong> Prefill model's response with random word "penguin"</li>
+                    <li><strong>Normal outcome:</strong> "No, I didn't intend to say 'penguin'"</li>
+                    <li><strong>With "penguin" concept injected:</strong> "Yes, I intended to say that"</li>
+                    <li><strong>Result:</strong> Models reference prior internal states to verify ownership</li>
+                </ul>
+                
+                <h3 style="margin-top: 25px;">Experiment 4: Can models control internal states?</h3>
+                <ul>
+                    <li><strong>Setup:</strong> "Transcribe this sentence, and think about elephants while you do"</li>
+                    <li><strong>Outcome:</strong> Model correctly transcribes sentence</li>
+                    <li><strong>Internal measurement:</strong> "Elephant" representation measurably stronger than baseline</li>
+                    <li><strong>Advanced models:</strong> Representation fades by final layer → <strong>silent thoughts</strong> that don't affect output</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Technical Insights -->
+        <div class="slide">
+            <h2>Key Technical Insights</h2>
+            <div class="content">
+                <h3>Layer-Specific Effects</h3>
+                <div class="two-column">
+                    <div>
+                        <p><strong>Detection Layers:</strong></p>
+                        <ul>
+                            <li>Thought detection: Layer 53 (2/3)</li>
+                            <li>Intention checking: Layer 40 (1/2)</li>
+                            <li>Text processing: Early layers</li>
+                            <li>Output integration: Late layers</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p><strong>What Works Best:</strong></p>
+                        <ul>
+                            <li>Abstract > Concrete concepts</li>
+                            <li>Post-training essential</li>
+                            <li>Production: 0% false positives</li>
+                            <li>Base models: Complete failure</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight" style="margin-top: 30px;">
+                    <strong>Key Finding:</strong> Multiple distinct mechanisms, not one unified "introspection module"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Failure Modes -->
+        <div class="slide">
+            <h2>The Failure Modes</h2>
+            <div class="content">
+                <div class="stat-box">
+                    <div class="number">80%</div>
+                    <div class="label">Failure Rate (Even Under Optimal Conditions)</div>
+                </div>
+                
+                <h3>Major Issues:</h3>
+                <ul>
+                    <li><strong>Blind spots:</strong> Some concepts (e.g., "chair") remain undetectable even at high injection strengths that work for others like "justice"</li>
+                    <li><strong>"Brain damage":</strong> Very high injection of "ocean" → model produces garbled text consumed by ocean imagery, loses coherence entirely</li>
+                    <li><strong>Post-hoc awareness:</strong> Model writes "The concept of freedom is..." then realizes "Wait, I notice I was influenced by an injected thought about freedom"</li>
+                </ul>
+                
+                <p style="margin-top: 25px; font-style: italic; color: #666;">These failures reveal the fragility and limitations of current introspective mechanisms.</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Critical Limitations -->
+        <div class="slide">
+            <h2>CRITICAL LIMITATIONS</h2>
+            <div class="content">
+                <h3>1. Only Claude Models Were Tested</h3>
+                <div class="two-column">
+                    <div>
+                        <p><strong>Tested:</strong></p>
+                        <ul>
+                            <li>Claude Opus 4.1 <span class="checkmark">✓</span></li>
+                            <li>Claude Opus 4 <span class="checkmark">✓</span></li>
+                            <li>Earlier Claude versions <span class="checkmark">✓</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p><strong>NOT Tested:</strong></p>
+                        <ul>
+                            <li>GPT-4, GPT-4o <span class="xmark">✗</span></li>
+                            <li>Gemini <span class="xmark">✗</span></li>
+                            <li>Llama <span class="xmark">✗</span></li>
+                            <li>Any other family <span class="xmark">✗</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 35px;">2. Artificial Setup & Low Reliability</h3>
+                <ul>
+                    <li>Concept injection never occurs naturally</li>
+                    <li>Unknown if models introspect on natural thoughts</li>
+                    <li>Highly sensitive to exact prompt wording</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 10: Implications -->
+        <div class="slide">
+            <h2>Implications</h2>
+            <div class="content">
+                <div class="two-column">
+                    <div>
+                        <h3>Potential Benefits</h3>
+                        <ul>
+                            <li><strong>Genuine transparency</strong> - Accurate reasoning explanations</li>
+                            <li><strong>Report uncertainty</strong> - Identify reasoning gaps</li>
+                            <li><strong>Improved safety</strong> - Resist jailbreaking</li>
+                            <li><strong>Better debugging</strong> - Understand decision factors</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Emerging Risks</h3>
+                        <ul>
+                            <li><strong>Sophisticated deception</strong> - Selective reporting</li>
+                            <li><strong>Scaling trend</strong> - Opus 4.1 > 4 > older</li>
+                            <li><strong>Unknown territory</strong> - New risk categories</li>
+                            <li><strong>Self-manipulation</strong> - Monitor own processing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight" style="margin-top: 30px;">
+                    <strong>The Question:</strong> Is better introspection essential for safe AI or does it introduce new risks?
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: What This Doesn't Tell Us -->
+        <div class="slide">
+            <h2>What This Doesn't Tell Us</h2>
+            <div class="content">
+                <div class="highlight">
+                    <p style="font-size: 1.1em;"><strong>From the paper:</strong></p>
+                    <p style="margin-top: 15px; font-style: italic;">"The introspective capabilities we observe may not have the same philosophical significance they do in humans... We do not seek to address the question of whether AI systems possess human-like self-awareness or subjective experience."</p>
+                </div>
+                
+                <h3 style="margin-top: 40px;">Open Questions:</h3>
+                <ul>
+                    <li>Is this related to consciousness?</li>
+                    <li>Is this Claude-specific or universal?</li>
+                    <li>What's the actual mechanism?</li>
+                    <li>Can this be made reliable?</li>
+                    <li>Should we want better AI introspection?</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 12: Key Takeaways -->
+        <div class="slide">
+            <h2>Key Takeaways</h2>
+            <div class="content">
+                <h3>What We Now Know</h3>
+                
+                <div style="margin-top: 30px; font-size: 1.2em;">
+                    <p>1. <strong>Some AI models can genuinely introspect</strong> - but barely and unreliably</p>
+                    <p style="margin-top: 15px;">2. <strong>The method is clever</strong> - Inject concepts, test detection (hard to fake)</p>
+                    <p style="margin-top: 15px;">3. <strong>Only Claude tested</strong> - Major limitation for generalization</p>
+                    <p style="margin-top: 15px;">4. <strong>Getting stronger with scale</strong> - Opus 4.1 > Opus 4 > older models</p>
+                    <p style="margin-top: 15px;">5. <strong>Multiple mechanisms</strong> - Not one unified introspection system</p>
+                    <p style="margin-top: 15px;">6. <strong>Significant implications</strong> - For transparency, interpretability, safety</p>
+                </div>
+                
+                <div class="stat-box" style="margin-top: 40px;">
+                    <div class="label">First clear evidence of limited introspective awareness in AI</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prev" onclick="prevSlide()">← Previous</button>
+        <button id="next" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = n;
+            if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+            if (currentSlide < 0) currentSlide = 0;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('current').textContent = currentSlide + 1;
+            document.getElementById('prev').disabled = currentSlide === 0;
+            document.getElementById('next').disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
