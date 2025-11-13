@@ -22,23 +22,11 @@ for each occupation U.S. Department of Labor, Employment and Training Administra
 (2024).
 ```
 ------------------------------------
-```
-To measure the potential for impact on occupations we define a holistic AI applicability score for each
-occupation, where a higher score for an occupation means it is more likely to be impacted than an occupation
-with a lower score. The score captures whether AI is being used (with sufficient activity share) for the work
-activities of an occupation and whether that usage tends to be successful (completion rate) and cover a
-moderate share of the work activity (scope), which we describe in turn.
-```
 
-**Notes**
-- For this review, we're not going to go into the comparison to the prediction paper.
-- I still don't know the difference between "coverage" and "scope"
 
 ## Background Information
 
-- The paper covers only Microsoft Copilot
 - The data is specific to US users (due to O\*NET being US focussed)
-
 
 ### Bureau of Labor and Statistics (BLS) Data Overview
 
@@ -60,5 +48,6 @@ moderate share of the work activity (scope), which we describe in turn.
 # Discussion
 
 - Biggest takeaway for me is that this framework could likely be used for additional research for other generative models and techniques.
-- Major points from the Discuss section of the paper
+- Should probably be combined with the Microsoft paper from a few months ago
 - Open the floor for comments and questions
+- Lots of these papers dropping near the same time (Microsoft, Anthropic, and OpenAI)
