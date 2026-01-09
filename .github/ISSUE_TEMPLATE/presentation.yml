@@ -1,0 +1,53 @@
+name: New Event
+description: Schedule a new event.
+title: "[Event]: "
+labels: ["event"]
+projects: ["HSV-AI/2"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting a new event! Please fill out the rest of the
+        form to provide the information needed for scheduling.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary Sentence
+      description: Caption that goes with the invivation or social post.
+      placeholder: Join us to talk about the next evolution of AI
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's the deal?
+      description: Throw in a few paragraphs about the event.
+      placeholder: What's this about?
+      value: "A couple of paragraphs describing the event"
+    validations:
+      required: true
+  - type: dropdown
+    id: event-type
+    attributes:
+      label: Event Type
+      description: What type of event is this?
+      options:
+        - In Person & Virtual
+        - Only In Person
+        - Only Virtual
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: location
+    attributes:
+      label: Where is this happening?
+      description: What is the venue?
+      options:
+        - HudsonAlpha
+        - Stovehouse
+        - Yellowhammer
+        - Virtual
+        - Other
+    validations:
+      required: true
