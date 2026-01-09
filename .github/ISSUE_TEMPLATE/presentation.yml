@@ -10,6 +10,14 @@ body:
         Thanks for submitting a new event! Please fill out the rest of the
         form to provide the information needed for scheduling.
   - type: input
+    id: event-datetime
+    attributes:
+      label: Event Date and Time
+      description: Please enter the date and time in YYYY-MM-DD HH:MM format (e.g., 2026-03-15 14:30)
+      placeholder: YYYY-MM-DD HH:MM
+    validations:
+      required: true
+  - type: input
     id: summary
     attributes:
       label: Summary Sentence
