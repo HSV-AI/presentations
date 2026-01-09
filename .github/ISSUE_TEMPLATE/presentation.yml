@@ -17,23 +17,6 @@ body:
       placeholder: YYYY-MM-DD HH:MM
     validations:
       required: true
-  - type: input
-    id: summary
-    attributes:
-      label: Summary Sentence
-      description: Caption that goes with the invivation or social post.
-      placeholder: Join us to talk about the next evolution of AI
-    validations:
-      required: true
-  - type: textarea
-    id: description
-    attributes:
-      label: What's the deal?
-      description: Throw in a few paragraphs about the event.
-      placeholder: What's this about?
-      value: "A couple of paragraphs describing the event"
-    validations:
-      required: true
   - type: dropdown
     id: event-type
     attributes:
@@ -59,3 +42,29 @@ body:
         - Other
     validations:
       required: true
+  - type: input
+    id: summary
+    attributes:
+      label: Summary Sentence
+      description: Caption that goes with the invivation or social post.
+      placeholder: Join us to talk about the next evolution of AI
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's the deal?
+      description: Throw in a few paragraphs about the event.
+      placeholder: What's this about?
+      value: "A couple of paragraphs describing the event"
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Links to references
+      description: Add a list of references.
+      placeholder: Markdown formatted links.
+      value: |
+        - [Link Text or actual link](https://link.to.something)
+        - [Link Text 2 or actual link](https://link.to.something2)
