@@ -14,9 +14,10 @@
 We'll walk through the full list below, but we met up 25 times in 2025! (counting tonight). We had more guest speakers than ever, which I greatly appreciate!
 - Josh Phillips
 - Andrew Benson
+- Charlie Rogers
 - Jack Francis
 - David Showalter
-- Lauren Bales
+- Lorin Bales
 - Jacquelyn Neal
 - Tom Plunkett
 

@@ -6,11 +6,23 @@ labels: presentation
 assignees: ''
 
 ---
+# Event Information
+
+## Title:
+
+## Summary Invite Sentence: 
+
+## Date:
+
+## Time Starting:
+
+## Location:
 
 # Complete the following items to get a presentation ready for Huntsville AI
 
 - [ ] Description Completed
 - [ ] Image Attached
+- [ ] Google Meet Created
 - [ ] HSV.AI Event Created - [hsv.ai](https://hsv.ai/events)
 - [ ] Facebook Event Created - [Facebook Group](https://www.facebook.com/groups/hsvai/)
 - [ ] LinkedIn Event Created - [Huntsville AI](https://www.linkedin.com/company/huntsville-ai)
