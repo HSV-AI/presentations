@@ -2,13 +2,14 @@
 
 # AI Assisted Coding Tips & Tricks
 
-## **1\. The 2026 Landscape: The "Agent War" (6:00 – 6:15)**
+## **1 The 2026 Landscape: The "Agent War"**
 
 * **The "Acqui-hire" Phenomenon:** Analysis of how Big Tech is absorbing agentic startup teams to bridge the gap between models and tools.  
-  * **The Cline/OpenClaw Situation:** Discussion on OpenAI’s recent talent acquisition from the Cline ecosystem and the resulting community forks (Roo Code, Kilo Code).  
-* **Vibe Coding Defined:** Shifting from "syntax-first" programming to "intent-first" orchestration—using English as the primary programming language.
+  * **The Cline/OpenClaw Situation:** Discussion on OpenAI’s recent talent acquisition from the Cline ecosystem and the resulting community forks (Roo Code, Kilo Code). 
+  * [Cline->OpenAI](https://blog.kilo.ai/p/cline-just-acqui-hired) 
+  * [OpenClaw->OpenAI](https://steipete.me/posts/2026/openclaw)
 
-## **2\. The Agentic Maturity Ladder (6:15 – 6:35)**
+## **2 The Agentic Maturity Ladder**
 
 Transitioning to AI-native development is a progression of delegated trust.
 
@@ -17,7 +18,7 @@ Transitioning to AI-native development is a progression of delegated trust.
 * **Level 3: The Tool-User (MCP):** Giving the AI a "body" via the Model Context Protocol (MCP) to access terminal, filesystem, and web.  
 * **Level 4: The Manager (Memory Bank):** Utilizing persistent state (e.g., activeContext.md) so the agent "remembers" project architecture across sessions.
 
-## **3\. Rosetta Stone: Tool Comparison & Terminology (6:35 – 6:50)**
+## **3 Rosetta Stone: Tool Comparison & Terminology**
 
 A breakdown of how the leading tools approach agentic behavior.
 
@@ -28,16 +29,11 @@ A breakdown of how the leading tools approach agentic behavior.
 | **Memory** | Auto-logged logs | Manual Memory Bank | Vector Indexing | Shadow Indexing |
 | **Execution** | Task-driven loop | Plan/Act Mode | Verifying Agent | Real-time Composer |
 
-## **4\. Community Show & Tell (6:50 – 7:20)**
+## **4 Community Show & Tell**
 
-* **Setup Deep Dives:** Members share their local configurations and custom .clinerules.  
-* **Successes & Failures:** Real-world talk on "infinite loops," token costs, and where agents currently break down.  
-* **Live Demo:** Building a functional prototype from a single **Spec** in under 5 minutes.
-
-## **5\. Closing & Next Steps (7:20 – 7:30)**
-
-* **Huntsville AI Updates:** Connect via the Tech 256 Discord (\#hsv-ai channel).  
-* **Next Meeting:** Topic selection for March 4th.
+* **Setup Deep Dives:** 
+* **Successes & Failures:**
+* **Live Demo:**
 
 ---
 
