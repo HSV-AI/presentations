@@ -1,0 +1,24 @@
+[project]
+name = "economic-index"
+version = "0.1.0"
+description = "Economic index data analysis and visualization"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+    "plotly>=5.20",
+    "scipy>=1.13",
+    "scikit-learn>=1.4",
+    "statsmodels>=0.14",
+    "jupyter>=1.0",
+    "ipykernel>=6.29",
+    "openpyxl>=3.1",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ipywidgets>=8.1",
+    "nbformat>=5.10",
+]
