@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Fundamentals, Alignment & Your Organization</title>
+    <title>Approachable AI</title>
     <style>
         * {
             margin: 0;
@@ -71,7 +71,7 @@
         }
 
         .slide h3 {
-            font-size: 1.4em;
+            font-size: 1.35em;
             color: #2a5298;
             margin: 18px 0 10px 0;
         }
@@ -83,7 +83,7 @@
         }
 
         .content {
-            font-size: 1.15em;
+            font-size: 1.1em;
             line-height: 1.6;
             color: #444;
         }
@@ -94,7 +94,7 @@
         }
 
         .content li {
-            margin: 10px 0;
+            margin: 9px 0;
         }
 
         /* ─── Layout helpers ─────────────────────────────── */
@@ -108,26 +108,35 @@
         .three-column {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
+            gap: 22px;
             margin-top: 16px;
         }
 
         /* ─── Cards & boxes ──────────────────────────────── */
         .highlight {
             background: #eaf1fb;
-            padding: 18px 22px;
+            padding: 16px 20px;
             border-left: 5px solid #2a5298;
-            margin: 16px 0;
+            margin: 14px 0;
             border-radius: 6px;
-            font-size: 1.05em;
+            font-size: 1.02em;
         }
 
         .warning-box {
             background: #fff8e1;
-            padding: 18px 22px;
+            padding: 16px 20px;
             border-left: 5px solid #f9a825;
-            margin: 16px 0;
+            margin: 14px 0;
             border-radius: 6px;
+        }
+
+        .analogy-box {
+            background: #f0f7f0;
+            padding: 16px 20px;
+            border-left: 5px solid #2e7d32;
+            margin: 14px 0;
+            border-radius: 6px;
+            font-size: 0.97em;
         }
 
         .stat-box {
@@ -139,13 +148,13 @@
         }
 
         .stat-box .number {
-            font-size: 2.6em;
+            font-size: 2.4em;
             font-weight: bold;
             color: #1e3c72;
         }
 
         .stat-box .label {
-            font-size: 0.95em;
+            font-size: 0.92em;
             color: #555;
             margin-top: 6px;
         }
@@ -153,22 +162,29 @@
         .card {
             background: #f4f7fc;
             border-radius: 12px;
-            padding: 18px 20px;
+            padding: 16px 18px;
             border-top: 4px solid #2a5298;
         }
 
         .card-orange {
             background: #fff8ee;
             border-radius: 12px;
-            padding: 18px 20px;
+            padding: 16px 18px;
             border-top: 4px solid #e07b00;
+        }
+
+        .card-green {
+            background: #f0f7f0;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border-top: 4px solid #2e7d32;
         }
 
         .tag {
             display: inline-block;
             background: #1e3c72;
             color: white;
-            font-size: 0.75em;
+            font-size: 0.73em;
             padding: 3px 10px;
             border-radius: 20px;
             margin-right: 6px;
@@ -184,7 +200,7 @@
         .timeline {
             position: relative;
             padding-left: 32px;
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
         .timeline::before {
@@ -200,7 +216,7 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .timeline-item::before {
@@ -219,19 +235,19 @@
         .timeline-year {
             font-weight: bold;
             color: #1e3c72;
-            font-size: 1em;
+            font-size: 0.95em;
         }
 
         .timeline-text {
             color: #444;
-            font-size: 0.95em;
+            font-size: 0.92em;
         }
 
         /* ─── Literacy levels ────────────────────────────── */
         .level-bar {
             display: flex;
             align-items: stretch;
-            margin: 10px 0;
+            margin: 8px 0;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -241,8 +257,8 @@
             background: #1e3c72;
             color: white;
             font-weight: bold;
-            font-size: 1.3em;
-            width: 48px;
+            font-size: 1.2em;
+            width: 46px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -251,18 +267,18 @@
 
         .level-content {
             background: #f4f7fc;
-            padding: 10px 16px;
+            padding: 9px 15px;
             flex: 1;
         }
 
         .level-title {
             font-weight: bold;
             color: #1e3c72;
-            font-size: 1em;
+            font-size: 0.97em;
         }
 
         .level-desc {
-            font-size: 0.88em;
+            font-size: 0.85em;
             color: #555;
             margin-top: 2px;
         }
@@ -277,13 +293,14 @@
 
         .title-slide h1 {
             color: white !important;
-            font-size: 2.8em;
-            margin-bottom: 20px;
+            font-size: 3.4em;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
         }
 
         .title-slide .subtitle {
             color: rgba(255,255,255,0.85);
-            font-size: 1.25em;
+            font-size: 1.3em;
             margin-bottom: 36px;
         }
 
@@ -299,8 +316,8 @@
         }
 
         .title-slide .logo-area {
-            margin-bottom: 36px;
-            font-size: 1.4em;
+            margin-bottom: 32px;
+            font-size: 1.3em;
             font-weight: bold;
             color: rgba(255,255,255,0.9);
             letter-spacing: 0.08em;
@@ -403,8 +420,8 @@
     ══════════════════════════════════════════════════════ -->
     <div class="slide title-slide active">
         <div class="logo-area">HSV.AI</div>
-        <h1>AI Fundamentals, Alignment &amp; Your Organization</h1>
-        <p class="subtitle">From LLM History to Practical Policy</p>
+        <h1>Approachable AI</h1>
+        <p class="subtitle">Understanding AI — Without the Jargon</p>
         <span class="org-name">2026 Conference &nbsp;·&nbsp; Huntsville, AL</span>
     </div>
 
@@ -415,26 +432,26 @@
         <h2>What We'll Cover Today</h2>
         <div class="content two-column">
             <div>
-                <h3>Part 1 — Context</h3>
+                <h3>Part 1 — Understanding AI</h3>
                 <ul>
-                    <li>A short history of Large Language Models</li>
+                    <li>How AI language models came to be</li>
                     <li>The scale of today's AI moment</li>
-                    <li>AI you're already using</li>
-                    <li>Levels of AI literacy</li>
+                    <li>AI you're already using in healthcare</li>
+                    <li>Levels of AI literacy — where do you fit?</li>
                 </ul>
             </div>
             <div>
-                <h3>Part 2 — Action</h3>
+                <h3>Part 2 — Using AI Well</h3>
                 <ul>
                     <li>AI alignment — what it means &amp; why it matters</li>
-                    <li>Improving communications with AI</li>
-                    <li>AI for compliance &amp; operations</li>
-                    <li>Building an organizational AI policy</li>
+                    <li>AI for clinical communications</li>
+                    <li>AI for compliance &amp; documentation</li>
+                    <li>Building an AI policy for your organization</li>
                 </ul>
             </div>
         </div>
-        <div class="highlight" style="margin-top: 24px;">
-            <strong>Goal:</strong> Leave here with a clear picture of where AI stands today and concrete steps to use it responsibly in your organization.
+        <div class="highlight" style="margin-top: 22px;">
+            <strong>Goal:</strong> Walk away with a grounded, practical understanding of AI — and concrete steps to use it responsibly in your work.
         </div>
     </div>
 
@@ -442,43 +459,43 @@
          Slide 3 – LLM History
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>A Short History of Large Language Models</h2>
+        <h2>How We Got Here: A Short History</h2>
         <div class="content">
             <div class="two-column">
                 <div class="timeline">
                     <div class="timeline-item">
                         <span class="timeline-year">1950s–1990s</span>
-                        <div class="timeline-text">Rule-based NLP — hand-crafted grammar rules &amp; statistical models</div>
+                        <div class="timeline-text">Computers follow explicit rules — if a sentence matches a pattern, respond with a pre-written answer. Brittle and limited.</div>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">2013</span>
-                        <div class="timeline-text"><strong>Word2Vec</strong> — words represented as mathematical vectors; meaning through context</div>
+                        <div class="timeline-text"><strong>Word2Vec:</strong> AI learns that words used in similar contexts carry similar meaning. Language starts becoming mathematical.</div>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">2017</span>
-                        <div class="timeline-text">Google publishes <em>"Attention Is All You Need"</em> — the <strong>Transformer</strong> architecture that powers everything today</div>
+                        <div class="timeline-text">Google publishes <em>"Attention Is All You Need"</em> — the <strong>Transformer</strong> breakthrough. Models can now understand context across long passages of text.</div>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-year">2018–2019</span>
-                        <div class="timeline-text"><strong>BERT</strong> &amp; <strong>GPT-1/2</strong> — pre-training on massive text corpora becomes the standard approach</div>
+                        <span class="timeline-year">2018–2020</span>
+                        <div class="timeline-text"><strong>GPT, BERT</strong> — models trained on the entire internet begin to understand nuance, tone, and meaning the way humans do.</div>
                     </div>
                 </div>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <span class="timeline-year">2020</span>
-                        <div class="timeline-text"><strong>GPT-3</strong> (175B parameters) shocks researchers — few-shot learning emerges; the scale era begins</div>
-                    </div>
-                    <div class="timeline-item">
                         <span class="timeline-year">Nov 2022</span>
-                        <div class="timeline-text"><strong>ChatGPT</strong> launches — 1M users in 5 days, 100M in 2 months. AI becomes a household word.</div>
+                        <div class="timeline-text"><strong>ChatGPT</strong> launches publicly. 1 million users in 5 days. 100 million in 2 months. AI enters everyday life.</div>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">2023–2024</span>
-                        <div class="timeline-text"><strong>GPT-4, Claude, Gemini, Llama</strong> — multimodal reasoning, coding, agents; every major tech company ships an LLM</div>
+                        <div class="timeline-text"><strong>GPT-4, Claude, Gemini</strong> — models that can read images, write code, pass licensing exams, and reason through complex problems</div>
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">2025–2026</span>
-                        <div class="timeline-text">Reasoning models, AI agents, deep integration into enterprise tools — AI moves from chat to <em>action</em></div>
+                        <div class="timeline-text">AI <strong>agents</strong> — systems that can take actions, not just answer questions. AI moves from assistant to autonomous worker.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">Today</span>
+                        <div class="timeline-text">AI is embedded in EHRs, diagnostic tools, scheduling, documentation — and your team is already using it.</div>
                     </div>
                 </div>
             </div>
@@ -486,7 +503,7 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 4 – Scale of the moment
+         Slide 4 – Scale
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
         <h2>The Scale of What's Happening</h2>
@@ -494,55 +511,53 @@
             <div class="three-column" style="margin-bottom:20px;">
                 <div class="stat-box">
                     <div class="number">2 mo</div>
-                    <div class="label">For ChatGPT to reach 100 million users — the fastest consumer adoption in history</div>
+                    <div class="label">For ChatGPT to reach 100M users — faster than any technology in history, including the smartphone</div>
                 </div>
                 <div class="stat-box">
                     <div class="number">$500B+</div>
-                    <div class="label">Annual private investment in AI (2025), up 5× from 2020</div>
+                    <div class="label">Annual private investment in AI (2025) — more than the annual GDP of many countries</div>
                 </div>
                 <div class="stat-box">
-                    <div class="number">77%</div>
-                    <div class="label">Of devices worldwide already embed some form of AI (McKinsey, 2025)</div>
+                    <div class="number">90%+</div>
+                    <div class="label">Of major health systems have at least one AI initiative underway (Deloitte Health, 2025)</div>
                 </div>
             </div>
-            <div class="highlight">
-                <strong>This is not a future trend.</strong> AI is embedded in the tools professionals use every day — often invisibly. The question is no longer <em>whether</em> your organization uses AI, but <em>how intentionally</em>.
+            <div class="analogy-box">
+                <strong>A useful analogy:</strong> Think of AI language models the way you think of the EHR transition. Not everyone needs to understand how the database works — but everyone needs to know how to use it safely, what it can get wrong, and what the rules are around patient data.
             </div>
         </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 5 – AI you're already using
+         Slide 5 – AI in Healthcare Already
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
         <h2>AI You're Already Using — Often Without Knowing It</h2>
         <div class="content">
             <div class="two-column">
                 <div>
-                    <h3>In Everyday Life</h3>
+                    <h3>In Clinical Settings</h3>
                     <ul>
-                        <li><strong>Spam &amp; phishing filters</strong> in your email inbox</li>
-                        <li><strong>Search &amp; Maps</strong> — route optimization, results ranking</li>
-                        <li><strong>Smartphone autocomplete</strong> &amp; predictive text</li>
-                        <li><strong>Fraud detection</strong> — your bank flags unusual transactions</li>
-                        <li><strong>Streaming recommendations</strong> — Netflix, Spotify, YouTube</li>
-                        <li><strong>Voice assistants</strong> — Siri, Alexa, Google Assistant</li>
+                        <li><strong>Sepsis prediction alerts</strong> — Epic's Early Warning model scores patients every few hours</li>
+                        <li><strong>Radiology AI</strong> — flags potential findings on chest X-rays and CT scans before a radiologist reads them</li>
+                        <li><strong>ECG interpretation</strong> — AI-assisted analysis is built into most modern 12-lead systems</li>
+                        <li><strong>Drug interaction checking</strong> — your pharmacy system has used ML for years</li>
+                        <li><strong>Ambient documentation</strong> — Nuance DAX, Suki, Microsoft Dragon transcribe and draft notes from conversations</li>
                     </ul>
                 </div>
                 <div>
-                    <h3>In the Workplace</h3>
+                    <h3>In Operations &amp; Administration</h3>
                     <ul>
-                        <li><strong>Microsoft 365 Copilot</strong> — drafts, summaries, slide generation</li>
-                        <li><strong>Google Workspace AI</strong> — Smart Compose, Meet transcripts</li>
-                        <li><strong>Salesforce Einstein</strong> — lead scoring &amp; forecasting</li>
-                        <li><strong>Legal &amp; HR software</strong> — contract flagging, resume screening</li>
-                        <li><strong>Scheduling assistants</strong> — Calendly, Motion, Reclaim</li>
-                        <li><strong>Customer service chatbots</strong> — every major airline, bank, retailer</li>
+                        <li><strong>Patient deterioration scoring</strong> — Modified Early Warning Score (MEWS) systems with AI enhancements</li>
+                        <li><strong>Scheduling optimization</strong> — OR block time, staffing ratios, bed management</li>
+                        <li><strong>Prior authorization AI</strong> — systems that predict and auto-populate insurance submissions</li>
+                        <li><strong>Medical coding assistance</strong> — AI suggests ICD-10 and CPT codes from clinical notes</li>
+                        <li><strong>Readmission risk</strong> — scores calculated automatically at discharge</li>
                     </ul>
                 </div>
             </div>
-            <div class="warning-box" style="margin-top:18px;">
-                <strong>Key insight:</strong> Because so much AI is invisible, many professionals already have AI "opinions" formed by bad experiences with early chatbots — the technology has moved far beyond that baseline.
+            <div class="warning-box" style="margin-top:14px; font-size:0.95em;">
+                <strong>Key point:</strong> Most of this AI runs silently in the background. Your impressions of "AI" may be shaped by early chatbots — today's systems are categorically more capable and more embedded.
             </div>
         </div>
     </div>
@@ -554,42 +569,42 @@
         <h2>Levels of AI Literacy</h2>
         <div class="content">
             <div class="level-bar">
-                <div class="level-num" style="background:#455a64;">0</div>
+                <div class="level-num" style="background:#546e7a;">0</div>
                 <div class="level-content">
                     <div class="level-title">Unaware</div>
-                    <div class="level-desc">Uses AI daily without recognizing it (spam filters, Maps, autocomplete). No mental model of how it works.</div>
+                    <div class="level-desc">Uses AI daily without recognizing it — sepsis alerts, drug checks, ECG interpretation. No mental model of how it works or where it can fail.</div>
                 </div>
             </div>
             <div class="level-bar">
                 <div class="level-num" style="background:#2a5298;">1</div>
                 <div class="level-content">
                     <div class="level-title">User</div>
-                    <div class="level-desc">Intentionally uses AI tools — ChatGPT, Claude, Copilot. Knows how to prompt, recognizes limitations like hallucination.</div>
+                    <div class="level-desc">Intentionally uses AI tools — ChatGPT or Claude to draft patient education materials, discharge instructions, or summarize a lengthy guideline. Recognizes hallucination risk.</div>
                 </div>
             </div>
             <div class="level-bar">
                 <div class="level-num" style="background:#1e3c72;">2</div>
                 <div class="level-content">
                     <div class="level-title">Practitioner</div>
-                    <div class="level-desc">Integrates AI into workflows via APIs or no-code platforms. Builds prompts, automations, and evaluates outputs systematically.</div>
+                    <div class="level-desc">Builds repeatable AI-assisted workflows — templates, structured prompts, evaluation criteria. Trains colleagues. Evaluates vendor AI tools critically.</div>
                 </div>
             </div>
             <div class="level-bar">
                 <div class="level-num" style="background:#e07b00;">3</div>
                 <div class="level-content">
-                    <div class="level-title">Developer / Engineer</div>
-                    <div class="level-desc">Fine-tunes models, builds AI-powered applications, designs retrieval pipelines (RAG), evaluates model performance.</div>
+                    <div class="level-title">Configurator / Analyst</div>
+                    <div class="level-desc">Configures or validates clinical AI tools (e.g., Epic AI models), integrates APIs, designs governance processes, analyzes model performance against patient outcomes.</div>
                 </div>
             </div>
             <div class="level-bar">
                 <div class="level-num" style="background:#2e7d32;">4</div>
                 <div class="level-content">
-                    <div class="level-title">Researcher / Architect</div>
-                    <div class="level-desc">Trains models, advances the state of the art, designs AI systems at scale, contributes to alignment and safety research.</div>
+                    <div class="level-title">Researcher / Builder</div>
+                    <div class="level-desc">Trains or fine-tunes models for clinical use. Publishes on healthcare AI. Contributes to clinical AI validation, bias detection, and alignment research.</div>
                 </div>
             </div>
-            <div class="highlight" style="margin-top:16px; font-size:0.95em;">
-                <strong>Organizational goal:</strong> Move your team from Level 0 → 1, and identify Level 2 champions in each department.
+            <div class="highlight" style="margin-top:12px; font-size:0.93em;">
+                <strong>Most clinicians today are Level 0–1.</strong> The organizational goal is Level 1 for all staff, Level 2 for department leads and charge nurses.
             </div>
         </div>
     </div>
@@ -599,7 +614,7 @@
     ══════════════════════════════════════════════════════ -->
     <div class="slide section-slide">
         <h2>AI Alignment</h2>
-        <p class="section-sub">Ensuring AI does what we actually want — safely and reliably</p>
+        <p class="section-sub">Why "works most of the time" isn't good enough in clinical practice</p>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -609,27 +624,23 @@
         <h2>What Is AI Alignment?</h2>
         <div class="content">
             <div class="highlight">
-                <strong>Definition:</strong> AI alignment is the challenge of ensuring that AI systems pursue goals and behave in ways that are consistent with human values, intentions, and well-being — even as they become more capable.
+                <strong>Definition:</strong> AI alignment is the challenge of ensuring that AI systems actually do what we intend — including in edge cases, under pressure, and as they become more capable. A system can technically meet its stated objective while causing real harm.
             </div>
-            <div class="two-column" style="margin-top:20px;">
+            <div class="two-column" style="margin-top:16px;">
                 <div>
                     <h3>The Core Problem</h3>
                     <ul>
-                        <li>AI systems optimize for what they're <em>measured on</em>, not necessarily what we <em>want</em></li>
-                        <li>Specifying human values precisely is extremely hard</li>
-                        <li>A system can achieve a goal while violating the spirit of it</li>
-                        <li>More capable systems can find unexpected "shortcuts"</li>
+                        <li>AI systems optimize for what they're <em>measured on</em> — not necessarily what patients need</li>
+                        <li>A model trained to reduce readmissions might recommend underreporting risk factors</li>
+                        <li>Confident-sounding output is not the same as correct output</li>
+                        <li>More capable systems find more creative "shortcuts"</li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Three Key Questions</h3>
-                    <ul>
-                        <li><strong>Value alignment:</strong> Does it know what we want?</li>
-                        <li><strong>Technical alignment:</strong> Can it reliably do what we want?</li>
-                        <li><strong>Structural alignment:</strong> Do its incentives stay aligned as it scales?</li>
-                    </ul>
-                    <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
-                        A thermostat is trivially aligned. A system that can write code, plan actions, and learn from feedback is not.
+                    <h3>Clinical Analogy</h3>
+                    <div class="analogy-box" style="margin-top:0;">
+                        Imagine a CDS alert system that correctly fires for drug interactions — but so often that nurses learn to click through without reading. Technically "working," but misaligned with patient safety.<br><br>
+                        <strong>Alert fatigue is an alignment problem.</strong> The system optimized for catching interactions, not for being listened to.
                     </div>
                 </div>
             </div>
@@ -644,72 +655,72 @@
         <div class="content">
             <div class="three-column">
                 <div class="card">
-                    <div style="margin-bottom:10px;"><span class="tag">Near-Term</span></div>
-                    <h3 style="margin-top:0;">Today's Concerns</h3>
-                    <ul style="font-size:0.95em;">
-                        <li>Hallucination &amp; misinformation</li>
-                        <li>Bias embedded in training data</li>
-                        <li>Privacy violations &amp; data leakage</li>
-                        <li>Intellectual property questions</li>
-                        <li>Overconfident outputs</li>
+                    <div style="margin-bottom:8px;"><span class="tag">Now</span></div>
+                    <h3 style="margin-top:0;">Today's Real Risks</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>AI hallucinating drug dosages or diagnoses</li>
+                        <li>Models trained on data that underrepresents minorities, women, older adults</li>
+                        <li>PHI entered into consumer AI tools</li>
+                        <li>Overconfident outputs accepted without verification</li>
+                        <li>Widening health equity gaps via biased models</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <div style="margin-bottom:10px;"><span class="tag tag-orange">Mid-Term</span></div>
-                    <h3 style="margin-top:0;">Emerging Challenges</h3>
-                    <ul style="font-size:0.95em;">
-                        <li>AI agents acting autonomously</li>
-                        <li>Consequential decisions made without humans</li>
-                        <li>Workforce displacement at scale</li>
-                        <li>Deepfakes &amp; synthetic media</li>
-                        <li>AI in weapons &amp; surveillance</li>
+                    <div style="margin-bottom:8px;"><span class="tag tag-orange">Emerging</span></div>
+                    <h3 style="margin-top:0;">Near-Future Challenges</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>AI agents making clinical triage decisions autonomously</li>
+                        <li>AI-generated prior auth denials with no human review</li>
+                        <li>Synthetic patient notes inserted into EHRs</li>
+                        <li>Liability when AI-assisted care causes harm</li>
+                        <li>Staff displacement without support structures</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <div style="margin-bottom:10px;"><span class="tag tag-red">Long-Term</span></div>
-                    <h3 style="margin-top:0;">Existential Questions</h3>
-                    <ul style="font-size:0.95em;">
-                        <li>Systems that pursue goals humans didn't intend</li>
-                        <li>AI that can circumvent human oversight</li>
-                        <li>Concentration of power via AI capabilities</li>
-                        <li>Loss of meaningful human agency</li>
+                    <div style="margin-bottom:8px;"><span class="tag tag-red">Long-Term</span></div>
+                    <h3 style="margin-top:0;">Broader Questions</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>AI systems setting clinical standards without physician input</li>
+                        <li>Erosion of clinician judgment as AI dependency grows</li>
+                        <li>Concentration of healthcare AI power in few vendors</li>
+                        <li>Loss of human accountability in care decisions</li>
                     </ul>
                 </div>
             </div>
-            <div class="highlight" style="margin-top:18px;">
-                <strong>Practical takeaway:</strong> Near-term alignment issues — hallucinations, bias, privacy — are <em>your organization's problem today</em>. They require policy and process now, not later.
+            <div class="highlight" style="margin-top:16px;">
+                <strong>The "Now" column is your organization's problem today.</strong> These are not hypothetical — they are happening in health systems without governance structures.
             </div>
         </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 10 – What AI labs are doing about alignment
+         Slide 10 – How AI Labs Address Alignment
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>How AI Labs Address Alignment Today</h2>
+        <h2>How AI Is Made Safer — and Why You Still Need Oversight</h2>
         <div class="content">
             <div class="two-column">
                 <div>
-                    <h3>Technical Approaches</h3>
+                    <h3>What AI Companies Do</h3>
                     <ul>
-                        <li><strong>RLHF</strong> — Reinforcement Learning from Human Feedback: humans rate outputs to guide the model toward preferred behavior</li>
-                        <li><strong>Constitutional AI</strong> (Anthropic) — model critiques its own responses against a set of principles</li>
-                        <li><strong>Red-teaming</strong> — adversarial testing to find failure modes before deployment</li>
-                        <li><strong>Interpretability research</strong> — understanding what's happening inside the model</li>
+                        <li><strong>Human feedback training (RLHF)</strong> — clinicians, teachers, lawyers rate AI outputs to reinforce good behavior</li>
+                        <li><strong>Constitutional AI</strong> — model evaluates its own responses against a set of principles before answering</li>
+                        <li><strong>Red-teaming</strong> — adversarial testers deliberately try to make the model fail or produce harmful outputs</li>
+                        <li><strong>Usage policies</strong> — explicit prohibited uses built into the model's training</li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Governance &amp; Policy</h3>
+                    <h3>Regulatory &amp; External Checks</h3>
                     <ul>
-                        <li><strong>Usage policies</strong> — prohibited use cases (weapons, CSAM, etc.)</li>
-                        <li><strong>Responsible scaling policies</strong> — capability thresholds that trigger safety reviews</li>
-                        <li><strong>Model cards &amp; transparency</strong> — documenting what models can and can't do</li>
-                        <li><strong>Government collaboration</strong> — UK AI Safety Institute, US NIST AI RMF, EU AI Act</li>
+                        <li><strong>FDA oversight</strong> — Software as a Medical Device (SaMD) framework for clinical AI</li>
+                        <li><strong>NIST AI Risk Management Framework</strong> — voluntary but widely adopted</li>
+                        <li><strong>EU AI Act</strong> — classifies healthcare AI as "high risk" with specific requirements</li>
+                        <li><strong>ONC HTI-1 rule</strong> — transparency requirements for AI used in clinical decisions</li>
                     </ul>
+                    <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
+                        <strong>Think of it like a new drug:</strong> FDA approval means it passed rigorous testing — not that it's right for every patient or that the prescriber can skip judgment.
+                    </div>
                 </div>
-            </div>
-            <div class="warning-box" style="margin-top:18px;">
-                <strong>No silver bullet:</strong> Alignment is an active research area. Current models are much safer than two years ago — and the work continues. Your job is to use them with appropriate oversight.
             </div>
         </div>
     </div>
@@ -718,41 +729,37 @@
          Slide 11 – Section: Practical Use
     ══════════════════════════════════════════════════════ -->
     <div class="slide section-slide">
-        <h2>Practical AI for Your Organization</h2>
-        <p class="section-sub">Communications · Compliance · Operations</p>
+        <h2>Practical AI for Healthcare Professionals</h2>
+        <p class="section-sub">Communications · Documentation · Compliance</p>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
          Slide 12 – AI for Communications
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>AI for Communications</h2>
+        <h2>AI for Clinical Communications</h2>
         <div class="content">
             <div class="two-column">
                 <div>
-                    <h3>Writing &amp; Editing</h3>
+                    <h3>Patient-Facing</h3>
                     <ul>
-                        <li><strong>Draft emails, memos, reports</strong> — give it the key facts, get a polished draft</li>
-                        <li><strong>Tone adjustment</strong> — make formal documents accessible, or professional documents from informal notes</li>
-                        <li><strong>Plain-language translation</strong> — convert legal or technical text for broader audiences</li>
-                        <li><strong>Proofreading &amp; consistency</strong> — across large document sets</li>
-                    </ul>
-                    <h3 style="margin-top:18px;">Meetings &amp; Async</h3>
-                    <ul>
-                        <li><strong>Transcription &amp; summaries</strong> — Copilot, Otter.ai, Fireflies</li>
-                        <li><strong>Action item extraction</strong> — from meeting notes automatically</li>
+                        <li><strong>Discharge instructions</strong> — convert clinical notes into plain-language, literacy-appropriate instructions</li>
+                        <li><strong>After-visit summaries</strong> — draft from encounter notes in seconds</li>
+                        <li><strong>Patient portal responses</strong> — draft replies to MyChart messages for provider review and send</li>
+                        <li><strong>Education materials</strong> — condition-specific content tailored to reading level and language</li>
+                        <li><strong>Informed consent summaries</strong> — plain-language versions of complex procedures</li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Content at Scale</h3>
+                    <h3>Team &amp; Administrative</h3>
                     <ul>
-                        <li><strong>Press releases &amp; announcements</strong> — consistent branded voice</li>
-                        <li><strong>FAQ drafting</strong> — from source documents</li>
-                        <li><strong>Social media</strong> — platform-appropriate variants from a single brief</li>
-                        <li><strong>Translation</strong> — multilingual content without a full localization team</li>
+                        <li><strong>Handoff communications</strong> — structured SBAR drafts from nursing notes</li>
+                        <li><strong>Referral letters</strong> — complete summaries from chart data</li>
+                        <li><strong>Meeting summaries &amp; action items</strong> — from recorded care team huddles</li>
+                        <li><strong>Policy drafts</strong> — first versions of updated protocols from regulatory guidance</li>
                     </ul>
-                    <div class="card" style="margin-top:18px; font-size:0.92em;">
-                        <strong>Real example:</strong> Feeding a 50-page annual report to Claude and asking for a 2-page executive summary with key metrics highlighted — in minutes, not days.
+                    <div class="card-green" style="margin-top:14px; font-size:0.9em;">
+                        <strong>Real example:</strong> A nurse inputs key points from an encounter; Claude drafts a discharge instruction document with med list, follow-up steps, and warning signs — reviewed and edited in 2 minutes instead of 15.
                     </div>
                 </div>
             </div>
@@ -763,53 +770,53 @@
          Slide 13 – AI for Compliance & Operations
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>AI for Compliance &amp; Operations</h2>
+        <h2>AI for Compliance &amp; Documentation</h2>
         <div class="content">
             <div class="three-column">
                 <div class="card">
-                    <h3 style="margin-top:0;">Legal &amp; Compliance</h3>
-                    <ul style="font-size:0.92em;">
-                        <li>Contract review &amp; risk flagging</li>
-                        <li>Regulatory change monitoring</li>
-                        <li>Policy gap analysis</li>
-                        <li>Research memos (ALWAYS verify)</li>
-                        <li>Audit trail summaries</li>
+                    <h3 style="margin-top:0;">Clinical Documentation</h3>
+                    <ul style="font-size:0.9em;">
+                        <li>Ambient AI note capture (DAX, Suki)</li>
+                        <li>Medical coding suggestions (ICD-10, CPT)</li>
+                        <li>Query response drafting for coders</li>
+                        <li>Clinical narrative from structured data</li>
+                        <li>Summarizing lengthy inpatient records</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3 style="margin-top:0;">HR &amp; Training</h3>
-                    <ul style="font-size:0.92em;">
-                        <li>Job description drafting</li>
-                        <li>Interview question generation</li>
-                        <li>Employee handbook updates</li>
-                        <li>Training material creation</li>
-                        <li>Performance review language</li>
+                    <h3 style="margin-top:0;">Regulatory &amp; Policy</h3>
+                    <ul style="font-size:0.9em;">
+                        <li>HIPAA policy gap analysis</li>
+                        <li>Joint Commission prep — reviewing policies against standards</li>
+                        <li>Incident report summarization</li>
+                        <li>Prior authorization letter drafting</li>
+                        <li>Tracking regulatory changes (CMS, state boards)</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3 style="margin-top:0;">Finance &amp; Reporting</h3>
-                    <ul style="font-size:0.92em;">
-                        <li>Data analysis &amp; narrative</li>
-                        <li>Budget justification writing</li>
-                        <li>Variance explanation drafting</li>
-                        <li>Board/exec presentation prep</li>
-                        <li>Expense policy summaries</li>
+                    <h3 style="margin-top:0;">HR &amp; Education</h3>
+                    <ul style="font-size:0.9em;">
+                        <li>Competency assessment question generation</li>
+                        <li>Onboarding material updates</li>
+                        <li>Policy &amp; procedure drafting</li>
+                        <li>Simulation scenario development</li>
+                        <li>Staff newsletter content</li>
                     </ul>
                 </div>
             </div>
-            <div class="two-column" style="margin-top:18px;">
-                <div class="highlight">
-                    <strong>The pattern:</strong> AI excels at taking large, unstructured text inputs and producing structured, summarized, or transformed outputs. Anything with that shape is a candidate.
+            <div class="two-column" style="margin-top:16px;">
+                <div class="highlight" style="margin:0;">
+                    <strong>The pattern:</strong> AI excels at converting large, unstructured text into structured, summarized output — and vice versa. Any task with that shape is worth evaluating.
                 </div>
-                <div class="warning-box">
-                    <strong>Always verify:</strong> AI can hallucinate citations, case numbers, or statistics. Build human review into any compliance-critical workflow.
+                <div class="warning-box" style="margin:0;">
+                    <strong>Always verify clinical content.</strong> AI can hallucinate drug dosages, cite non-existent guidelines, or miss patient-specific contraindications. Human sign-off is non-negotiable.
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 14 – Organizational AI Policy
+         Slide 14 – Why You Need a Policy
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
         <h2>Your Organization Needs an AI Policy</h2>
@@ -818,27 +825,24 @@
                 <div>
                     <h3>Why Now?</h3>
                     <ul>
-                        <li>Employees <em>are already using</em> AI tools — with or without guidance</li>
-                        <li>Sensitive data is being entered into consumer AI apps</li>
-                        <li>Outputs are being relied on without verification</li>
-                        <li>Liability exposure is growing for AI-assisted decisions</li>
-                        <li>Regulatory requirements are emerging (EU AI Act, state laws)</li>
+                        <li>Staff <em>are already using</em> AI tools — with or without guidance</li>
+                        <li>Patient information is being typed into ChatGPT right now</li>
+                        <li>AI-generated clinical content is being used without clinician review</li>
+                        <li>HIPAA liability exposure is real when PHI enters consumer AI apps</li>
+                        <li>Regulatory requirements are arriving (ONC, state nursing boards)</li>
+                        <li>Staff need clarity on what's supported — and what's supported <em>by IT</em></li>
                     </ul>
-                    <div class="warning-box" style="margin-top:18px; font-size:0.92em;">
-                        A policy doesn't have to be restrictive. It can empower people by clarifying <em>what's encouraged</em> alongside what's prohibited.
-                    </div>
                 </div>
                 <div>
                     <h3>What Happens Without One</h3>
                     <ul>
-                        <li>Confidential client data submitted to ChatGPT</li>
-                        <li>AI-generated content published without review</li>
-                        <li>Inconsistent AI use creating unfair outcomes</li>
-                        <li>No audit trail when AI output causes a problem</li>
-                        <li>Staff anxiety about whether AI threatens their jobs</li>
+                        <li>A nurse pastes a patient's full history into ChatGPT to get a differential — HIPAA violation</li>
+                        <li>AI-drafted discharge instructions with wrong medication doses are sent to a patient</li>
+                        <li>A physician uses AI for a referral letter that cites a fabricated guideline</li>
+                        <li>Staff fear discipline for using AI, even when use is reasonable</li>
                     </ul>
-                    <div class="highlight" style="margin-top:18px; font-size:0.92em;">
-                        <strong>Samsung (2023)</strong> — engineers accidentally leaked proprietary source code to ChatGPT. The data was used for model training. Samsung subsequently banned ChatGPT internally.
+                    <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
+                        <strong>These are not hypotheticals.</strong> HIPAA complaints related to AI use by employees began appearing in 2023 and are increasing.
                     </div>
                 </div>
             </div>
@@ -849,58 +853,58 @@
          Slide 15 – Policy Components
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>AI Policy: Key Components</h2>
+        <h2>AI Policy: What Healthcare Organizations Need</h2>
         <div class="content">
             <div class="two-column">
                 <div>
-                    <div class="level-bar" style="margin-bottom:12px;">
-                        <div class="level-num" style="font-size:1em; width:36px; background:#1e3c72;">1</div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#1e3c72;">1</div>
                         <div class="level-content">
-                            <div class="level-title">Acceptable Use Definition</div>
-                            <div class="level-desc">Which tools are approved? Which use cases are encouraged, permitted, or prohibited?</div>
+                            <div class="level-title">Approved Tools List</div>
+                            <div class="level-desc">Which AI tools are sanctioned by IT/Legal? Which require a Business Associate Agreement (BAA)?</div>
                         </div>
                     </div>
-                    <div class="level-bar" style="margin-bottom:12px;">
-                        <div class="level-num" style="font-size:1em; width:36px; background:#1e3c72;">2</div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#c62828;">2</div>
                         <div class="level-content">
-                            <div class="level-title">Data Classification Rules</div>
-                            <div class="level-desc">What data can never enter an AI tool? (PII, PHI, trade secrets, client confidential info)</div>
+                            <div class="level-title">PHI / Data Rules</div>
+                            <div class="level-desc">No patient identifiers in consumer AI tools. Period. Define what "de-identified" means for AI inputs.</div>
                         </div>
                     </div>
-                    <div class="level-bar" style="margin-bottom:12px;">
-                        <div class="level-num" style="font-size:1em; width:36px; background:#1e3c72;">3</div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#1e3c72;">3</div>
                         <div class="level-content">
-                            <div class="level-title">Human Review Requirements</div>
-                            <div class="level-desc">What categories of AI output require human verification before use?</div>
+                            <div class="level-title">Clinical Oversight Requirements</div>
+                            <div class="level-desc">All AI-generated clinical content must be reviewed and attested to by a licensed clinician before use.</div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div class="level-bar" style="margin-bottom:12px;">
-                        <div class="level-num" style="font-size:1em; width:36px; background:#2a5298;">4</div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#2a5298;">4</div>
                         <div class="level-content">
                             <div class="level-title">Disclosure Standards</div>
-                            <div class="level-desc">When must AI-generated content be disclosed to clients, regulators, or the public?</div>
+                            <div class="level-desc">When must patients, regulators, or accreditors be told that AI assisted in a clinical or administrative decision?</div>
                         </div>
                     </div>
-                    <div class="level-bar" style="margin-bottom:12px;">
-                        <div class="level-num" style="font-size:1em; width:36px; background:#2a5298;">5</div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#2a5298;">5</div>
                         <div class="level-content">
-                            <div class="level-title">Training &amp; Literacy</div>
-                            <div class="level-desc">Minimum AI literacy requirements by role; ongoing training as tools evolve.</div>
+                            <div class="level-title">Training Requirements</div>
+                            <div class="level-desc">Role-based AI literacy training; competency check for clinical AI tools; annual refresher as tools evolve.</div>
                         </div>
                     </div>
-                    <div class="level-bar" style="margin-bottom:12px;">
-                        <div class="level-num" style="font-size:1em; width:36px; background:#e07b00;">6</div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#e07b00;">6</div>
                         <div class="level-content">
-                            <div class="level-title">Governance &amp; Review</div>
-                            <div class="level-desc">Who owns AI policy? How often is it reviewed? Who handles incidents?</div>
+                            <div class="level-title">Incident Reporting</div>
+                            <div class="level-desc">Clear pathway to report AI errors, near-misses, or unexpected outputs — just like medication errors or equipment failures.</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="highlight" style="margin-top:16px; font-size:0.92em;">
-                <strong>Start simple:</strong> A one-page policy that addresses data privacy and human review is better than a perfect policy that takes a year to write.
+            <div class="highlight" style="margin-top:14px; font-size:0.92em;">
+                <strong>Start simple:</strong> A one-page policy covering PHI rules, approved tools, and clinical review requirements is far better than a perfect 50-page policy that takes 18 months to approve.
             </div>
         </div>
     </div>
@@ -913,30 +917,30 @@
         <div class="content">
             <div class="two-column">
                 <div>
-                    <ul style="font-size:1.05em;">
-                        <li style="margin-bottom:14px;"><strong>AI is already here.</strong> Your team uses it; your competitors use it. The question is whether it's governed.</li>
-                        <li style="margin-bottom:14px;"><strong>LLMs are general-purpose reasoning tools</strong> — not just chatbots. The real value is in structured workflows.</li>
-                        <li style="margin-bottom:14px;"><strong>Alignment matters practically.</strong> Hallucinations, bias, and data leakage are real risks that policy and process can mitigate.</li>
-                        <li style="margin-bottom:14px;"><strong>Literacy enables agency.</strong> Organizations that build AI literacy across teams will outperform those that don't.</li>
+                    <ul style="font-size:1.02em;">
+                        <li style="margin-bottom:13px;"><strong>AI is already in your clinical environment.</strong> The question is whether it's used intentionally and safely.</li>
+                        <li style="margin-bottom:13px;"><strong>LLMs are reasoning assistants, not oracles.</strong> They are fast, capable, and wrong often enough that human review matters.</li>
+                        <li style="margin-bottom:13px;"><strong>Alignment is a patient safety issue.</strong> Biased training data, hallucinated dosages, and PHI leakage are clinical risks — not just IT concerns.</li>
+                        <li style="margin-bottom:13px;"><strong>Literacy creates agency.</strong> Staff who understand AI make better decisions about when to trust it — and when to override it.</li>
                     </ul>
                 </div>
                 <div>
                     <h3>Your Next 90 Days</h3>
-                    <div class="card" style="margin-bottom:12px; font-size:0.95em;">
-                        <strong>Week 1–2:</strong> Audit what AI tools your team already uses
+                    <div class="card" style="margin-bottom:10px; font-size:0.92em;">
+                        <strong>Week 1–2:</strong> Survey what AI tools staff are already using — officially and unofficially
                     </div>
-                    <div class="card" style="margin-bottom:12px; font-size:0.95em;">
-                        <strong>Month 1:</strong> Draft a one-page acceptable use policy; identify data that can't go into AI tools
+                    <div class="card" style="margin-bottom:10px; font-size:0.92em;">
+                        <strong>Month 1:</strong> Issue a one-page interim policy covering PHI rules and approved tools; loop in Legal and Compliance
                     </div>
-                    <div class="card" style="margin-bottom:12px; font-size:0.95em;">
-                        <strong>Month 2:</strong> Pick 2–3 pilot use cases (e.g., meeting summaries, first-draft memos); measure results
+                    <div class="card" style="margin-bottom:10px; font-size:0.92em;">
+                        <strong>Month 2:</strong> Pilot 2–3 use cases (discharge summaries, portal responses, handoff notes); document what works
                     </div>
-                    <div class="card-orange" style="font-size:0.95em;">
-                        <strong>Month 3:</strong> Expand literacy training; designate AI champions per department
+                    <div class="card-orange" style="font-size:0.92em;">
+                        <strong>Month 3:</strong> Role-based AI literacy training; designate a department AI champion; build an incident reporting pathway
                     </div>
                 </div>
             </div>
-            <div class="highlight" style="margin-top:18px; text-align:center; font-size:1em;">
+            <div class="highlight" style="margin-top:16px; text-align:center; font-size:0.97em;">
                 <strong>HSV.AI</strong> &nbsp;·&nbsp; hsv.ai &nbsp;·&nbsp; Huntsville's AI Community
             </div>
         </div>
