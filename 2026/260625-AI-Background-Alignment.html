@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fundamentals, Alignment & Your Organization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 90%;
+            max-width: 1200px;
+            height: 85%;
+            max-height: 700px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            padding: 50px 70px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translate(-50%, -48%); }
+            to   { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        /* ─── Typography ─────────────────────────────────── */
+        .slide h1 {
+            font-size: 2.8em;
+            color: #1e3c72;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .slide h2 {
+            font-size: 2em;
+            color: #1e3c72;
+            margin-bottom: 24px;
+            line-height: 1.3;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 12px;
+        }
+
+        .slide h3 {
+            font-size: 1.4em;
+            color: #2a5298;
+            margin: 18px 0 10px 0;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            font-size: 1.15em;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .content ul {
+            margin-left: 28px;
+            margin-top: 10px;
+        }
+
+        .content li {
+            margin: 10px 0;
+        }
+
+        /* ─── Layout helpers ─────────────────────────────── */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            margin-top: 16px;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        /* ─── Cards & boxes ──────────────────────────────── */
+        .highlight {
+            background: #eaf1fb;
+            padding: 18px 22px;
+            border-left: 5px solid #2a5298;
+            margin: 16px 0;
+            border-radius: 6px;
+            font-size: 1.05em;
+        }
+
+        .warning-box {
+            background: #fff8e1;
+            padding: 18px 22px;
+            border-left: 5px solid #f9a825;
+            margin: 16px 0;
+            border-radius: 6px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #eaf1fb, #dce8f7);
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #b8d0ee;
+        }
+
+        .stat-box .number {
+            font-size: 2.6em;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .stat-box .label {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 6px;
+        }
+
+        .card {
+            background: #f4f7fc;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border-top: 4px solid #2a5298;
+        }
+
+        .card-orange {
+            background: #fff8ee;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border-top: 4px solid #e07b00;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #1e3c72;
+            color: white;
+            font-size: 0.75em;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 6px;
+            font-weight: bold;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-orange { background: #e07b00; }
+        .tag-green  { background: #2e7d32; }
+        .tag-red    { background: #c62828; }
+
+        /* ─── Timeline ───────────────────────────────────── */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin-top: 10px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(#1e3c72, #2a5298);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2a5298;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #2a5298;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 1em;
+        }
+
+        .timeline-text {
+            color: #444;
+            font-size: 0.95em;
+        }
+
+        /* ─── Literacy levels ────────────────────────────── */
+        .level-bar {
+            display: flex;
+            align-items: stretch;
+            margin: 10px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .level-num {
+            background: #1e3c72;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3em;
+            width: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .level-content {
+            background: #f4f7fc;
+            padding: 10px 16px;
+            flex: 1;
+        }
+
+        .level-title {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 1em;
+        }
+
+        .level-desc {
+            font-size: 0.88em;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        /* ─── Title slide ────────────────────────────────── */
+        .title-slide {
+            text-align: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #1e3c72 0%, #2a5298 60%, #3a6bc2 100%) !important;
+            color: white !important;
+        }
+
+        .title-slide h1 {
+            color: white !important;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        .title-slide .subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.25em;
+            margin-bottom: 36px;
+        }
+
+        .title-slide .org-name {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+        }
+
+        .title-slide .logo-area {
+            margin-bottom: 36px;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.08em;
+        }
+
+        /* ─── Section divider ────────────────────────────── */
+        .section-slide {
+            text-align: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #1e3c72 0%, #2a5298 100%) !important;
+        }
+
+        .section-slide h2 {
+            color: white !important;
+            border-bottom: 3px solid rgba(255,255,255,0.35) !important;
+            font-size: 2.4em;
+        }
+
+        .section-slide .section-sub {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1em;
+            margin-top: 16px;
+        }
+
+        /* ─── Controls ───────────────────────────────────── */
+        .controls {
+            position: fixed;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 1000;
+        }
+
+        .controls button {
+            background: white;
+            border: 2px solid #1e3c72;
+            color: #1e3c72;
+            padding: 10px 28px;
+            font-size: 1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-weight: bold;
+        }
+
+        .controls button:hover:not(:disabled) {
+            background: #1e3c72;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 14px rgba(0,0,0,0.22);
+        }
+
+        .controls button:disabled {
+            opacity: 0.28;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 26px;
+            right: 36px;
+            background: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 1em;
+            color: #1e3c72;
+            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+        }
+
+        .hsv-badge {
+            position: fixed;
+            top: 26px;
+            left: 36px;
+            background: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #1e3c72;
+            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+            letter-spacing: 0.04em;
+        }
+
+        .checkmark { color: #2e7d32; font-weight: bold; }
+        .xmark     { color: #c62828; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="hsv-badge">HSV.AI</div>
+<div class="presentation">
+    <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">16</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 1 – Title
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide title-slide active">
+        <div class="logo-area">HSV.AI</div>
+        <h1>AI Fundamentals, Alignment &amp; Your Organization</h1>
+        <p class="subtitle">From LLM History to Practical Policy</p>
+        <span class="org-name">2026 Conference &nbsp;·&nbsp; Huntsville, AL</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 2 – Agenda
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>What We'll Cover Today</h2>
+        <div class="content two-column">
+            <div>
+                <h3>Part 1 — Context</h3>
+                <ul>
+                    <li>A short history of Large Language Models</li>
+                    <li>The scale of today's AI moment</li>
+                    <li>AI you're already using</li>
+                    <li>Levels of AI literacy</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Part 2 — Action</h3>
+                <ul>
+                    <li>AI alignment — what it means &amp; why it matters</li>
+                    <li>Improving communications with AI</li>
+                    <li>AI for compliance &amp; operations</li>
+                    <li>Building an organizational AI policy</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight" style="margin-top: 24px;">
+            <strong>Goal:</strong> Leave here with a clear picture of where AI stands today and concrete steps to use it responsibly in your organization.
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 3 – LLM History
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>A Short History of Large Language Models</h2>
+        <div class="content">
+            <div class="two-column">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">1950s–1990s</span>
+                        <div class="timeline-text">Rule-based NLP — hand-crafted grammar rules &amp; statistical models</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2013</span>
+                        <div class="timeline-text"><strong>Word2Vec</strong> — words represented as mathematical vectors; meaning through context</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2017</span>
+                        <div class="timeline-text">Google publishes <em>"Attention Is All You Need"</em> — the <strong>Transformer</strong> architecture that powers everything today</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2018–2019</span>
+                        <div class="timeline-text"><strong>BERT</strong> &amp; <strong>GPT-1/2</strong> — pre-training on massive text corpora becomes the standard approach</div>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">2020</span>
+                        <div class="timeline-text"><strong>GPT-3</strong> (175B parameters) shocks researchers — few-shot learning emerges; the scale era begins</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">Nov 2022</span>
+                        <div class="timeline-text"><strong>ChatGPT</strong> launches — 1M users in 5 days, 100M in 2 months. AI becomes a household word.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2023–2024</span>
+                        <div class="timeline-text"><strong>GPT-4, Claude, Gemini, Llama</strong> — multimodal reasoning, coding, agents; every major tech company ships an LLM</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2025–2026</span>
+                        <div class="timeline-text">Reasoning models, AI agents, deep integration into enterprise tools — AI moves from chat to <em>action</em></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 4 – Scale of the moment
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>The Scale of What's Happening</h2>
+        <div class="content">
+            <div class="three-column" style="margin-bottom:20px;">
+                <div class="stat-box">
+                    <div class="number">2 mo</div>
+                    <div class="label">For ChatGPT to reach 100 million users — the fastest consumer adoption in history</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">$500B+</div>
+                    <div class="label">Annual private investment in AI (2025), up 5× from 2020</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">77%</div>
+                    <div class="label">Of devices worldwide already embed some form of AI (McKinsey, 2025)</div>
+                </div>
+            </div>
+            <div class="highlight">
+                <strong>This is not a future trend.</strong> AI is embedded in the tools professionals use every day — often invisibly. The question is no longer <em>whether</em> your organization uses AI, but <em>how intentionally</em>.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 5 – AI you're already using
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI You're Already Using — Often Without Knowing It</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>In Everyday Life</h3>
+                    <ul>
+                        <li><strong>Spam &amp; phishing filters</strong> in your email inbox</li>
+                        <li><strong>Search &amp; Maps</strong> — route optimization, results ranking</li>
+                        <li><strong>Smartphone autocomplete</strong> &amp; predictive text</li>
+                        <li><strong>Fraud detection</strong> — your bank flags unusual transactions</li>
+                        <li><strong>Streaming recommendations</strong> — Netflix, Spotify, YouTube</li>
+                        <li><strong>Voice assistants</strong> — Siri, Alexa, Google Assistant</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>In the Workplace</h3>
+                    <ul>
+                        <li><strong>Microsoft 365 Copilot</strong> — drafts, summaries, slide generation</li>
+                        <li><strong>Google Workspace AI</strong> — Smart Compose, Meet transcripts</li>
+                        <li><strong>Salesforce Einstein</strong> — lead scoring &amp; forecasting</li>
+                        <li><strong>Legal &amp; HR software</strong> — contract flagging, resume screening</li>
+                        <li><strong>Scheduling assistants</strong> — Calendly, Motion, Reclaim</li>
+                        <li><strong>Customer service chatbots</strong> — every major airline, bank, retailer</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top:18px;">
+                <strong>Key insight:</strong> Because so much AI is invisible, many professionals already have AI "opinions" formed by bad experiences with early chatbots — the technology has moved far beyond that baseline.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 6 – AI Literacy Levels
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Levels of AI Literacy</h2>
+        <div class="content">
+            <div class="level-bar">
+                <div class="level-num" style="background:#455a64;">0</div>
+                <div class="level-content">
+                    <div class="level-title">Unaware</div>
+                    <div class="level-desc">Uses AI daily without recognizing it (spam filters, Maps, autocomplete). No mental model of how it works.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#2a5298;">1</div>
+                <div class="level-content">
+                    <div class="level-title">User</div>
+                    <div class="level-desc">Intentionally uses AI tools — ChatGPT, Claude, Copilot. Knows how to prompt, recognizes limitations like hallucination.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#1e3c72;">2</div>
+                <div class="level-content">
+                    <div class="level-title">Practitioner</div>
+                    <div class="level-desc">Integrates AI into workflows via APIs or no-code platforms. Builds prompts, automations, and evaluates outputs systematically.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#e07b00;">3</div>
+                <div class="level-content">
+                    <div class="level-title">Developer / Engineer</div>
+                    <div class="level-desc">Fine-tunes models, builds AI-powered applications, designs retrieval pipelines (RAG), evaluates model performance.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#2e7d32;">4</div>
+                <div class="level-content">
+                    <div class="level-title">Researcher / Architect</div>
+                    <div class="level-desc">Trains models, advances the state of the art, designs AI systems at scale, contributes to alignment and safety research.</div>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:16px; font-size:0.95em;">
+                <strong>Organizational goal:</strong> Move your team from Level 0 → 1, and identify Level 2 champions in each department.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 7 – Section: Alignment
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide section-slide">
+        <h2>AI Alignment</h2>
+        <p class="section-sub">Ensuring AI does what we actually want — safely and reliably</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 8 – What is Alignment
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>What Is AI Alignment?</h2>
+        <div class="content">
+            <div class="highlight">
+                <strong>Definition:</strong> AI alignment is the challenge of ensuring that AI systems pursue goals and behave in ways that are consistent with human values, intentions, and well-being — even as they become more capable.
+            </div>
+            <div class="two-column" style="margin-top:20px;">
+                <div>
+                    <h3>The Core Problem</h3>
+                    <ul>
+                        <li>AI systems optimize for what they're <em>measured on</em>, not necessarily what we <em>want</em></li>
+                        <li>Specifying human values precisely is extremely hard</li>
+                        <li>A system can achieve a goal while violating the spirit of it</li>
+                        <li>More capable systems can find unexpected "shortcuts"</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Three Key Questions</h3>
+                    <ul>
+                        <li><strong>Value alignment:</strong> Does it know what we want?</li>
+                        <li><strong>Technical alignment:</strong> Can it reliably do what we want?</li>
+                        <li><strong>Structural alignment:</strong> Do its incentives stay aligned as it scales?</li>
+                    </ul>
+                    <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
+                        A thermostat is trivially aligned. A system that can write code, plan actions, and learn from feedback is not.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 9 – Alignment Spectrum
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>The Alignment Spectrum</h2>
+        <div class="content">
+            <div class="three-column">
+                <div class="card">
+                    <div style="margin-bottom:10px;"><span class="tag">Near-Term</span></div>
+                    <h3 style="margin-top:0;">Today's Concerns</h3>
+                    <ul style="font-size:0.95em;">
+                        <li>Hallucination &amp; misinformation</li>
+                        <li>Bias embedded in training data</li>
+                        <li>Privacy violations &amp; data leakage</li>
+                        <li>Intellectual property questions</li>
+                        <li>Overconfident outputs</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div style="margin-bottom:10px;"><span class="tag tag-orange">Mid-Term</span></div>
+                    <h3 style="margin-top:0;">Emerging Challenges</h3>
+                    <ul style="font-size:0.95em;">
+                        <li>AI agents acting autonomously</li>
+                        <li>Consequential decisions made without humans</li>
+                        <li>Workforce displacement at scale</li>
+                        <li>Deepfakes &amp; synthetic media</li>
+                        <li>AI in weapons &amp; surveillance</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div style="margin-bottom:10px;"><span class="tag tag-red">Long-Term</span></div>
+                    <h3 style="margin-top:0;">Existential Questions</h3>
+                    <ul style="font-size:0.95em;">
+                        <li>Systems that pursue goals humans didn't intend</li>
+                        <li>AI that can circumvent human oversight</li>
+                        <li>Concentration of power via AI capabilities</li>
+                        <li>Loss of meaningful human agency</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:18px;">
+                <strong>Practical takeaway:</strong> Near-term alignment issues — hallucinations, bias, privacy — are <em>your organization's problem today</em>. They require policy and process now, not later.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 10 – What AI labs are doing about alignment
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>How AI Labs Address Alignment Today</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>Technical Approaches</h3>
+                    <ul>
+                        <li><strong>RLHF</strong> — Reinforcement Learning from Human Feedback: humans rate outputs to guide the model toward preferred behavior</li>
+                        <li><strong>Constitutional AI</strong> (Anthropic) — model critiques its own responses against a set of principles</li>
+                        <li><strong>Red-teaming</strong> — adversarial testing to find failure modes before deployment</li>
+                        <li><strong>Interpretability research</strong> — understanding what's happening inside the model</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Governance &amp; Policy</h3>
+                    <ul>
+                        <li><strong>Usage policies</strong> — prohibited use cases (weapons, CSAM, etc.)</li>
+                        <li><strong>Responsible scaling policies</strong> — capability thresholds that trigger safety reviews</li>
+                        <li><strong>Model cards &amp; transparency</strong> — documenting what models can and can't do</li>
+                        <li><strong>Government collaboration</strong> — UK AI Safety Institute, US NIST AI RMF, EU AI Act</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top:18px;">
+                <strong>No silver bullet:</strong> Alignment is an active research area. Current models are much safer than two years ago — and the work continues. Your job is to use them with appropriate oversight.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 11 – Section: Practical Use
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide section-slide">
+        <h2>Practical AI for Your Organization</h2>
+        <p class="section-sub">Communications · Compliance · Operations</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 12 – AI for Communications
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI for Communications</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>Writing &amp; Editing</h3>
+                    <ul>
+                        <li><strong>Draft emails, memos, reports</strong> — give it the key facts, get a polished draft</li>
+                        <li><strong>Tone adjustment</strong> — make formal documents accessible, or professional documents from informal notes</li>
+                        <li><strong>Plain-language translation</strong> — convert legal or technical text for broader audiences</li>
+                        <li><strong>Proofreading &amp; consistency</strong> — across large document sets</li>
+                    </ul>
+                    <h3 style="margin-top:18px;">Meetings &amp; Async</h3>
+                    <ul>
+                        <li><strong>Transcription &amp; summaries</strong> — Copilot, Otter.ai, Fireflies</li>
+                        <li><strong>Action item extraction</strong> — from meeting notes automatically</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Content at Scale</h3>
+                    <ul>
+                        <li><strong>Press releases &amp; announcements</strong> — consistent branded voice</li>
+                        <li><strong>FAQ drafting</strong> — from source documents</li>
+                        <li><strong>Social media</strong> — platform-appropriate variants from a single brief</li>
+                        <li><strong>Translation</strong> — multilingual content without a full localization team</li>
+                    </ul>
+                    <div class="card" style="margin-top:18px; font-size:0.92em;">
+                        <strong>Real example:</strong> Feeding a 50-page annual report to Claude and asking for a 2-page executive summary with key metrics highlighted — in minutes, not days.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 13 – AI for Compliance & Operations
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI for Compliance &amp; Operations</h2>
+        <div class="content">
+            <div class="three-column">
+                <div class="card">
+                    <h3 style="margin-top:0;">Legal &amp; Compliance</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>Contract review &amp; risk flagging</li>
+                        <li>Regulatory change monitoring</li>
+                        <li>Policy gap analysis</li>
+                        <li>Research memos (ALWAYS verify)</li>
+                        <li>Audit trail summaries</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">HR &amp; Training</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>Job description drafting</li>
+                        <li>Interview question generation</li>
+                        <li>Employee handbook updates</li>
+                        <li>Training material creation</li>
+                        <li>Performance review language</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Finance &amp; Reporting</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>Data analysis &amp; narrative</li>
+                        <li>Budget justification writing</li>
+                        <li>Variance explanation drafting</li>
+                        <li>Board/exec presentation prep</li>
+                        <li>Expense policy summaries</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="two-column" style="margin-top:18px;">
+                <div class="highlight">
+                    <strong>The pattern:</strong> AI excels at taking large, unstructured text inputs and producing structured, summarized, or transformed outputs. Anything with that shape is a candidate.
+                </div>
+                <div class="warning-box">
+                    <strong>Always verify:</strong> AI can hallucinate citations, case numbers, or statistics. Build human review into any compliance-critical workflow.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 14 – Organizational AI Policy
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Your Organization Needs an AI Policy</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>Why Now?</h3>
+                    <ul>
+                        <li>Employees <em>are already using</em> AI tools — with or without guidance</li>
+                        <li>Sensitive data is being entered into consumer AI apps</li>
+                        <li>Outputs are being relied on without verification</li>
+                        <li>Liability exposure is growing for AI-assisted decisions</li>
+                        <li>Regulatory requirements are emerging (EU AI Act, state laws)</li>
+                    </ul>
+                    <div class="warning-box" style="margin-top:18px; font-size:0.92em;">
+                        A policy doesn't have to be restrictive. It can empower people by clarifying <em>what's encouraged</em> alongside what's prohibited.
+                    </div>
+                </div>
+                <div>
+                    <h3>What Happens Without One</h3>
+                    <ul>
+                        <li>Confidential client data submitted to ChatGPT</li>
+                        <li>AI-generated content published without review</li>
+                        <li>Inconsistent AI use creating unfair outcomes</li>
+                        <li>No audit trail when AI output causes a problem</li>
+                        <li>Staff anxiety about whether AI threatens their jobs</li>
+                    </ul>
+                    <div class="highlight" style="margin-top:18px; font-size:0.92em;">
+                        <strong>Samsung (2023)</strong> — engineers accidentally leaked proprietary source code to ChatGPT. The data was used for model training. Samsung subsequently banned ChatGPT internally.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 15 – Policy Components
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI Policy: Key Components</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <div class="level-bar" style="margin-bottom:12px;">
+                        <div class="level-num" style="font-size:1em; width:36px; background:#1e3c72;">1</div>
+                        <div class="level-content">
+                            <div class="level-title">Acceptable Use Definition</div>
+                            <div class="level-desc">Which tools are approved? Which use cases are encouraged, permitted, or prohibited?</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:12px;">
+                        <div class="level-num" style="font-size:1em; width:36px; background:#1e3c72;">2</div>
+                        <div class="level-content">
+                            <div class="level-title">Data Classification Rules</div>
+                            <div class="level-desc">What data can never enter an AI tool? (PII, PHI, trade secrets, client confidential info)</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:12px;">
+                        <div class="level-num" style="font-size:1em; width:36px; background:#1e3c72;">3</div>
+                        <div class="level-content">
+                            <div class="level-title">Human Review Requirements</div>
+                            <div class="level-desc">What categories of AI output require human verification before use?</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="level-bar" style="margin-bottom:12px;">
+                        <div class="level-num" style="font-size:1em; width:36px; background:#2a5298;">4</div>
+                        <div class="level-content">
+                            <div class="level-title">Disclosure Standards</div>
+                            <div class="level-desc">When must AI-generated content be disclosed to clients, regulators, or the public?</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:12px;">
+                        <div class="level-num" style="font-size:1em; width:36px; background:#2a5298;">5</div>
+                        <div class="level-content">
+                            <div class="level-title">Training &amp; Literacy</div>
+                            <div class="level-desc">Minimum AI literacy requirements by role; ongoing training as tools evolve.</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:12px;">
+                        <div class="level-num" style="font-size:1em; width:36px; background:#e07b00;">6</div>
+                        <div class="level-content">
+                            <div class="level-title">Governance &amp; Review</div>
+                            <div class="level-desc">Who owns AI policy? How often is it reviewed? Who handles incidents?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:16px; font-size:0.92em;">
+                <strong>Start simple:</strong> A one-page policy that addresses data privacy and human review is better than a perfect policy that takes a year to write.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 16 – Key Takeaways
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Key Takeaways</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <ul style="font-size:1.05em;">
+                        <li style="margin-bottom:14px;"><strong>AI is already here.</strong> Your team uses it; your competitors use it. The question is whether it's governed.</li>
+                        <li style="margin-bottom:14px;"><strong>LLMs are general-purpose reasoning tools</strong> — not just chatbots. The real value is in structured workflows.</li>
+                        <li style="margin-bottom:14px;"><strong>Alignment matters practically.</strong> Hallucinations, bias, and data leakage are real risks that policy and process can mitigate.</li>
+                        <li style="margin-bottom:14px;"><strong>Literacy enables agency.</strong> Organizations that build AI literacy across teams will outperform those that don't.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Your Next 90 Days</h3>
+                    <div class="card" style="margin-bottom:12px; font-size:0.95em;">
+                        <strong>Week 1–2:</strong> Audit what AI tools your team already uses
+                    </div>
+                    <div class="card" style="margin-bottom:12px; font-size:0.95em;">
+                        <strong>Month 1:</strong> Draft a one-page acceptable use policy; identify data that can't go into AI tools
+                    </div>
+                    <div class="card" style="margin-bottom:12px; font-size:0.95em;">
+                        <strong>Month 2:</strong> Pick 2–3 pilot use cases (e.g., meeting summaries, first-draft memos); measure results
+                    </div>
+                    <div class="card-orange" style="font-size:0.95em;">
+                        <strong>Month 3:</strong> Expand literacy training; designate AI champions per department
+                    </div>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:18px; text-align:center; font-size:1em;">
+                <strong>HSV.AI</strong> &nbsp;·&nbsp; hsv.ai &nbsp;·&nbsp; Huntsville's AI Community
+            </div>
+        </div>
+    </div>
+
+</div><!-- /presentation -->
+
+<div class="controls">
+    <button id="prev" onclick="prevSlide()">&#8592; Previous</button>
+    <button id="next" onclick="nextSlide()">Next &#8594;</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    document.getElementById('total').textContent = totalSlides;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = Math.max(0, Math.min(n, totalSlides - 1));
+        slides[currentSlide].classList.add('active');
+        document.getElementById('current').textContent = currentSlide + 1;
+        document.getElementById('prev').disabled = currentSlide === 0;
+        document.getElementById('next').disabled = currentSlide === totalSlides - 1;
+    }
+
+    function nextSlide() { if (currentSlide < totalSlides - 1) showSlide(currentSlide + 1); }
+    function prevSlide() { if (currentSlide > 0) showSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+        else if (e.key === 'ArrowLeft')               { e.preventDefault(); prevSlide(); }
+    });
+
+    showSlide(0);
+</script>
+</body>
+</html>
