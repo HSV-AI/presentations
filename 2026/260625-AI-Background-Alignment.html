@@ -35,13 +35,19 @@
             transform: translate(-50%, -50%);
             background: white;
             border-radius: 20px;
-            padding: 50px 70px;
+            padding: 36px 55px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             display: none;
             flex-direction: column;
-            justify-content: center;
-            overflow: hidden;
+            justify-content: flex-start;
+            overflow-y: auto;
+            overflow-x: hidden;
+            /* hide scrollbar while keeping scroll behavior */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
+
+        .slide::-webkit-scrollbar { display: none; }
 
         .slide.active {
             display: flex;
@@ -62,18 +68,19 @@
         }
 
         .slide h2 {
-            font-size: 2em;
+            font-size: 1.85em;
             color: #1e3c72;
-            margin-bottom: 24px;
-            line-height: 1.3;
+            margin-bottom: 14px;
+            line-height: 1.25;
             border-bottom: 3px solid #2a5298;
-            padding-bottom: 12px;
+            padding-bottom: 8px;
+            flex-shrink: 0;
         }
 
         .slide h3 {
-            font-size: 1.35em;
+            font-size: 1.2em;
             color: #2a5298;
-            margin: 18px 0 10px 0;
+            margin: 10px 0 6px 0;
         }
 
         .subtitle {
@@ -83,100 +90,100 @@
         }
 
         .content {
-            font-size: 1.1em;
-            line-height: 1.6;
+            font-size: 1em;
+            line-height: 1.5;
             color: #444;
         }
 
         .content ul {
-            margin-left: 28px;
-            margin-top: 10px;
+            margin-left: 24px;
+            margin-top: 6px;
         }
 
         .content li {
-            margin: 9px 0;
+            margin: 6px 0;
         }
 
         /* ─── Layout helpers ─────────────────────────────── */
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 36px;
-            margin-top: 16px;
+            gap: 26px;
+            margin-top: 10px;
         }
 
         .three-column {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 22px;
-            margin-top: 16px;
+            gap: 16px;
+            margin-top: 10px;
         }
 
         /* ─── Cards & boxes ──────────────────────────────── */
         .highlight {
             background: #eaf1fb;
-            padding: 16px 20px;
+            padding: 10px 16px;
             border-left: 5px solid #2a5298;
-            margin: 14px 0;
+            margin: 10px 0;
             border-radius: 6px;
-            font-size: 1.02em;
+            font-size: 0.97em;
         }
 
         .warning-box {
             background: #fff8e1;
-            padding: 16px 20px;
+            padding: 10px 16px;
             border-left: 5px solid #f9a825;
-            margin: 14px 0;
+            margin: 10px 0;
             border-radius: 6px;
         }
 
         .analogy-box {
             background: #f0f7f0;
-            padding: 16px 20px;
+            padding: 10px 16px;
             border-left: 5px solid #2e7d32;
-            margin: 14px 0;
+            margin: 10px 0;
             border-radius: 6px;
-            font-size: 0.97em;
+            font-size: 0.94em;
         }
 
         .stat-box {
             background: linear-gradient(135deg, #eaf1fb, #dce8f7);
-            padding: 18px;
+            padding: 14px 10px;
             border-radius: 12px;
             text-align: center;
             border: 1px solid #b8d0ee;
         }
 
         .stat-box .number {
-            font-size: 2.4em;
+            font-size: 2.1em;
             font-weight: bold;
             color: #1e3c72;
         }
 
         .stat-box .label {
-            font-size: 0.92em;
+            font-size: 0.85em;
             color: #555;
-            margin-top: 6px;
+            margin-top: 5px;
         }
 
         .card {
             background: #f4f7fc;
-            border-radius: 12px;
-            padding: 16px 18px;
+            border-radius: 10px;
+            padding: 12px 14px;
             border-top: 4px solid #2a5298;
         }
 
         .card-orange {
             background: #fff8ee;
-            border-radius: 12px;
-            padding: 16px 18px;
+            border-radius: 10px;
+            padding: 12px 14px;
             border-top: 4px solid #e07b00;
         }
 
         .card-green {
             background: #f0f7f0;
-            border-radius: 12px;
-            padding: 16px 18px;
+            border-radius: 10px;
+            padding: 12px 14px;
             border-top: 4px solid #2e7d32;
         }
 
@@ -247,18 +254,18 @@
         .level-bar {
             display: flex;
             align-items: stretch;
-            margin: 8px 0;
+            margin: 5px 0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.09);
         }
 
         .level-num {
             background: #1e3c72;
             color: white;
             font-weight: bold;
-            font-size: 1.2em;
-            width: 46px;
+            font-size: 1.1em;
+            width: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -267,20 +274,21 @@
 
         .level-content {
             background: #f4f7fc;
-            padding: 9px 15px;
+            padding: 7px 13px;
             flex: 1;
         }
 
         .level-title {
             font-weight: bold;
             color: #1e3c72;
-            font-size: 0.97em;
+            font-size: 0.93em;
         }
 
         .level-desc {
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: #555;
-            margin-top: 2px;
+            margin-top: 1px;
+            line-height: 1.4;
         }
 
         /* ─── Title slide ────────────────────────────────── */
@@ -406,6 +414,28 @@
 
         .checkmark { color: #2e7d32; font-weight: bold; }
         .xmark     { color: #c62828; font-weight: bold; }
+
+        /* ─── Mobile responsive ─────────────────────────── */
+        @media (max-width: 768px) {
+            .slide {
+                width: 95%;
+                padding: 22px 22px 60px 22px;
+                height: 88%;
+                max-height: none;
+                border-radius: 14px;
+            }
+            .slide h1  { font-size: 2em; }
+            .slide h2  { font-size: 1.4em; }
+            .slide h3  { font-size: 1.05em; }
+            .two-column   { grid-template-columns: 1fr; gap: 14px; }
+            .three-column { grid-template-columns: 1fr; gap: 10px; }
+            .app-grid     { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+            .app-icon  { font-size: 1.4em; }
+            .app-card  { padding: 9px 7px; }
+            .stat-box .number { font-size: 1.7em; }
+            .hsv-badge, .slide-counter { font-size: 0.78em; padding: 6px 12px; }
+            .controls button { padding: 8px 18px; font-size: 0.9em; }
+        }
 
         /* ─── App cards (personal life slide) ──────────── */
         .app-grid {
