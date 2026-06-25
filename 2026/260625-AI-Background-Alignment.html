@@ -567,7 +567,7 @@
                     </div>
                     <div class="timeline-item">
                         <span class="timeline-year">Today</span>
-                        <div class="timeline-text">AI is embedded in EHRs, diagnostic tools, scheduling, documentation — and your team is already using it.</div>
+                        <div class="timeline-text">AI is embedded in scheduling, electronic health records, and clinical tools — and your team is already using it.</div>
                     </div>
                 </div>
             </div>
@@ -721,14 +721,14 @@
                 <div class="level-num" style="background:#546e7a;">0</div>
                 <div class="level-content">
                     <div class="level-title">Unaware</div>
-                    <div class="level-desc">Uses AI daily without recognizing it — sepsis alerts, drug checks, ECG interpretation. No mental model of how it works or where it can fail.</div>
+                    <div class="level-desc">Uses AI daily without recognizing it — recommendation engines, autocomplete, automated alerts in the tools they already use. No mental model of how it works or where it can fail.</div>
                 </div>
             </div>
             <div class="level-bar">
                 <div class="level-num" style="background:#2a5298;">1</div>
                 <div class="level-content">
                     <div class="level-title">User</div>
-                    <div class="level-desc">Intentionally uses AI tools — ChatGPT or Claude to draft patient education materials, discharge instructions, or summarize a lengthy guideline. Recognizes hallucination risk.</div>
+                    <div class="level-desc">Intentionally uses AI tools — ChatGPT or Claude to draft communications, summarize documents, or look up information. Understands that AI can be wrong and checks important outputs.</div>
                 </div>
             </div>
             <div class="level-bar">
@@ -742,18 +742,18 @@
                 <div class="level-num" style="background:#e07b00;">3</div>
                 <div class="level-content">
                     <div class="level-title">Configurator / Analyst</div>
-                    <div class="level-desc">Configures or validates clinical AI tools (e.g., Epic AI models), integrates APIs, designs governance processes, analyzes model performance against patient outcomes.</div>
+                    <div class="level-desc">Configures or evaluates AI tools used by the organization, works with vendors and IT, designs governance processes, and analyzes whether AI is performing as expected.</div>
                 </div>
             </div>
             <div class="level-bar">
                 <div class="level-num" style="background:#2e7d32;">4</div>
                 <div class="level-content">
                     <div class="level-title">Researcher / Builder</div>
-                    <div class="level-desc">Trains or fine-tunes models for clinical use. Publishes on healthcare AI. Contributes to clinical AI validation, bias detection, and alignment research.</div>
+                    <div class="level-desc">Trains or fine-tunes AI models for specialized use. Contributes to AI research, bias detection, and alignment work. Often in academic or R&amp;D roles.</div>
                 </div>
             </div>
             <div class="highlight" style="margin-top:12px; font-size:0.93em;">
-                <strong>Most clinicians today are Level 0–1.</strong> The organizational goal is Level 1 for all staff, Level 2 for department leads and charge nurses.
+                <strong>Most healthcare staff today are Level 0–1.</strong> The organizational goal is Level 1 for all staff, Level 2 for department leads and coordinators.
             </div>
         </div>
     </div>
@@ -763,7 +763,7 @@
     ══════════════════════════════════════════════════════ -->
     <div class="slide section-slide">
         <h2>AI Alignment</h2>
-        <p class="section-sub">Why "works most of the time" isn't good enough in clinical practice</p>
+        <p class="section-sub">Why "works most of the time" isn't good enough when real decisions are at stake</p>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -780,7 +780,7 @@
                     <h3>The Core Problem</h3>
                     <ul>
                         <li>AI systems optimize for what they're <em>measured on</em> — not necessarily what patients need</li>
-                        <li>A model trained to reduce readmissions might recommend underreporting risk factors</li>
+                        <li>A model trained to reduce hospital returns might recommend downplaying risk factors</li>
                         <li>Confident-sounding output is not the same as correct output</li>
                         <li>More capable systems find more creative "shortcuts"</li>
                     </ul>
@@ -788,8 +788,8 @@
                 <div>
                     <h3>Clinical Analogy</h3>
                     <div class="analogy-box" style="margin-top:0;">
-                        Imagine a CDS alert system that correctly fires for drug interactions — but so often that nurses learn to click through without reading. Technically "working," but misaligned with patient safety.<br><br>
-                        <strong>Alert fatigue is an alignment problem.</strong> The system optimized for catching interactions, not for being listened to.
+                        Imagine a hospital alert system that fires correctly for medication issues — but so often that staff learn to click through without reading. Technically "working," but misaligned with patient safety.<br><br>
+                        <strong>Alert fatigue is an alignment problem.</strong> The system optimized for catching errors, not for being acted on.
                     </div>
                 </div>
             </div>
@@ -822,7 +822,7 @@
                     <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
                         Truthful, transparent, and non-manipulative. Shares uncertainty when it exists. Never tries to create false impressions — even by technically true but misleading statements.
                         <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#2e7d32;">
-                            <em>In practice:</em> "I'm not certain — you should verify this with a current clinical guideline."
+                            <em>In practice:</em> "I'm not certain — you should verify this before relying on it."
                         </div>
                     </div>
                 </div>
@@ -833,7 +833,7 @@
                     <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
                         Avoids outputs that could hurt individuals, groups, or society — even when asked. Maintains human oversight so errors can be caught and corrected before causing real damage.
                         <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#e07b00;">
-                            <em>In practice:</em> Won't provide specific dosing instructions that could harm a patient without medical context.
+                            <em>In practice:</em> Won't provide specific instructions that could cause harm without proper context.
                         </div>
                     </div>
                 </div>
@@ -856,9 +856,9 @@
                     <div style="margin-bottom:8px;"><span class="tag">Now</span></div>
                     <h3 style="margin-top:0;">Today's Real Risks</h3>
                     <ul style="font-size:0.92em;">
-                        <li>AI hallucinating drug dosages or diagnoses</li>
+                        <li>AI generating wrong medical information — confidently</li>
                         <li>Models trained on data that underrepresents minorities, women, older adults</li>
-                        <li>PHI entered into consumer AI tools</li>
+                        <li>Patient information entered into consumer AI tools</li>
                         <li>Overconfident outputs accepted without verification</li>
                         <li>Widening health equity gaps via biased models</li>
                     </ul>
@@ -867,9 +867,9 @@
                     <div style="margin-bottom:8px;"><span class="tag tag-orange">Emerging</span></div>
                     <h3 style="margin-top:0;">Near-Future Challenges</h3>
                     <ul style="font-size:0.92em;">
-                        <li>AI agents making clinical triage decisions autonomously</li>
-                        <li>AI-generated prior auth denials with no human review</li>
-                        <li>Synthetic patient notes inserted into EHRs</li>
+                        <li>AI agents making critical patient care decisions without a human</li>
+                        <li>AI-generated insurance request denials with no human review</li>
+                        <li>Synthetic notes inserted into electronic medical records</li>
                         <li>Liability when AI-assisted care causes harm</li>
                         <li>Staff displacement without support structures</li>
                     </ul>
@@ -910,10 +910,10 @@
                 <div>
                     <h3>Regulatory &amp; External Checks</h3>
                     <ul>
-                        <li><strong>FDA oversight</strong> — Software as a Medical Device (SaMD) framework for clinical AI</li>
-                        <li><strong>NIST AI Risk Management Framework</strong> — voluntary but widely adopted</li>
+                        <li><strong>FDA oversight</strong> — clinical AI tools that affect patient care are regulated as medical devices</li>
+                        <li><strong>NIST AI Risk Management Framework</strong> — voluntary but widely adopted across healthcare</li>
                         <li><strong>EU AI Act</strong> — classifies healthcare AI as "high risk" with specific requirements</li>
-                        <li><strong>ONC HTI-1 rule</strong> — transparency requirements for AI used in clinical decisions</li>
+                        <li><strong>Federal transparency rules</strong> — organizations must disclose when AI assists in clinical decisions</li>
                     </ul>
                     <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
                         <strong>Think of it like a new drug:</strong> FDA approval means it passed rigorous testing — not that it's right for every patient or that the prescriber can skip judgment.
@@ -955,7 +955,7 @@
                 <div>
                     <h3>How to Avoid It</h3>
                     <div class="card-green" style="margin-bottom:12px;">
-                        <strong>One topic per session.</strong> Start a fresh conversation for each distinct task. Don't use the same chat for drafting a discharge summary, then asking about a compliance question, then requesting a policy update — each one deserves its own session.
+                        <strong>One topic per session.</strong> Start a fresh conversation for each distinct task. Don't use the same chat for drafting a patient note, then asking a policy question, then requesting a template update — each one deserves its own session.
                     </div>
                     <div class="card" style="margin-bottom:12px;">
                         <strong>Keep prompts focused.</strong> Provide the specific information needed for that task — not the entire patient history unless it's all relevant. The less clutter in the context, the better the output.
@@ -964,7 +964,7 @@
                         <strong>When quality drops, start over.</strong> If the AI starts giving vague or contradictory answers, it's often a sign the context is getting crowded. Open a new chat and restate your request clearly.
                     </div>
                     <div class="warning-box" style="margin:0; font-size:0.9em;">
-                        <strong>Tip:</strong> Name your chats descriptively ("Discharge summary – Rm 412" not "Chat 1") so you can find and reuse a focused session instead of piling unrelated tasks into one.
+                        <strong>Tip:</strong> Name your chats descriptively ("Patient summary – West Wing" not "Chat 1") so you can find and reuse a focused session instead of piling unrelated tasks into one.
                     </div>
                 </div>
             </div>
@@ -983,7 +983,7 @@
                     <ul>
                         <li><strong>Discharge instructions</strong> — convert clinical notes into plain-language, literacy-appropriate instructions</li>
                         <li><strong>After-visit summaries</strong> — draft from encounter notes in seconds</li>
-                        <li><strong>Patient portal responses</strong> — draft replies to MyChart messages for provider review and send</li>
+                        <li><strong>Patient portal responses</strong> — draft replies to patient messages for provider review and send</li>
                         <li><strong>Education materials</strong> — condition-specific content tailored to reading level and language</li>
                         <li><strong>Informed consent summaries</strong> — plain-language versions of complex procedures</li>
                     </ul>
@@ -991,7 +991,7 @@
                 <div>
                     <h3>Team &amp; Administrative</h3>
                     <ul>
-                        <li><strong>Handoff communications</strong> — structured SBAR drafts from nursing notes</li>
+                        <li><strong>Shift handoff notes</strong> — structured summaries from nursing notes for incoming staff</li>
                         <li><strong>Referral letters</strong> — complete summaries from chart data</li>
                         <li><strong>Meeting summaries &amp; action items</strong> — from recorded care team huddles</li>
                         <li><strong>Policy drafts</strong> — first versions of updated protocols from regulatory guidance</li>
@@ -1012,7 +1012,7 @@
         <div class="content">
             <div class="three-column">
                 <div class="card">
-                    <h3 style="margin-top:0;">Patient Flow &amp; ADT</h3>
+                    <h3 style="margin-top:0;">Patient Flow &amp; Admissions</h3>
                     <ul style="font-size:0.9em;">
                         <li>Drafting admission paperwork and consent summaries</li>
                         <li>Generating transfer-of-care communication packets</li>
@@ -1025,7 +1025,7 @@
                     <h3 style="margin-top:0;">Scheduling &amp; Coordination</h3>
                     <ul style="font-size:0.9em;">
                         <li>Drafting consult request messages from order notes</li>
-                        <li>Scheduling communication with radiology, lab, PT/OT</li>
+                        <li>Scheduling communication with radiology, lab, physical and occupational therapy</li>
                         <li>Tracking and following up on pending orders</li>
                         <li>Generating transport request summaries</li>
                         <li>Pre-procedure prep instruction drafts for patients</li>
@@ -1044,7 +1044,7 @@
             </div>
             <div class="three-column" style="margin-top:14px;">
                 <div class="card-green" style="font-size:0.88em;">
-                    <strong>Documentation &amp; Records:</strong> Medical coding assistance, incident report drafting, chart deficiency follow-up, forms completion guidance
+                    <strong>Documentation &amp; Records:</strong> Billing and coding assistance, incident report drafting, chart deficiency follow-up, forms completion guidance
                 </div>
                 <div class="card-green" style="font-size:0.88em;">
                     <strong>Compliance:</strong> HIPAA policy lookup, Joint Commission prep, tracking regulatory updates, prior auth letter drafting
@@ -1077,7 +1077,7 @@
                 <div>
                     <h3>What Happens Without One</h3>
                     <ul>
-                        <li>A nurse pastes a patient's full history into ChatGPT to get a differential — HIPAA violation</li>
+                        <li>A staff member pastes a patient's full history into ChatGPT to figure out what's wrong — HIPAA violation</li>
                         <li>AI-drafted discharge instructions with wrong medication doses are sent to a patient</li>
                         <li>A physician uses AI for a referral letter that cites a fabricated guideline</li>
                         <li>Staff fear discipline for using AI, even when use is reasonable</li>
@@ -1161,7 +1161,7 @@
                     <ul style="font-size:1.02em;">
                         <li style="margin-bottom:13px;"><strong>AI is already in your clinical environment.</strong> The question is whether it's used intentionally and safely.</li>
                         <li style="margin-bottom:13px;"><strong>LLMs are reasoning assistants, not oracles.</strong> They are fast, capable, and wrong often enough that human review matters.</li>
-                        <li style="margin-bottom:13px;"><strong>Alignment is a patient safety issue.</strong> Biased training data, hallucinated dosages, and PHI leakage are clinical risks — not just IT concerns.</li>
+                        <li style="margin-bottom:13px;"><strong>Alignment is a patient safety issue.</strong> Biased training data, incorrect information delivered confidently, and patient data leakage are real risks — not just IT concerns.</li>
                         <li style="margin-bottom:13px;"><strong>Literacy creates agency.</strong> Staff who understand AI make better decisions about when to trust it — and when to override it.</li>
                     </ul>
                 </div>
@@ -1174,7 +1174,7 @@
                         <strong>Month 1:</strong> Issue a one-page interim policy covering PHI rules and approved tools; loop in Legal and Compliance
                     </div>
                     <div class="card" style="margin-bottom:10px; font-size:0.92em;">
-                        <strong>Month 2:</strong> Pilot 2–3 use cases (discharge summaries, portal responses, handoff notes); document what works
+                        <strong>Month 2:</strong> Pilot 2–3 use cases (patient summaries, portal responses, handoff notes); document what works
                     </div>
                     <div class="card-orange" style="font-size:0.92em;">
                         <strong>Month 3:</strong> Role-based AI literacy training; designate a department AI champion; build an incident reporting pathway
