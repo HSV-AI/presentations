@@ -483,7 +483,7 @@
 <div class="hsv-badge">HSV.AI</div>
 <div class="presentation">
     <div class="slide-counter">
-        <span id="current">1</span> / <span id="total">18</span>
+        <span id="current">1</span> / <span id="total">19</span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -932,7 +932,47 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 12 – AI for Communications
+         Slide 12 – Context Window
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Why Chat Sessions Can Go Off the Rails</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>What Is "Context"?</h3>
+                    <p style="font-size:0.95em; margin-bottom:10px;">Every AI chat session has a <strong>context window</strong> — the total amount of text the model can actively "see" at once. Think of it like working memory: everything in the current conversation, including your messages and the AI's replies, lives in that window.</p>
+                    <div class="analogy-box">
+                        <strong>Hospital analogy:</strong> Imagine giving a new resident a patient's entire chart to hold in their head — at some point, new information starts crowding out older details. The AI has the same constraint, just measured in tokens (chunks of text) instead of pages.
+                    </div>
+                    <h3>What Happens When It Fills Up</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>The AI begins to lose track of <strong>earlier parts of the conversation</strong></li>
+                        <li>Responses become <strong>less coherent</strong> or start contradicting prior answers</li>
+                        <li>The session may <strong>error out</strong> entirely once the limit is reached</li>
+                        <li>Mixing many different topics makes the problem worse — the AI has to juggle too much at once</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>How to Avoid It</h3>
+                    <div class="card-green" style="margin-bottom:12px;">
+                        <strong>One topic per session.</strong> Start a fresh conversation for each distinct task. Don't use the same chat for drafting a discharge summary, then asking about a compliance question, then requesting a policy update — each one deserves its own session.
+                    </div>
+                    <div class="card" style="margin-bottom:12px;">
+                        <strong>Keep prompts focused.</strong> Provide the specific information needed for that task — not the entire patient history unless it's all relevant. The less clutter in the context, the better the output.
+                    </div>
+                    <div class="card" style="margin-bottom:12px;">
+                        <strong>When quality drops, start over.</strong> If the AI starts giving vague or contradictory answers, it's often a sign the context is getting crowded. Open a new chat and restate your request clearly.
+                    </div>
+                    <div class="warning-box" style="margin:0; font-size:0.9em;">
+                        <strong>Tip:</strong> Name your chats descriptively ("Discharge summary – Rm 412" not "Chat 1") so you can find and reuse a focused session instead of piling unrelated tasks into one.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 13 – AI for Communications
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
         <h2>AI for Clinical Communications</h2>
