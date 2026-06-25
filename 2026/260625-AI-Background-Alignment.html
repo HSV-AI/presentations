@@ -406,13 +406,54 @@
 
         .checkmark { color: #2e7d32; font-weight: bold; }
         .xmark     { color: #c62828; font-weight: bold; }
+
+        /* ─── App cards (personal life slide) ──────────── */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+            margin-top: 14px;
+        }
+
+        .app-card {
+            background: #f8f9fc;
+            border-radius: 10px;
+            padding: 13px 10px;
+            border-top: 5px solid #2a5298;
+            text-align: center;
+        }
+
+        .app-icon  { font-size: 1.8em; margin-bottom: 5px; }
+        .app-name  { font-weight: bold; font-size: 0.83em; margin-bottom: 4px; }
+        .app-desc  { font-size: 0.75em; color: #555; line-height: 1.4; }
+
+        /* ─── Logo / source badges ──────────────────────── */
+        .logo-badge {
+            display: inline-block;
+            font-size: 0.68em;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: white;
+            margin: 0 3px 3px 0;
+            vertical-align: middle;
+            letter-spacing: 0.03em;
+        }
+
+        .source-note {
+            font-size: 0.72em;
+            color: #888;
+            font-style: italic;
+            margin-top: 2px;
+            display: block;
+        }
     </style>
 </head>
 <body>
 <div class="hsv-badge">HSV.AI</div>
 <div class="presentation">
     <div class="slide-counter">
-        <span id="current">1</span> / <span id="total">16</span>
+        <span id="current">1</span> / <span id="total">17</span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -436,7 +477,8 @@
                 <ul>
                     <li>How AI language models came to be</li>
                     <li>The scale of today's AI moment</li>
-                    <li>AI you're already using in healthcare</li>
+                    <li>AI in your personal life — already, without knowing it</li>
+                    <li>AI already showing up in healthcare settings</li>
                     <li>Levels of AI literacy — where do you fit?</li>
                 </ul>
             </div>
@@ -529,35 +571,112 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 5 – AI in Healthcare Already
+         Slide 5 – AI in Personal Life
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>AI You're Already Using — Often Without Knowing It</h2>
+        <h2>AI in Your Personal Life — Right Now, Without Realizing It</h2>
+        <div class="content">
+            <p style="color:#555; margin-bottom:4px; font-size:0.95em;">These tools feel normal. That's because AI is already woven into daily life — long before ChatGPT made the headlines.</p>
+            <div class="app-grid">
+                <div class="app-card" style="border-top-color:#4285F4;">
+                    <div class="app-icon">🔍</div>
+                    <div class="app-name" style="color:#4285F4;">Google Search</div>
+                    <div class="app-desc">AI ranks every result, autocompletes your query, and filters spam</div>
+                </div>
+                <div class="app-card" style="border-top-color:#1DB954;">
+                    <div class="app-icon">🎵</div>
+                    <div class="app-name" style="color:#1DB954;">Spotify</div>
+                    <div class="app-desc">Recommends songs and builds playlists based on your listening history</div>
+                </div>
+                <div class="app-card" style="border-top-color:#E50914;">
+                    <div class="app-icon">▶</div>
+                    <div class="app-name" style="color:#E50914;">Netflix / YouTube</div>
+                    <div class="app-desc">Decides what appears on your home screen based on viewing patterns</div>
+                </div>
+                <div class="app-card" style="border-top-color:#34A853;">
+                    <div class="app-icon">🗺️</div>
+                    <div class="app-name" style="color:#34A853;">Google Maps / Waze</div>
+                    <div class="app-desc">Predicts traffic in real time and reroutes you before you hit slowdowns</div>
+                </div>
+                <div class="app-card" style="border-top-color:#FF9900;">
+                    <div class="app-icon">📦</div>
+                    <div class="app-name" style="color:#c47a00;">Amazon</div>
+                    <div class="app-desc">Recommends products and predicts what you'll want to reorder</div>
+                </div>
+                <div class="app-card" style="border-top-color:#EA4335;">
+                    <div class="app-icon">📧</div>
+                    <div class="app-name" style="color:#EA4335;">Gmail / Email</div>
+                    <div class="app-desc">Filters your spam, suggests replies, and completes sentences as you type</div>
+                </div>
+                <div class="app-card" style="border-top-color:#555;">
+                    <div class="app-icon">📱</div>
+                    <div class="app-name" style="color:#555;">Face ID / Unlock</div>
+                    <div class="app-desc">AI recognizes your face in milliseconds to unlock your phone</div>
+                </div>
+                <div class="app-card" style="border-top-color:#1877F2;">
+                    <div class="app-icon">📰</div>
+                    <div class="app-name" style="color:#1877F2;">Social Media Feeds</div>
+                    <div class="app-desc">AI decides which posts you see — and in what order — every time you scroll</div>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:13px; font-size:0.92em;">
+                The AI in ChatGPT and Claude is built on the same underlying technology — just trained to have a conversation instead of rank a search result.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 6 – AI in Healthcare Already
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI Is Also Showing Up in Healthcare</h2>
         <div class="content">
             <div class="two-column">
                 <div>
                     <h3>In Clinical Settings</h3>
                     <ul>
-                        <li><strong>Sepsis prediction alerts</strong> — Epic's Early Warning model scores patients every few hours</li>
-                        <li><strong>Radiology AI</strong> — flags potential findings on chest X-rays and CT scans before a radiologist reads them</li>
-                        <li><strong>ECG interpretation</strong> — AI-assisted analysis is built into most modern 12-lead systems</li>
-                        <li><strong>Drug interaction checking</strong> — your pharmacy system has used ML for years</li>
-                        <li><strong>Ambient documentation</strong> — Nuance DAX, Suki, Microsoft Dragon transcribe and draft notes from conversations</li>
+                        <li>
+                            <strong>Early warning &amp; deterioration alerts</strong> — some EHR platforms include AI-powered risk scores that run automatically in the background<br>
+                            <span class="source-note">Examples: <span class="logo-badge" style="background:#C62828;">Epic</span> <span class="logo-badge" style="background:#0066CC;">Cerner</span></span>
+                        </li>
+                        <li>
+                            <strong>Radiology support tools</strong> — AI can flag areas of concern on imaging for a radiologist to review<br>
+                            <span class="source-note">Examples: <span class="logo-badge" style="background:#1e3c72;">Aidoc</span> <span class="logo-badge" style="background:#2a5298;">Zebra Medical</span></span>
+                        </li>
+                        <li>
+                            <strong>Drug interaction checking</strong> — a standard feature in pharmacy systems for many years, often AI-enhanced<br>
+                            <span class="source-note">Built into most major pharmacy platforms</span>
+                        </li>
+                        <li>
+                            <strong>Ambient documentation</strong> — tools that listen to a clinical encounter and draft a note<br>
+                            <span class="source-note">Examples: <span class="logo-badge" style="background:#107C41;">Nuance DAX</span> <span class="logo-badge" style="background:#2a5298;">Suki</span></span>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h3>In Operations &amp; Administration</h3>
                     <ul>
-                        <li><strong>Patient deterioration scoring</strong> — Modified Early Warning Score (MEWS) systems with AI enhancements</li>
-                        <li><strong>Scheduling optimization</strong> — OR block time, staffing ratios, bed management</li>
-                        <li><strong>Prior authorization AI</strong> — systems that predict and auto-populate insurance submissions</li>
-                        <li><strong>Medical coding assistance</strong> — AI suggests ICD-10 and CPT codes from clinical notes</li>
-                        <li><strong>Readmission risk</strong> — scores calculated automatically at discharge</li>
+                        <li>
+                            <strong>Scheduling optimization</strong> — AI tools that help manage staffing ratios and bed availability<br>
+                            <span class="source-note">Examples: <span class="logo-badge" style="background:#e07b00;">Qventus</span> <span class="logo-badge" style="background:#1e3c72;">LeanTaaS</span></span>
+                        </li>
+                        <li>
+                            <strong>Prior authorization assistance</strong> — tools that help draft and submit insurance requests<br>
+                            <span class="source-note">Examples: <span class="logo-badge" style="background:#2a5298;">Cohere Health</span> <span class="logo-badge" style="background:#555;">Olive AI</span></span>
+                        </li>
+                        <li>
+                            <strong>Medical coding assistance</strong> — AI that suggests billing codes from clinical notes<br>
+                            <span class="source-note">Examples: <span class="logo-badge" style="background:#107C41;">3M</span> <span class="logo-badge" style="background:#C62828;">Optum360</span></span>
+                        </li>
+                        <li>
+                            <strong>Readmission &amp; risk prediction</strong> — scores generated at or before discharge to flag high-risk patients<br>
+                            <span class="source-note">Available in many EHR and population health platforms</span>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="warning-box" style="margin-top:14px; font-size:0.95em;">
-                <strong>Key point:</strong> Most of this AI runs silently in the background. Your impressions of "AI" may be shaped by early chatbots — today's systems are categorically more capable and more embedded.
+            <div class="warning-box" style="margin-top:12px; font-size:0.92em;">
+                <strong>Note:</strong> Adoption varies widely by health system. Your organization may use some, all, or none of these — the point is that the category of tools exists and is growing rapidly.
             </div>
         </div>
     </div>
