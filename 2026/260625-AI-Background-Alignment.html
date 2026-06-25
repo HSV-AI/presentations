@@ -483,7 +483,7 @@
 <div class="hsv-badge">HSV.AI</div>
 <div class="presentation">
     <div class="slide-counter">
-        <span id="current">1</span> / <span id="total">17</span>
+        <span id="current">1</span> / <span id="total">18</span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -797,7 +797,56 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 9 – Alignment Spectrum
+         Slide 9 – Anthropic's Three Rules
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>How Anthropic Defines a Well-Aligned AI</h2>
+        <div class="content">
+            <p style="color:#555; margin-bottom:12px; font-size:0.95em;">Anthropic — the company behind Claude — built their alignment approach around three core commitments. Every response Claude gives is shaped by these in priority order.</p>
+            <div class="three-column" style="margin-top:8px;">
+
+                <div style="background:linear-gradient(160deg,#eaf1fb,#dce8f7); border-radius:14px; padding:20px 18px; border-top:5px solid #1e3c72; text-align:center;">
+                    <div style="font-size:2em; margin-bottom:8px;">🤝</div>
+                    <div style="font-size:1.25em; font-weight:bold; color:#1e3c72; margin-bottom:8px;">Helpful</div>
+                    <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
+                        Genuinely useful to the person asking — and, through that, to society. Not helpful in a watered-down, hedge-everything way, but substantively helpful the way a knowledgeable friend would be.
+                        <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#2a5298;">
+                            <em>In healthcare:</em> Give me a real answer about this medication, not just "consult your doctor."
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:linear-gradient(160deg,#f0f7f0,#e0f0e0); border-radius:14px; padding:20px 18px; border-top:5px solid #2e7d32; text-align:center;">
+                    <div style="font-size:2em; margin-bottom:8px;">✅</div>
+                    <div style="font-size:1.25em; font-weight:bold; color:#2e7d32; margin-bottom:8px;">Honest</div>
+                    <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
+                        Truthful, transparent, and non-manipulative. Shares uncertainty when it exists. Never tries to create false impressions — even by technically true but misleading statements.
+                        <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#2e7d32;">
+                            <em>In practice:</em> "I'm not certain — you should verify this with a current clinical guideline."
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:linear-gradient(160deg,#fff8e1,#ffefc0); border-radius:14px; padding:20px 18px; border-top:5px solid #e07b00; text-align:center;">
+                    <div style="font-size:2em; margin-bottom:8px;">🛡️</div>
+                    <div style="font-size:1.25em; font-weight:bold; color:#e07b00; margin-bottom:8px;">Harmless</div>
+                    <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
+                        Avoids outputs that could hurt individuals, groups, or society — even when asked. Maintains human oversight so errors can be caught and corrected before causing real damage.
+                        <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#e07b00;">
+                            <em>In practice:</em> Won't provide specific dosing instructions that could harm a patient without medical context.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="highlight" style="margin-top:12px;">
+                <strong>The tension:</strong> These three goals sometimes pull against each other. Being <em>maximally helpful</em> could mean giving dangerous information. Being <em>maximally harmless</em> could make the tool useless. Alignment is the ongoing work of finding the right balance — and it's never perfectly solved.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 10 – Alignment Spectrum
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
         <h2>The Alignment Spectrum</h2>
