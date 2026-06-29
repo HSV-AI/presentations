@@ -477,13 +477,62 @@
             margin-top: 2px;
             display: block;
         }
+
+        /* ─── Print / PDF export ─────────────────────────── */
+        @media print {
+            @page {
+                size: landscape;
+                margin: 0;
+            }
+
+            body {
+                background: white !important;
+                overflow: visible;
+            }
+
+            .hsv-badge,
+            .slide-counter,
+            .controls {
+                display: none !important;
+            }
+
+            .presentation {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+
+            .slide {
+                position: static !important;
+                display: flex !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 100vh !important;
+                max-height: 100vh !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                page-break-after: always;
+                break-after: page;
+                overflow: hidden !important;
+                animation: none !important;
+            }
+
+            .slide:last-of-type {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="hsv-badge">HSV.AI</div>
 <div class="presentation">
     <div class="slide-counter">
-        <span id="current">1</span> / <span id="total">19</span>
+        <span id="current">1</span> / <span id="total">20</span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -497,7 +546,32 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════
-         Slide 2 – Agenda
+         Slide 2 – Introduction
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Introduction to J. Langley</h2>
+        <div class="content">
+            <div class="two-column" style="align-items:start;">
+                <div>
+                    <h3>Lots of titles:</h3>
+                    <ul style="font-size:0.97em;">
+                        <li>Chief Technical Officer</li>
+                        <li>Chief Archeologist</li>
+                        <li>Chief Instigator</li>
+                    </ul>
+                    <p style="margin-top:16px; font-size:0.97em;">I've been working with AI since around 2005, with my master's project at Florida Institute of Technology being an NLP based system for recommending web forum channels that best match a user's question.</p>
+                </div>
+                <div>
+                    <div class="analogy-box" style="margin-top:0;">
+                        I believe that the best way to ensure that AI is used for the greater good is to involve the greatest number of perspectives possible in its development, testing, and use.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 3 – Agenda
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
         <h2>What We'll Cover Today</h2>
@@ -667,19 +741,19 @@
                     <ul>
                         <li>
                             <strong>Early warning &amp; deterioration alerts</strong> — some EHR platforms include AI-powered risk scores that run automatically in the background<br>
-                            <span class="source-note">Examples: <a href="https://www.epic.com" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#C62828;">Epic</span></a> <a href="https://www.oracle.com/health/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#0066CC;">Cerner</span></a></span>
+                            <span class="source-note">Examples: <a href="https://www.epic.com/epic/post/epics-director-of-nursing-discusses-new-research-on-its-sepsis-early-warning-model/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#C62828;">Epic</span></a> <a href="https://www.oracle.com/health/clinical-suite/clinical-ai-agent/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#0066CC;">Oracle Health</span></a></span>
                         </li>
                         <li>
                             <strong>Radiology support tools</strong> — AI can flag areas of concern on imaging for a radiologist to review<br>
-                            <span class="source-note">Examples: <a href="https://www.aidoc.com" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">Aidoc</span></a> <a href="https://www.zebra-med.com" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Zebra Medical</span></a></span>
+                            <span class="source-note">Examples: <a href="https://www.aidoc.com/solutions/radiology/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">Aidoc</span></a> <a href="https://www.nanox.vision/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Nanox.AI</span></a></span>
                         </li>
                         <li>
-                            <strong>Drug interaction checking</strong> — a standard feature in pharmacy systems for many years, often AI-enhanced<br>
-                            <span class="source-note">Built into most major pharmacy platforms</span>
+                            <strong>Drug interaction checking</strong> — AI-enhanced drug databases built into pharmacy workflows that flag potentially dangerous combinations before dispensing<br>
+                            <span class="source-note">Examples: <a href="https://www.fdbhealth.info/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#107C41;">FDB</span></a> <a href="https://go.drugbank.com/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">DrugBank</span></a></span>
                         </li>
                         <li>
                             <strong>Ambient documentation</strong> — tools that listen to a clinical encounter and draft a note<br>
-                            <span class="source-note">Examples: <a href="https://www.nuance.com/healthcare/ambient-clinical-intelligence.html" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#107C41;">Nuance DAX</span></a> <a href="https://www.suki.ai" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Suki</span></a></span>
+                            <span class="source-note">Examples: <a href="https://www.nuance.com/healthcare/ambient-clinical-intelligence.html" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#107C41;">Nuance DAX</span></a> <a href="https://www.suki.ai/suki-assistant/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Suki</span></a></span>
                         </li>
                     </ul>
                 </div>
@@ -688,11 +762,11 @@
                     <ul>
                         <li>
                             <strong>Scheduling optimization</strong> — AI tools that help manage staffing ratios and bed availability<br>
-                            <span class="source-note">Examples: <a href="https://qventus.com" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#e07b00;">Qventus</span></a> <a href="https://leantaas.com" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">LeanTaaS</span></a></span>
+                            <span class="source-note">Examples: <a href="https://www.qventus.com/solutions/discharge-planning/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#e07b00;">Qventus</span></a> <a href="https://leantaas.com/products/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">LeanTaaS</span></a></span>
                         </li>
                         <li>
                             <strong>Prior authorization assistance</strong> — tools that help draft and submit insurance requests<br>
-                            <span class="source-note">Examples: <a href="https://coherehealth.com" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Cohere Health</span></a> <a href="https://oliveai.com" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#555;">Olive AI</span></a></span>
+                            <span class="source-note">Examples: <a href="https://www.coherehealth.com/decision" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Cohere Health</span></a> <a href="https://www.availity.com/intelligentum/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#0056b3;">Availity</span></a></span>
                         </li>
                         <li>
                             <strong>Medical coding assistance</strong> — AI that suggests billing codes from clinical notes<br>
@@ -700,7 +774,7 @@
                         </li>
                         <li>
                             <strong>Readmission &amp; risk prediction</strong> — scores generated at or before discharge to flag high-risk patients<br>
-                            <span class="source-note">Available in many EHR and population health platforms</span>
+                            <span class="source-note">Examples: <a href="https://www.epic.com/software/ai/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#C62828;">Epic</span></a> <a href="https://www.oracle.com/health/clinical-suite/clinical-ai-agent/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#0066CC;">Oracle Health</span></a></span>
                         </li>
                     </ul>
                 </div>
@@ -726,7 +800,10 @@
         <h2>What Is AI Alignment?</h2>
         <div class="content">
             <div class="highlight">
-                <strong>Definition:</strong> AI alignment is the challenge of ensuring that AI systems actually do what we intend — including in edge cases, under pressure, and as they become more capable. A system can technically meet its stated objective while causing real harm.
+                <strong>Definition:</strong> AI alignment is the challenge of ensuring that an AI system does what the organization building or deploying it intends — including in edge cases, under pressure, and as systems become more capable. A system can technically meet its stated objective while causing real harm.
+            </div>
+            <div class="analogy-box" style="margin-top:10px; font-size:0.93em;">
+                This is why involving the greatest number of perspectives in AI development, testing, and use matters — alignment to a single organization's goals may not serve the greater good unless those building and deploying AI actively seek broad input.
             </div>
             <div class="two-column" style="margin-top:16px;">
                 <div>
@@ -753,39 +830,39 @@
          Slide 9 – Anthropic's Three Rules
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>How Anthropic Defines a Well-Aligned AI</h2>
+        <h2>Where Alignment Began: The HHH Framework</h2>
         <div class="content">
-            <p style="color:#555; margin-bottom:12px; font-size:0.95em;">Anthropic — the company behind Claude — built their alignment approach around three core commitments. Every response Claude gives is shaped by these in priority order.</p>
+            <p style="color:#555; margin-bottom:12px; font-size:0.95em;">Early AI alignment work — including at Anthropic — converged on three foundational goals. The field has grown more nuanced since, but these concepts still shape how AI tools respond to you every day, with far-reaching implications for how you use them.</p>
             <div class="three-column" style="margin-top:8px;">
 
-                <div style="background:linear-gradient(160deg,#eaf1fb,#dce8f7); border-radius:14px; padding:20px 18px; border-top:5px solid #1e3c72; text-align:center;">
+                <div style="background:white; border-radius:14px; padding:20px 18px; border-top:5px solid #1e3c72; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                     <div style="font-size:2em; margin-bottom:8px;">🤝</div>
                     <div style="font-size:1.25em; font-weight:bold; color:#1e3c72; margin-bottom:8px;">Helpful</div>
-                    <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
+                    <div style="font-size:0.88em; color:#222; text-align:left; line-height:1.5;">
                         Genuinely useful to the person asking — and, through that, to society. Not helpful in a watered-down, hedge-everything way, but substantively helpful the way a knowledgeable friend would be.
-                        <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#2a5298;">
+                        <div style="margin-top:10px; background:#eaf1fb; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#1e3c72;">
                             <em>In healthcare:</em> Give me a real answer about this medication, not just "consult your doctor."
                         </div>
                     </div>
                 </div>
 
-                <div style="background:linear-gradient(160deg,#f0f7f0,#e0f0e0); border-radius:14px; padding:20px 18px; border-top:5px solid #2e7d32; text-align:center;">
+                <div style="background:white; border-radius:14px; padding:20px 18px; border-top:5px solid #2e7d32; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                     <div style="font-size:2em; margin-bottom:8px;">✅</div>
                     <div style="font-size:1.25em; font-weight:bold; color:#2e7d32; margin-bottom:8px;">Honest</div>
-                    <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
+                    <div style="font-size:0.88em; color:#222; text-align:left; line-height:1.5;">
                         Truthful, transparent, and non-manipulative. Shares uncertainty when it exists. Never tries to create false impressions — even by technically true but misleading statements.
-                        <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#2e7d32;">
+                        <div style="margin-top:10px; background:#f0f7f0; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#2e7d32;">
                             <em>In practice:</em> "I'm not certain — you should verify this before relying on it."
                         </div>
                     </div>
                 </div>
 
-                <div style="background:linear-gradient(160deg,#fff8e1,#ffefc0); border-radius:14px; padding:20px 18px; border-top:5px solid #e07b00; text-align:center;">
+                <div style="background:white; border-radius:14px; padding:20px 18px; border-top:5px solid #e07b00; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                     <div style="font-size:2em; margin-bottom:8px;">🛡️</div>
                     <div style="font-size:1.25em; font-weight:bold; color:#e07b00; margin-bottom:8px;">Harmless</div>
-                    <div style="font-size:0.88em; color:#444; text-align:left; line-height:1.5;">
+                    <div style="font-size:0.88em; color:#222; text-align:left; line-height:1.5;">
                         Avoids outputs that could hurt individuals, groups, or society — even when asked. Maintains human oversight so errors can be caught and corrected before causing real damage.
-                        <div style="margin-top:10px; background:white; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#e07b00;">
+                        <div style="margin-top:10px; background:#fff8e1; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#c26000;">
                             <em>In practice:</em> Won't provide specific instructions that could cause harm without proper context.
                         </div>
                     </div>
@@ -793,7 +870,7 @@
 
             </div>
             <div class="highlight" style="margin-top:12px;">
-                <strong>The tension:</strong> These three goals sometimes pull against each other. Being <em>maximally helpful</em> could mean giving dangerous information. Being <em>maximally harmless</em> could make the tool useless. Alignment is the ongoing work of finding the right balance — and it's never perfectly solved.
+                <strong>The tension — and why it matters to you:</strong> These three goals pull against each other. Being <em>maximally helpful</em> could mean giving dangerous information. Being <em>maximally harmless</em> could make the tool useless. AI companies have continued to refine this balance, but the core trade-off remains — which is why human judgment and oversight still matter every time you use these tools.
             </div>
         </div>
     </div>
@@ -1083,7 +1160,7 @@
                         <li>Staff fear discipline for using AI, even when use is reasonable</li>
                     </ul>
                     <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
-                        <strong>These are not hypotheticals.</strong> HIPAA complaints related to AI use by employees began appearing in 2023 and are increasing.
+                        <strong>This is already happening.</strong> Cybersecurity researchers found that 81% of healthcare workers' data policy violations involved regulated patient data — and 71% use personal AI accounts not covered by organizational data controls. <a href="https://www.hipaajournal.com/healthcare-workers-privacy-violations-ai-tools-cloud-accounts/" target="_blank" style="color:#7a5c00; font-size:0.9em;">(HIPAA Journal / Netskope, 2025)</a>
                     </div>
                 </div>
             </div>
@@ -1094,7 +1171,7 @@
          Slide 15 – Policy Components
     ══════════════════════════════════════════════════════ -->
     <div class="slide">
-        <h2>AI Policy: What Healthcare Organizations Need</h2>
+        <h2>AI Policy: What Mature Policies Address</h2>
         <div class="content">
             <div class="two-column">
                 <div>
@@ -1109,7 +1186,7 @@
                         <div class="level-num" style="font-size:0.95em; width:36px; background:#c62828;">2</div>
                         <div class="level-content">
                             <div class="level-title">PHI / Data Rules</div>
-                            <div class="level-desc">No patient identifiers in consumer AI tools. Period. Define what "de-identified" means for AI inputs.</div>
+                            <div class="level-desc">Clear rules on patient identifiers in consumer AI tools, and a shared definition of what "de-identified" means for AI inputs.</div>
                         </div>
                     </div>
                     <div class="level-bar" style="margin-bottom:10px;">
@@ -1166,18 +1243,18 @@
                     </ul>
                 </div>
                 <div>
-                    <h3>Your Next 90 Days</h3>
+                    <h3>How Organizations Typically Get Started</h3>
                     <div class="card" style="margin-bottom:10px; font-size:0.92em;">
-                        <strong>Week 1–2:</strong> Survey what AI tools staff are already using — officially and unofficially
+                        <strong>Week 1–2:</strong> Understanding what AI tools staff are already using — officially and unofficially — is usually the first step
                     </div>
                     <div class="card" style="margin-bottom:10px; font-size:0.92em;">
-                        <strong>Month 1:</strong> Issue a one-page interim policy covering PHI rules and approved tools; loop in Legal and Compliance
+                        <strong>Month 1:</strong> Most organizations start with a one-page interim policy covering PHI rules and approved tools, developed with Legal and Compliance
                     </div>
                     <div class="card" style="margin-bottom:10px; font-size:0.92em;">
-                        <strong>Month 2:</strong> Pilot 2–3 use cases (patient summaries, portal responses, handoff notes); document what works
+                        <strong>Month 2:</strong> Early pilots of 2–3 use cases (patient summaries, portal responses, handoff notes) help teams learn what works before scaling
                     </div>
                     <div class="card-orange" style="font-size:0.92em;">
-                        <strong>Month 3:</strong> Role-based AI literacy training; designate a department AI champion; build an incident reporting pathway
+                        <strong>Month 3:</strong> Organizations that sustain progress typically add role-based training, an AI champion at the department level, and a pathway for reporting AI-related errors
                     </div>
                 </div>
             </div>
