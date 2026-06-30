@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approachable AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 90%;
+            max-width: 1200px;
+            height: 85%;
+            max-height: 700px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            padding: 36px 55px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+            overflow-x: hidden;
+            /* hide scrollbar while keeping scroll behavior */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .slide::-webkit-scrollbar { display: none; }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translate(-50%, -48%); }
+            to   { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        /* ─── Typography ─────────────────────────────────── */
+        .slide h1 {
+            font-size: 2.8em;
+            color: #1e3c72;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .slide h2 {
+            font-size: 1.85em;
+            color: #1e3c72;
+            margin-bottom: 14px;
+            line-height: 1.25;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .slide h3 {
+            font-size: 1.2em;
+            color: #2a5298;
+            margin: 10px 0 6px 0;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            font-size: 1em;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        .content ul {
+            margin-left: 24px;
+            margin-top: 6px;
+        }
+
+        .content li {
+            margin: 6px 0;
+        }
+
+        /* ─── Layout helpers ─────────────────────────────── */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+            margin-top: 10px;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        /* ─── Cards & boxes ──────────────────────────────── */
+        .highlight {
+            background: #eaf1fb;
+            padding: 10px 16px;
+            border-left: 5px solid #2a5298;
+            margin: 10px 0;
+            border-radius: 6px;
+            font-size: 0.97em;
+        }
+
+        .warning-box {
+            background: #fff8e1;
+            padding: 10px 16px;
+            border-left: 5px solid #f9a825;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .analogy-box {
+            background: #f0f7f0;
+            padding: 10px 16px;
+            border-left: 5px solid #2e7d32;
+            margin: 10px 0;
+            border-radius: 6px;
+            font-size: 0.94em;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #eaf1fb, #dce8f7);
+            padding: 14px 10px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #b8d0ee;
+        }
+
+        .stat-box .number {
+            font-size: 2.1em;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .stat-box .label {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .card {
+            background: #f4f7fc;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border-top: 4px solid #2a5298;
+        }
+
+        .card-orange {
+            background: #fff8ee;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border-top: 4px solid #e07b00;
+        }
+
+        .card-green {
+            background: #f0f7f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border-top: 4px solid #2e7d32;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #1e3c72;
+            color: white;
+            font-size: 0.73em;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 6px;
+            font-weight: bold;
+            letter-spacing: 0.04em;
+        }
+
+        .tag-orange { background: #e07b00; }
+        .tag-green  { background: #2e7d32; }
+        .tag-red    { background: #c62828; }
+
+        /* ─── Timeline ───────────────────────────────────── */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin-top: 6px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(#1e3c72, #2a5298);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2a5298;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #2a5298;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 0.95em;
+        }
+
+        .timeline-text {
+            color: #444;
+            font-size: 0.92em;
+        }
+
+        /* ─── Literacy levels ────────────────────────────── */
+        .level-bar {
+            display: flex;
+            align-items: stretch;
+            margin: 5px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.09);
+        }
+
+        .level-num {
+            background: #1e3c72;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+            width: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .level-content {
+            background: #f4f7fc;
+            padding: 7px 13px;
+            flex: 1;
+        }
+
+        .level-title {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 0.93em;
+        }
+
+        .level-desc {
+            font-size: 0.8em;
+            color: #555;
+            margin-top: 1px;
+            line-height: 1.4;
+        }
+
+        /* ─── Title slide ────────────────────────────────── */
+        .title-slide {
+            text-align: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #1e3c72 0%, #2a5298 60%, #3a6bc2 100%) !important;
+            color: white !important;
+        }
+
+        .title-slide h1 {
+            color: white !important;
+            font-size: 3.4em;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .title-slide .subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.3em;
+            margin-bottom: 36px;
+        }
+
+        .title-slide .org-name {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+        }
+
+        .title-slide .logo-area {
+            margin-bottom: 32px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.08em;
+        }
+
+        /* ─── Section divider ────────────────────────────── */
+        .section-slide {
+            text-align: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #1e3c72 0%, #2a5298 100%) !important;
+        }
+
+        .section-slide h2 {
+            color: white !important;
+            border-bottom: 3px solid rgba(255,255,255,0.35) !important;
+            font-size: 2.4em;
+        }
+
+        .section-slide .section-sub {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1em;
+            margin-top: 16px;
+        }
+
+        /* ─── Controls ───────────────────────────────────── */
+        .controls {
+            position: fixed;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 1000;
+        }
+
+        .controls button {
+            background: white;
+            border: 2px solid #1e3c72;
+            color: #1e3c72;
+            padding: 10px 28px;
+            font-size: 1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-weight: bold;
+        }
+
+        .controls button:hover:not(:disabled) {
+            background: #1e3c72;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 14px rgba(0,0,0,0.22);
+        }
+
+        .controls button:disabled {
+            opacity: 0.28;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 26px;
+            right: 36px;
+            background: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 1em;
+            color: #1e3c72;
+            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+        }
+
+        .hsv-badge {
+            position: fixed;
+            top: 26px;
+            left: 36px;
+            background: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #1e3c72;
+            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+            letter-spacing: 0.04em;
+        }
+
+        .checkmark { color: #2e7d32; font-weight: bold; }
+        .xmark     { color: #c62828; font-weight: bold; }
+
+        /* ─── Mobile responsive ─────────────────────────── */
+        @media (max-width: 768px) {
+            .slide {
+                width: 95%;
+                padding: 22px 22px 60px 22px;
+                height: 88%;
+                max-height: none;
+                border-radius: 14px;
+            }
+            .slide h1  { font-size: 2em; }
+            .slide h2  { font-size: 1.4em; }
+            .slide h3  { font-size: 1.05em; }
+            .two-column   { grid-template-columns: 1fr; gap: 14px; }
+            .three-column { grid-template-columns: 1fr; gap: 10px; }
+            .app-grid     { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+            .app-icon  { font-size: 1.4em; }
+            .app-card  { padding: 9px 7px; }
+            .stat-box .number { font-size: 1.7em; }
+            .hsv-badge, .slide-counter { font-size: 0.78em; padding: 6px 12px; }
+            .controls button { padding: 8px 18px; font-size: 0.9em; }
+        }
+
+        /* ─── App cards (personal life slide) ──────────── */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+            margin-top: 14px;
+        }
+
+        .app-card {
+            background: #f8f9fc;
+            border-radius: 10px;
+            padding: 13px 10px;
+            border-top: 5px solid #2a5298;
+            text-align: center;
+        }
+
+        .app-icon  { font-size: 1.8em; margin-bottom: 5px; }
+        .app-name  { font-weight: bold; font-size: 0.83em; margin-bottom: 4px; }
+        .app-desc  { font-size: 0.75em; color: #555; line-height: 1.4; }
+
+        /* ─── Logo / source badges ──────────────────────── */
+        .logo-badge {
+            display: inline-block;
+            font-size: 0.68em;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: white;
+            margin: 0 3px 3px 0;
+            vertical-align: middle;
+            letter-spacing: 0.03em;
+        }
+
+        .source-note {
+            font-size: 0.72em;
+            color: #888;
+            font-style: italic;
+            margin-top: 2px;
+            display: block;
+        }
+
+        /* ─── HSV.AI logo on every slide ────────────────── */
+        .slide::after {
+            content: 'HSV.AI';
+            position: absolute;
+            bottom: 14px;
+            right: 20px;
+            font-size: 0.72em;
+            font-weight: bold;
+            color: #1e3c72;
+            letter-spacing: 0.06em;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .title-slide::after,
+        .section-slide::after {
+            color: white;
+            opacity: 0.6;
+        }
+
+        /* ─── Print / PDF export (A4 landscape) ────────── */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+
+            body {
+                background: white !important;
+                overflow: visible;
+            }
+
+            .hsv-badge,
+            .slide-counter,
+            .controls {
+                display: none !important;
+            }
+
+            .presentation {
+                width: 297mm;
+                height: auto;
+                position: static;
+            }
+
+            .slide {
+                position: relative !important;
+                display: flex !important;
+                width: 297mm !important;
+                max-width: 297mm !important;
+                height: 210mm !important;
+                max-height: 210mm !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 12mm 16mm !important;
+                page-break-after: always;
+                break-after: page;
+                overflow: hidden !important;
+                animation: none !important;
+            }
+
+            .slide:last-of-type {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* ── Typography ── */
+            .slide            { font-size: 11pt !important; line-height: 1.4 !important; }
+            .slide h1         { font-size: 30pt !important; margin-bottom: 5mm !important; }
+            .slide h2         { font-size: 18pt !important; margin-bottom: 4mm !important; padding-bottom: 2mm !important; }
+            .slide h3         { font-size: 12pt !important; margin: 3mm 0 1.5mm 0 !important; }
+            .subtitle         { font-size: 13pt !important; margin-bottom: 6mm !important; }
+            .content          { font-size: 10.5pt !important; line-height: 1.4 !important; }
+            .content ul       { margin-left: 5mm !important; margin-top: 1mm !important; }
+            .content li       { margin: 1.5mm 0 !important; }
+            .section-sub      { font-size: 12pt !important; margin-top: 4mm !important; }
+
+            /* ── Layout ── */
+            .two-column       { gap: 6mm !important; margin-top: 3mm !important; }
+            .three-column     { gap: 4mm !important; margin-top: 3mm !important; }
+            .app-grid         { gap: 3mm !important; margin-top: 4mm !important; }
+            .app-card         { padding: 3mm 2mm !important; }
+            .app-icon         { font-size: 1.4em !important; margin-bottom: 1mm !important; }
+            .app-name         { font-size: 0.78em !important; }
+            .app-desc         { font-size: 0.72em !important; }
+
+            /* ── Cards & boxes ── */
+            .highlight        { padding: 3mm 5mm !important; margin: 2mm 0 !important; font-size: 10pt !important; }
+            .warning-box      { padding: 3mm 5mm !important; margin: 2mm 0 !important; font-size: 10pt !important; }
+            .analogy-box      { padding: 3mm 5mm !important; margin: 2mm 0 !important; font-size: 10pt !important; }
+            .card             { padding: 3mm 4mm !important; }
+            .card-orange      { padding: 3mm 4mm !important; }
+            .card-green       { padding: 3mm 4mm !important; }
+            .stat-box         { padding: 4mm 3mm !important; }
+            .stat-box .number { font-size: 1.8em !important; }
+            .stat-box .label  { font-size: 0.8em !important; margin-top: 1mm !important; }
+
+            /* ── Timeline ── */
+            .timeline         { padding-left: 7mm !important; margin-top: 1mm !important; }
+            .timeline-item    { margin-bottom: 3mm !important; }
+            .timeline-year    { font-size: 0.9em !important; }
+            .timeline-text    { font-size: 0.88em !important; }
+
+            /* ── Literacy levels ── */
+            .level-bar        { margin: 2mm 0 !important; }
+            .level-num        { width: 8mm !important; font-size: 1em !important; }
+            .level-content    { padding: 2mm 4mm !important; }
+            .level-title      { font-size: 0.9em !important; }
+            .level-desc       { font-size: 0.78em !important; margin-top: 0.5mm !important; }
+
+            /* ── Source notes & badges ── */
+            .source-note      { font-size: 0.68em !important; }
+            .logo-badge       { font-size: 0.65em !important; padding: 1px 5px !important; }
+
+            /* ── Title slide ── */
+            .title-slide h1   { font-size: 34pt !important; }
+            .title-slide .subtitle { font-size: 14pt !important; margin-bottom: 8mm !important; }
+            .title-slide .org-name { font-size: 10pt !important; padding: 3mm 6mm !important; }
+            .title-slide .logo-area { font-size: 1.1em !important; margin-bottom: 6mm !important; }
+
+            /* ── Vertical distribution: fill slide height ── */
+            /* .content fills all remaining space after h2 */
+            .slide > .content {
+                flex: 1 !important;
+                min-height: 0 !important;
+            }
+
+            /* Non-grid .content becomes a flex column and distributes
+               its children so first item is at top, last at bottom */
+            .slide > .content:not(.two-column):not(.three-column) {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+            }
+
+            /* When .content IS the grid (e.g. agenda slide), siblings
+               that follow (like .highlight) are pushed to bottom by flex:1 */
+            .slide > .content.two-column,
+            .slide > .content.three-column {
+                display: grid !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="hsv-badge">HSV.AI</div>
+<div class="presentation">
+    <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">21</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 1 – Title
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide title-slide active">
+        <div class="logo-area">HSV.AI</div>
+        <h1>Approachable AI</h1>
+        <p class="subtitle">Understanding AI in plain terms</p>
+        <span class="org-name">NAHUC's 44th Annual Education Conference &nbsp;·&nbsp; Huntsville, AL</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 2 – Introduction
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Introduction to J. Langley</h2>
+        <div class="content">
+            <div class="two-column" style="align-items:start;">
+                <div>
+                    <h3>Lots of titles:</h3>
+                    <ul style="font-size:0.97em;">
+                        <li>Chief Technical Officer</li>
+                        <li>Chief Archeologist</li>
+                        <li>Chief Instigator</li>
+                    </ul>
+                    <p style="margin-top:16px; font-size:0.97em;">I've been working with AI since around 2005, with my master's project at Florida Institute of Technology being an NLP based system for recommending web forum channels that best match a user's question.</p>
+                </div>
+                <div>
+                    <div class="analogy-box" style="margin-top:0;">
+                        I believe that the best way to ensure that AI is used for the greater good is to involve the greatest number of perspectives possible in its development, testing, and use.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 3 – Agenda
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>What We'll Cover Today</h2>
+        <div class="content two-column">
+            <div>
+                <h3>Part 1 — Understanding AI</h3>
+                <ul>
+                    <li>How AI language models came to be</li>
+                    <li>The scale of today's AI moment</li>
+                    <li>AI in your personal life — already, without knowing it</li>
+                    <li>AI already showing up in healthcare settings</li>
+                    <li>AI alignment — what it means &amp; why it matters</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Part 2 — Practical AI</h3>
+                <ul>
+                    <li>Levels of AI literacy — where do you fit?</li>
+                    <li>Why chat sessions can go off the rails</li>
+                    <li>AI for Health Unit Coordinators</li>
+                    <li>Building an AI policy for your organization</li>
+                </ul>
+            </div>
+        </div>
+        <div class="highlight" style="margin-top: 22px;">
+            <strong>Goal:</strong> Walk away with a grounded, practical understanding of AI — and concrete steps to use it responsibly in your work.
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 3 – LLM History
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>How We Got Here: A Short History</h2>
+        <div class="content">
+            <div class="two-column">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">1950s–1990s</span>
+                        <div class="timeline-text">Computers follow explicit rules — if a sentence matches a pattern, respond with a pre-written answer. Brittle and limited.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2013</span>
+                        <div class="timeline-text"><strong>Word2Vec:</strong> AI learns that words used in similar contexts carry similar meaning. Language starts becoming mathematical.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2017</span>
+                        <div class="timeline-text">Google publishes <em>"Attention Is All You Need"</em> — the <strong>Transformer</strong> breakthrough. Models can now understand context across long passages of text.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2018–2020</span>
+                        <div class="timeline-text"><strong>GPT, BERT</strong> — models trained on the entire internet begin to understand nuance, tone, and meaning the way humans do.</div>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">Nov 2022</span>
+                        <div class="timeline-text"><strong>ChatGPT</strong> launches publicly. 1 million users in 5 days. 100 million in 2 months. AI enters everyday life.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2023–2024</span>
+                        <div class="timeline-text"><strong>GPT-4, Claude, Gemini</strong> — models that can read images, write code, pass licensing exams, and reason through complex problems</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2025–2026</span>
+                        <div class="timeline-text">AI <strong>agents</strong> — systems that can take actions, not just answer questions. AI moves from assistant to autonomous worker.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">Today</span>
+                        <div class="timeline-text">AI is embedded in scheduling, electronic health records, and clinical tools — and your team is already using it.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 4 – Scale
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>The Scale of What's Happening</h2>
+        <div class="content">
+            <div class="three-column" style="margin-bottom:20px;">
+                <div class="stat-box">
+                    <div class="number">2 mo</div>
+                    <div class="label">For ChatGPT to reach 100M users — faster than any technology in history, including the smartphone</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">$500B+</div>
+                    <div class="label">Annual private investment in AI (2025) — more than the annual GDP of many countries</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">90%+</div>
+                    <div class="label">Of major health systems have at least one AI initiative underway (Deloitte Health, 2025)</div>
+                </div>
+            </div>
+            <div class="analogy-box">
+                <strong>A useful analogy:</strong> Think of AI language models the way you think of the EHR transition. Not everyone needs to understand how the database works — but everyone needs to know how to use it safely, what it can get wrong, and what the rules are around patient data.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 5 – AI in Personal Life
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI in Your Personal Life — Right Now, Without Realizing It</h2>
+        <div class="content">
+            <p style="color:#555; margin-bottom:4px; font-size:0.95em;">These tools feel normal. That's because AI is already woven into daily life — long before ChatGPT made the headlines.</p>
+            <div class="app-grid">
+                <div class="app-card" style="border-top-color:#4285F4;">
+                    <div class="app-icon">🔍</div>
+                    <div class="app-name" style="color:#4285F4;">Google Search</div>
+                    <div class="app-desc">AI ranks every result, autocompletes your query, and filters spam</div>
+                </div>
+                <div class="app-card" style="border-top-color:#1DB954;">
+                    <div class="app-icon">🎵</div>
+                    <div class="app-name" style="color:#1DB954;">Spotify</div>
+                    <div class="app-desc">Recommends songs and builds playlists based on your listening history</div>
+                </div>
+                <div class="app-card" style="border-top-color:#E50914;">
+                    <div class="app-icon">▶</div>
+                    <div class="app-name" style="color:#E50914;">Netflix / YouTube</div>
+                    <div class="app-desc">Decides what appears on your home screen based on viewing patterns</div>
+                </div>
+                <div class="app-card" style="border-top-color:#34A853;">
+                    <div class="app-icon">🗺️</div>
+                    <div class="app-name" style="color:#34A853;">Google Maps / Waze</div>
+                    <div class="app-desc">Predicts traffic in real time and reroutes you before you hit slowdowns</div>
+                </div>
+                <div class="app-card" style="border-top-color:#FF9900;">
+                    <div class="app-icon">📦</div>
+                    <div class="app-name" style="color:#c47a00;">Amazon</div>
+                    <div class="app-desc">Recommends products and predicts what you'll want to reorder</div>
+                </div>
+                <div class="app-card" style="border-top-color:#EA4335;">
+                    <div class="app-icon">📧</div>
+                    <div class="app-name" style="color:#EA4335;">Gmail / Email</div>
+                    <div class="app-desc">Filters your spam, suggests replies, and completes sentences as you type</div>
+                </div>
+                <div class="app-card" style="border-top-color:#555;">
+                    <div class="app-icon">📱</div>
+                    <div class="app-name" style="color:#555;">Face ID / Unlock</div>
+                    <div class="app-desc">AI recognizes your face in milliseconds to unlock your phone</div>
+                </div>
+                <div class="app-card" style="border-top-color:#1877F2;">
+                    <div class="app-icon">📰</div>
+                    <div class="app-name" style="color:#1877F2;">Social Media Feeds</div>
+                    <div class="app-desc">AI decides which posts you see — and in what order — every time you scroll</div>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:13px; font-size:0.92em;">
+                The AI in ChatGPT and Claude is built on the same underlying technology — just trained to have a conversation instead of rank a search result.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 6 – AI in Healthcare Already
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI Is Also Showing Up in Healthcare</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>In Clinical Settings</h3>
+                    <ul>
+                        <li>
+                            <strong>Early warning &amp; deterioration alerts</strong> — some EHR platforms include AI-powered risk scores that run automatically in the background<br>
+                            <span class="source-note">Examples: <a href="https://www.epic.com/epic/post/epics-director-of-nursing-discusses-new-research-on-its-sepsis-early-warning-model/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#C62828;">Epic</span></a> <a href="https://www.oracle.com/health/clinical-suite/clinical-ai-agent/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#0066CC;">Oracle Health</span></a></span>
+                        </li>
+                        <li>
+                            <strong>Radiology support tools</strong> — AI can flag areas of concern on imaging for a radiologist to review<br>
+                            <span class="source-note">Examples: <a href="https://www.aidoc.com/solutions/radiology/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">Aidoc</span></a> <a href="https://www.nanox.vision/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Nanox.AI</span></a></span>
+                        </li>
+                        <li>
+                            <strong>Drug interaction checking</strong> — AI-enhanced drug databases built into pharmacy workflows that flag potentially dangerous combinations before dispensing<br>
+                            <span class="source-note">Examples: <a href="https://www.fdbhealth.info/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#107C41;">FDB</span></a> <a href="https://go.drugbank.com/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">DrugBank</span></a></span>
+                        </li>
+                        <li>
+                            <strong>Ambient documentation</strong> — tools that listen to a clinical encounter and draft a note<br>
+                            <span class="source-note">Examples: <a href="https://www.nuance.com/healthcare/ambient-clinical-intelligence.html" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#107C41;">Nuance DAX</span></a> <a href="https://www.suki.ai/suki-assistant/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Suki</span></a></span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>In Operations &amp; Administration</h3>
+                    <ul>
+                        <li>
+                            <strong>Scheduling optimization</strong> — AI tools that help manage staffing ratios and bed availability<br>
+                            <span class="source-note">Examples: <a href="https://www.qventus.com/solutions/discharge-planning/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#e07b00;">Qventus</span></a> <a href="https://leantaas.com/products/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#1e3c72;">LeanTaaS</span></a></span>
+                        </li>
+                        <li>
+                            <strong>Prior authorization assistance</strong> — tools that help draft and submit insurance requests<br>
+                            <span class="source-note">Examples: <a href="https://www.coherehealth.com/decision" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#2a5298;">Cohere Health</span></a> <a href="https://www.availity.com/intelligentum/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#0056b3;">Availity</span></a></span>
+                        </li>
+                        <li>
+                            <strong>Medical coding assistance</strong> — AI that suggests billing codes from clinical notes<br>
+                            <span class="source-note">Examples: <a href="https://www.solventum.com/en-us/home/health-information-systems/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#107C41;">3M / Solventum</span></a> <a href="https://www.optum.com/en/business/providers/revenue-cycle/coding.html" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#C62828;">Optum360</span></a></span>
+                        </li>
+                        <li>
+                            <strong>Readmission &amp; risk prediction</strong> — scores generated at or before discharge to flag high-risk patients<br>
+                            <span class="source-note">Examples: <a href="https://www.epic.com/software/ai/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#C62828;">Epic</span></a> <a href="https://www.oracle.com/health/clinical-suite/clinical-ai-agent/" target="_blank" style="text-decoration:none;"><span class="logo-badge" style="background:#0066CC;">Oracle Health</span></a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top:12px; font-size:0.92em;">
+                <strong>Note:</strong> Adoption varies widely by health system. Your organization may use some, all, or none of these — the point is that the category of tools exists and is growing rapidly.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 7 – Section: Alignment
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide section-slide">
+        <h2>AI Alignment</h2>
+        <p class="section-sub">Why "works most of the time" isn't good enough when real decisions are at stake</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 8 – What is Alignment
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>What Is AI Alignment?</h2>
+        <div class="content">
+            <div class="highlight">
+                <strong>Definition:</strong> AI alignment is the challenge of ensuring that an AI system does what the organization building or deploying it intends — including in edge cases, under pressure, and as systems become more capable. A system can technically meet its stated objective while causing real harm.
+            </div>
+            <div class="analogy-box" style="margin-top:10px; font-size:0.93em;">
+                This is why involving the greatest number of perspectives in AI development, testing, and use matters — alignment to a single organization's goals may not serve the greater good unless those building and deploying AI actively seek broad input.
+            </div>
+            <div class="two-column" style="margin-top:16px;">
+                <div>
+                    <h3>The Core Problem</h3>
+                    <ul>
+                        <li>AI systems optimize for what they're <em>measured on</em> — not necessarily what patients need</li>
+                        <li>A model trained to reduce hospital returns might recommend downplaying risk factors</li>
+                        <li>Confident-sounding output is not the same as correct output</li>
+                        <li>More capable systems find more creative "shortcuts"</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Clinical Analogy</h3>
+                    <div class="analogy-box" style="margin-top:0;">
+                        Imagine a hospital alert system that fires correctly for medication issues — but so often that staff learn to click through without reading. Technically "working," but misaligned with patient safety.<br><br>
+                        <strong>Alert fatigue is an alignment problem.</strong> The system optimized for catching errors, not for being acted on.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 9 – Anthropic's Three Rules
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Where Alignment Began: The HHH Framework</h2>
+        <div class="content">
+            <p style="color:#555; margin-bottom:12px; font-size:0.95em;">Early AI alignment work — including at Anthropic — converged on three foundational goals. The field has grown more nuanced since, but these concepts still shape how AI tools respond to you every day, with far-reaching implications for how you use them.</p>
+            <div class="three-column" style="margin-top:8px;">
+
+                <div style="background:white; border-radius:14px; padding:20px 18px; border-top:5px solid #1e3c72; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                    <div style="font-size:2em; margin-bottom:8px;">🤝</div>
+                    <div style="font-size:1.25em; font-weight:bold; color:#1e3c72; margin-bottom:8px;">Helpful</div>
+                    <div style="font-size:0.88em; color:#222; text-align:left; line-height:1.5;">
+                        Genuinely useful to the person asking — and, through that, to society. Not helpful in a watered-down, hedge-everything way, but substantively helpful the way a knowledgeable friend would be.
+                        <div style="margin-top:10px; background:#eaf1fb; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#1e3c72;">
+                            <em>In healthcare:</em> Give me a real answer about this medication, not just "consult your doctor."
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:white; border-radius:14px; padding:20px 18px; border-top:5px solid #2e7d32; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                    <div style="font-size:2em; margin-bottom:8px;">✅</div>
+                    <div style="font-size:1.25em; font-weight:bold; color:#2e7d32; margin-bottom:8px;">Honest</div>
+                    <div style="font-size:0.88em; color:#222; text-align:left; line-height:1.5;">
+                        Truthful, transparent, and non-manipulative. Shares uncertainty when it exists. Never tries to create false impressions — even by technically true but misleading statements.
+                        <div style="margin-top:10px; background:#f0f7f0; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#2e7d32;">
+                            <em>In practice:</em> "I'm not certain — you should verify this before relying on it."
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:white; border-radius:14px; padding:20px 18px; border-top:5px solid #e07b00; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                    <div style="font-size:2em; margin-bottom:8px;">🛡️</div>
+                    <div style="font-size:1.25em; font-weight:bold; color:#e07b00; margin-bottom:8px;">Harmless</div>
+                    <div style="font-size:0.88em; color:#222; text-align:left; line-height:1.5;">
+                        Avoids outputs that could hurt individuals, groups, or society — even when asked. Maintains human oversight so errors can be caught and corrected before causing real damage.
+                        <div style="margin-top:10px; background:#fff8e1; border-radius:8px; padding:8px 10px; font-size:0.92em; color:#c26000;">
+                            <em>In practice:</em> Won't provide specific instructions that could cause harm without proper context.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="highlight" style="margin-top:12px;">
+                <strong>The tension — and why it matters to you:</strong> These three goals pull against each other. Being <em>maximally helpful</em> could mean giving dangerous information. Being <em>maximally harmless</em> could make the tool useless. AI companies have continued to refine this balance, but the core trade-off remains — which is why human judgment and oversight still matter every time you use these tools.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 10 – Alignment Spectrum
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>The Alignment Spectrum</h2>
+        <div class="content">
+            <div class="three-column">
+                <div class="card">
+                    <div style="margin-bottom:8px;"><span class="tag">Now</span></div>
+                    <h3 style="margin-top:0;">Today's Real Risks</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>AI generating wrong medical information — confidently</li>
+                        <li>Models trained on data that underrepresents minorities, women, older adults</li>
+                        <li>Patient information entered into consumer AI tools</li>
+                        <li>Overconfident outputs accepted without verification</li>
+                        <li>Widening health equity gaps via biased models</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div style="margin-bottom:8px;"><span class="tag tag-orange">Emerging</span></div>
+                    <h3 style="margin-top:0;">Near-Future Challenges</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>AI agents making critical patient care decisions without a human</li>
+                        <li>AI-generated insurance request denials with no human review</li>
+                        <li>Synthetic notes inserted into electronic medical records</li>
+                        <li>Liability when AI-assisted care causes harm</li>
+                        <li>Staff displacement without support structures</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div style="margin-bottom:8px;"><span class="tag tag-red">Long-Term</span></div>
+                    <h3 style="margin-top:0;">Broader Questions</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>AI systems setting clinical standards without physician input</li>
+                        <li>Erosion of clinician judgment as AI dependency grows</li>
+                        <li>Concentration of healthcare AI power in few vendors</li>
+                        <li>Loss of human accountability in care decisions</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:16px;">
+                <strong>The "Now" column is your organization's problem today.</strong> These are not hypothetical — they are happening in health systems without governance structures.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 10 – How AI Labs Address Alignment
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>How AI Is Made Safer — and Why You Still Need Oversight</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>What AI Companies Do</h3>
+                    <ul>
+                        <li><strong>Human feedback training (RLHF)</strong> — clinicians, teachers, lawyers rate AI outputs to reinforce good behavior</li>
+                        <li><strong>Constitutional AI</strong> — model evaluates its own responses against a set of principles before answering</li>
+                        <li><strong>Red-teaming</strong> — adversarial testers deliberately try to make the model fail or produce harmful outputs</li>
+                        <li><strong>Usage policies</strong> — explicit prohibited uses built into the model's training</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Regulatory &amp; External Checks</h3>
+                    <ul>
+                        <li><strong>FDA oversight</strong> — clinical AI tools that affect patient care are regulated as medical devices</li>
+                        <li><strong>NIST AI Risk Management Framework</strong> — voluntary but widely adopted across healthcare</li>
+                        <li><strong>EU AI Act</strong> — classifies healthcare AI as "high risk" with specific requirements</li>
+                        <li><strong>Federal transparency rules</strong> — organizations must disclose when AI assists in clinical decisions</li>
+                    </ul>
+                    <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
+                        <strong>Think of it like a new drug:</strong> FDA approval means it passed rigorous testing — not that it's right for every patient or that the prescriber can skip judgment.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 11 – Section: Practical Use
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide section-slide">
+        <h2>Practical AI for Healthcare Professionals</h2>
+        <p class="section-sub">Communications · Patient Flow · Scheduling · Documentation · Compliance · and more</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 12 – AI Literacy Levels
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Levels of AI Literacy</h2>
+        <div class="content">
+            <div class="level-bar">
+                <div class="level-num" style="background:#546e7a;">0</div>
+                <div class="level-content">
+                    <div class="level-title">Unaware</div>
+                    <div class="level-desc">Uses AI daily without recognizing it — recommendation engines, autocomplete, automated alerts in the tools they already use. No mental model of how it works or where it can fail.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#2a5298;">1</div>
+                <div class="level-content">
+                    <div class="level-title">User</div>
+                    <div class="level-desc">Intentionally uses AI tools — ChatGPT or Claude to draft communications, summarize documents, or look up information. Understands that AI can be wrong and checks important outputs.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#1e3c72;">2</div>
+                <div class="level-content">
+                    <div class="level-title">Practitioner</div>
+                    <div class="level-desc">Builds repeatable AI-assisted workflows — templates, structured prompts, evaluation criteria. Trains colleagues. Evaluates vendor AI tools critically.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#e07b00;">3</div>
+                <div class="level-content">
+                    <div class="level-title">Configurator / Analyst</div>
+                    <div class="level-desc">Configures or evaluates AI tools used by the organization, works with vendors and IT, designs governance processes, and analyzes whether AI is performing as expected.</div>
+                </div>
+            </div>
+            <div class="level-bar">
+                <div class="level-num" style="background:#2e7d32;">4</div>
+                <div class="level-content">
+                    <div class="level-title">Researcher / Builder</div>
+                    <div class="level-desc">Trains or fine-tunes AI models for specialized use. Contributes to AI research, bias detection, and alignment work. Often in academic or R&amp;D roles.</div>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:12px; font-size:0.93em;">
+                <strong>Most healthcare staff today are Level 0–1.</strong> The organizational goal is Level 1 for all staff, Level 2 for department leads and coordinators.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 13 – Context Window
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Why Chat Sessions Can Go Off the Rails</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>What Is "Context"?</h3>
+                    <p style="font-size:0.95em; margin-bottom:10px;">Every AI chat session has a <strong>context window</strong> — the total amount of text the model can actively "see" at once. Think of it like working memory: everything in the current conversation, including your messages and the AI's replies, lives in that window.</p>
+                    <div class="analogy-box">
+                        <strong>Hospital analogy:</strong> Imagine giving a new resident a patient's entire chart to hold in their head — at some point, new information starts crowding out older details. The AI has the same constraint, just measured in tokens (chunks of text) instead of pages.
+                    </div>
+                    <h3>What Happens When It Fills Up</h3>
+                    <ul style="font-size:0.92em;">
+                        <li>The AI begins to lose track of <strong>earlier parts of the conversation</strong></li>
+                        <li>Responses become <strong>less coherent</strong> or start contradicting prior answers</li>
+                        <li>The session may <strong>error out</strong> entirely once the limit is reached</li>
+                        <li>Mixing many different topics makes the problem worse — the AI has to juggle too much at once</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>How to Avoid It</h3>
+                    <div class="card-green" style="margin-bottom:12px;">
+                        <strong>One topic per session.</strong> Start a fresh conversation for each distinct task. Don't use the same chat for drafting a patient note, then asking a policy question, then requesting a template update — each one deserves its own session.
+                    </div>
+                    <div class="card" style="margin-bottom:12px;">
+                        <strong>Keep prompts focused.</strong> Provide the specific information needed for that task — not the entire patient history unless it's all relevant. The less clutter in the context, the better the output.
+                    </div>
+                    <div class="card" style="margin-bottom:12px;">
+                        <strong>When quality drops, start over.</strong> If the AI starts giving vague or contradictory answers, it's often a sign the context is getting crowded. Open a new chat and restate your request clearly.
+                    </div>
+                    <div class="warning-box" style="margin:0; font-size:0.9em;">
+                        <strong>Tip:</strong> Name your chats descriptively ("Patient summary – West Wing" not "Chat 1") so you can find and reuse a focused session instead of piling unrelated tasks into one.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 13 – AI for Communications
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI for Clinical Communications</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>Patient-Facing</h3>
+                    <ul>
+                        <li><strong>Discharge instructions</strong> — convert clinical notes into plain-language, literacy-appropriate instructions</li>
+                        <li><strong>After-visit summaries</strong> — draft from encounter notes in seconds</li>
+                        <li><strong>Patient portal responses</strong> — draft replies to patient messages for provider review and send</li>
+                        <li><strong>Education materials</strong> — condition-specific content tailored to reading level and language</li>
+                        <li><strong>Informed consent summaries</strong> — plain-language versions of complex procedures</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Team &amp; Administrative</h3>
+                    <ul>
+                        <li><strong>Shift handoff notes</strong> — structured summaries from nursing notes for incoming staff</li>
+                        <li><strong>Referral letters</strong> — complete summaries from chart data</li>
+                        <li><strong>Meeting summaries &amp; action items</strong> — from recorded care team huddles</li>
+                        <li><strong>Policy drafts</strong> — first versions of updated protocols from regulatory guidance</li>
+                    </ul>
+                    <div class="card-green" style="margin-top:14px; font-size:0.9em;">
+                        <strong>Real example:</strong> A nurse inputs key points from an encounter; Claude drafts a discharge instruction document with med list, follow-up steps, and warning signs — reviewed and edited in 2 minutes instead of 15.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 13 – AI for Health Unit Coordinators
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI for Health Unit Coordinators</h2>
+        <div class="content">
+            <div class="three-column">
+                <div class="card">
+                    <h3 style="margin-top:0;">Patient Flow &amp; Admissions</h3>
+                    <ul style="font-size:0.9em;">
+                        <li>Drafting admission paperwork and consent summaries</li>
+                        <li>Generating transfer-of-care communication packets</li>
+                        <li>Discharge checklist creation from order sets</li>
+                        <li>Flagging incomplete orders before transfer</li>
+                        <li>Summarizing bed availability status updates</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Scheduling &amp; Coordination</h3>
+                    <ul style="font-size:0.9em;">
+                        <li>Drafting consult request messages from order notes</li>
+                        <li>Scheduling communication with radiology, lab, physical and occupational therapy</li>
+                        <li>Tracking and following up on pending orders</li>
+                        <li>Generating transport request summaries</li>
+                        <li>Pre-procedure prep instruction drafts for patients</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Unit Communications</h3>
+                    <ul style="font-size:0.9em;">
+                        <li>Drafting family update messages from chart notes</li>
+                        <li>Creating shift bulletin or whiteboard content</li>
+                        <li>Translating clinical instructions to plain language</li>
+                        <li>Composing interdepartmental communications</li>
+                        <li>Summarizing lengthy policy updates for staff</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="three-column" style="margin-top:14px;">
+                <div class="card-green" style="font-size:0.88em;">
+                    <strong>Documentation &amp; Records:</strong> Billing and coding assistance, incident report drafting, chart deficiency follow-up, forms completion guidance
+                </div>
+                <div class="card-green" style="font-size:0.88em;">
+                    <strong>Compliance:</strong> HIPAA policy lookup, Joint Commission prep, tracking regulatory updates, prior auth letter drafting
+                </div>
+                <div class="card-green" style="font-size:0.88em;">
+                    <strong>Supply &amp; Logistics:</strong> Drafting supply order justifications, summarizing vendor communications, generating equipment request documentation
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 14 – Why You Need a Policy
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Your Organization Needs an AI Policy</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <h3>Why Now?</h3>
+                    <ul>
+                        <li>Staff <em>are already using</em> AI tools — with or without guidance</li>
+                        <li>Patient information is being typed into ChatGPT right now</li>
+                        <li>AI-generated clinical content is being used without clinician review</li>
+                        <li>HIPAA liability exposure is real when PHI enters consumer AI apps</li>
+                        <li>Regulatory requirements are arriving (ONC, state nursing boards)</li>
+                        <li>Staff need clarity on what's supported — and what's supported <em>by IT</em></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>What Happens Without One</h3>
+                    <ul>
+                        <li>A staff member pastes a patient's full history into ChatGPT to figure out what's wrong — HIPAA violation</li>
+                        <li>AI-drafted discharge instructions with wrong medication doses are sent to a patient</li>
+                        <li>A physician uses AI for a referral letter that cites a fabricated guideline</li>
+                        <li>Staff fear discipline for using AI, even when use is reasonable</li>
+                    </ul>
+                    <div class="warning-box" style="margin-top:14px; font-size:0.9em;">
+                        <strong>This is already happening.</strong> Cybersecurity researchers found that 81% of healthcare workers' data policy violations involved regulated patient data — and 71% use personal AI accounts not covered by organizational data controls. <a href="https://www.hipaajournal.com/healthcare-workers-privacy-violations-ai-tools-cloud-accounts/" target="_blank" style="color:#7a5c00; font-size:0.9em;">(HIPAA Journal / Netskope, 2025)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 15 – Policy Components
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>AI Policy: What Mature Policies Address</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#1e3c72;">1</div>
+                        <div class="level-content">
+                            <div class="level-title">Approved Tools List</div>
+                            <div class="level-desc">Which AI tools are sanctioned by IT/Legal? Which require a Business Associate Agreement (BAA)?</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#c62828;">2</div>
+                        <div class="level-content">
+                            <div class="level-title">PHI / Data Rules</div>
+                            <div class="level-desc">Clear rules on patient identifiers in consumer AI tools, and a shared definition of what "de-identified" means for AI inputs.</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#1e3c72;">3</div>
+                        <div class="level-content">
+                            <div class="level-title">Clinical Oversight Requirements</div>
+                            <div class="level-desc">All AI-generated clinical content must be reviewed and attested to by a licensed clinician before use.</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#2a5298;">4</div>
+                        <div class="level-content">
+                            <div class="level-title">Disclosure Standards</div>
+                            <div class="level-desc">When must patients, regulators, or accreditors be told that AI assisted in a clinical or administrative decision?</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#2a5298;">5</div>
+                        <div class="level-content">
+                            <div class="level-title">Training Requirements</div>
+                            <div class="level-desc">Role-based AI literacy training; competency check for clinical AI tools; annual refresher as tools evolve.</div>
+                        </div>
+                    </div>
+                    <div class="level-bar" style="margin-bottom:10px;">
+                        <div class="level-num" style="font-size:0.95em; width:36px; background:#e07b00;">6</div>
+                        <div class="level-content">
+                            <div class="level-title">Incident Reporting</div>
+                            <div class="level-desc">Clear pathway to report AI errors, near-misses, or unexpected outputs — just like medication errors or equipment failures.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top:14px; font-size:0.92em;">
+                <strong>Start simple:</strong> A one-page policy covering PHI rules, approved tools, and clinical review requirements is far better than a perfect 50-page policy that takes 18 months to approve.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 16 – Key Takeaways
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide">
+        <h2>Key Takeaways</h2>
+        <div class="content">
+            <div class="two-column">
+                <div>
+                    <ul style="font-size:1.02em;">
+                        <li style="margin-bottom:13px;"><strong>AI is already in your clinical environment.</strong> The question is whether it's used intentionally and safely.</li>
+                        <li style="margin-bottom:13px;"><strong>LLMs are reasoning assistants, not oracles.</strong> They are fast, capable, and wrong often enough that human review matters.</li>
+                        <li style="margin-bottom:13px;"><strong>Alignment is a patient safety issue.</strong> Biased training data, incorrect information delivered confidently, and patient data leakage are real risks — not just IT concerns.</li>
+                        <li style="margin-bottom:13px;"><strong>Literacy creates agency.</strong> Staff who understand AI make better decisions about when to trust it — and when to override it.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>How Organizations Typically Get Started</h3>
+                    <div class="card" style="margin-bottom:10px; font-size:0.92em;">
+                        <strong>Week 1–2:</strong> Understanding what AI tools staff are already using — officially and unofficially — is usually the first step
+                    </div>
+                    <div class="card" style="margin-bottom:10px; font-size:0.92em;">
+                        <strong>Month 1:</strong> Most organizations start with a one-page interim policy covering PHI rules and approved tools, developed with Legal and Compliance
+                    </div>
+                    <div class="card" style="margin-bottom:10px; font-size:0.92em;">
+                        <strong>Month 2:</strong> Early pilots of 2–3 use cases (patient summaries, portal responses, handoff notes) help teams learn what works before scaling
+                    </div>
+                    <div class="card-orange" style="font-size:0.92em;">
+                        <strong>Month 3:</strong> Organizations that sustain progress typically add role-based training, an AI champion at the department level, and a pathway for reporting AI-related errors
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 21 – Questions
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide section-slide">
+        <h2>Questions?</h2>
+    </div>
+
+</div><!-- /presentation -->
+
+<div class="controls">
+    <button id="prev" onclick="prevSlide()">&#8592; Previous</button>
+    <button id="next" onclick="nextSlide()">Next &#8594;</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    document.getElementById('total').textContent = totalSlides;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = Math.max(0, Math.min(n, totalSlides - 1));
+        slides[currentSlide].classList.add('active');
+        document.getElementById('current').textContent = currentSlide + 1;
+        document.getElementById('prev').disabled = currentSlide === 0;
+        document.getElementById('next').disabled = currentSlide === totalSlides - 1;
+    }
+
+    function nextSlide() { if (currentSlide < totalSlides - 1) showSlide(currentSlide + 1); }
+    function prevSlide() { if (currentSlide > 0) showSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+        else if (e.key === 'ArrowLeft')               { e.preventDefault(); prevSlide(); }
+    });
+
+    showSlide(0);
+</script>
+</body>
+</html>
