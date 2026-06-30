@@ -478,10 +478,30 @@
             display: block;
         }
 
-        /* ─── Print / PDF export ─────────────────────────── */
+        /* ─── HSV.AI logo on every slide ────────────────── */
+        .slide::after {
+            content: 'HSV.AI';
+            position: absolute;
+            bottom: 14px;
+            right: 20px;
+            font-size: 0.72em;
+            font-weight: bold;
+            color: #1e3c72;
+            letter-spacing: 0.06em;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .title-slide::after,
+        .section-slide::after {
+            color: white;
+            opacity: 0.6;
+        }
+
+        /* ─── Print / PDF export (A4 landscape) ────────── */
         @media print {
             @page {
-                size: landscape;
+                size: A4 landscape;
                 margin: 0;
             }
 
@@ -497,24 +517,25 @@
             }
 
             .presentation {
-                width: 100%;
+                width: 297mm;
                 height: auto;
                 position: static;
             }
 
             .slide {
-                position: static !important;
+                position: relative !important;
                 display: flex !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                height: 100vh !important;
-                max-height: 100vh !important;
+                width: 297mm !important;
+                max-width: 297mm !important;
+                height: 210mm !important;
+                max-height: 210mm !important;
                 top: auto !important;
                 left: auto !important;
                 transform: none !important;
                 border-radius: 0 !important;
                 box-shadow: none !important;
                 margin: 0 !important;
+                padding: 12mm 16mm !important;
                 page-break-after: always;
                 break-after: page;
                 overflow: hidden !important;
@@ -525,6 +546,82 @@
                 page-break-after: avoid;
                 break-after: avoid;
             }
+
+            /* ── Typography ── */
+            .slide            { font-size: 11pt !important; line-height: 1.4 !important; }
+            .slide h1         { font-size: 30pt !important; margin-bottom: 5mm !important; }
+            .slide h2         { font-size: 18pt !important; margin-bottom: 4mm !important; padding-bottom: 2mm !important; }
+            .slide h3         { font-size: 12pt !important; margin: 3mm 0 1.5mm 0 !important; }
+            .subtitle         { font-size: 13pt !important; margin-bottom: 6mm !important; }
+            .content          { font-size: 10.5pt !important; line-height: 1.4 !important; }
+            .content ul       { margin-left: 5mm !important; margin-top: 1mm !important; }
+            .content li       { margin: 1.5mm 0 !important; }
+            .section-sub      { font-size: 12pt !important; margin-top: 4mm !important; }
+
+            /* ── Layout ── */
+            .two-column       { gap: 6mm !important; margin-top: 3mm !important; }
+            .three-column     { gap: 4mm !important; margin-top: 3mm !important; }
+            .app-grid         { gap: 3mm !important; margin-top: 4mm !important; }
+            .app-card         { padding: 3mm 2mm !important; }
+            .app-icon         { font-size: 1.4em !important; margin-bottom: 1mm !important; }
+            .app-name         { font-size: 0.78em !important; }
+            .app-desc         { font-size: 0.72em !important; }
+
+            /* ── Cards & boxes ── */
+            .highlight        { padding: 3mm 5mm !important; margin: 2mm 0 !important; font-size: 10pt !important; }
+            .warning-box      { padding: 3mm 5mm !important; margin: 2mm 0 !important; font-size: 10pt !important; }
+            .analogy-box      { padding: 3mm 5mm !important; margin: 2mm 0 !important; font-size: 10pt !important; }
+            .card             { padding: 3mm 4mm !important; }
+            .card-orange      { padding: 3mm 4mm !important; }
+            .card-green       { padding: 3mm 4mm !important; }
+            .stat-box         { padding: 4mm 3mm !important; }
+            .stat-box .number { font-size: 1.8em !important; }
+            .stat-box .label  { font-size: 0.8em !important; margin-top: 1mm !important; }
+
+            /* ── Timeline ── */
+            .timeline         { padding-left: 7mm !important; margin-top: 1mm !important; }
+            .timeline-item    { margin-bottom: 3mm !important; }
+            .timeline-year    { font-size: 0.9em !important; }
+            .timeline-text    { font-size: 0.88em !important; }
+
+            /* ── Literacy levels ── */
+            .level-bar        { margin: 2mm 0 !important; }
+            .level-num        { width: 8mm !important; font-size: 1em !important; }
+            .level-content    { padding: 2mm 4mm !important; }
+            .level-title      { font-size: 0.9em !important; }
+            .level-desc       { font-size: 0.78em !important; margin-top: 0.5mm !important; }
+
+            /* ── Source notes & badges ── */
+            .source-note      { font-size: 0.68em !important; }
+            .logo-badge       { font-size: 0.65em !important; padding: 1px 5px !important; }
+
+            /* ── Title slide ── */
+            .title-slide h1   { font-size: 34pt !important; }
+            .title-slide .subtitle { font-size: 14pt !important; margin-bottom: 8mm !important; }
+            .title-slide .org-name { font-size: 10pt !important; padding: 3mm 6mm !important; }
+            .title-slide .logo-area { font-size: 1.1em !important; margin-bottom: 6mm !important; }
+
+            /* ── Vertical distribution: fill slide height ── */
+            /* .content fills all remaining space after h2 */
+            .slide > .content {
+                flex: 1 !important;
+                min-height: 0 !important;
+            }
+
+            /* Non-grid .content becomes a flex column and distributes
+               its children so first item is at top, last at bottom */
+            .slide > .content:not(.two-column):not(.three-column) {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+            }
+
+            /* When .content IS the grid (e.g. agenda slide), siblings
+               that follow (like .highlight) are pushed to bottom by flex:1 */
+            .slide > .content.two-column,
+            .slide > .content.three-column {
+                display: grid !important;
+            }
         }
     </style>
 </head>
@@ -532,7 +629,7 @@
 <div class="hsv-badge">HSV.AI</div>
 <div class="presentation">
     <div class="slide-counter">
-        <span id="current">1</span> / <span id="total">20</span>
+        <span id="current">1</span> / <span id="total">21</span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -1258,10 +1355,14 @@
                     </div>
                 </div>
             </div>
-            <div class="highlight" style="margin-top:16px; text-align:center; font-size:0.97em;">
-                <strong>HSV.AI</strong> &nbsp;·&nbsp; hsv.ai &nbsp;·&nbsp; Huntsville's AI Community
-            </div>
         </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         Slide 21 – Questions
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide section-slide">
+        <h2>Questions?</h2>
     </div>
 
 </div><!-- /presentation -->
